@@ -2,7 +2,7 @@ import path from 'path'
 
 import { buildConfig } from 'payload/config'
 
-import nestedDocs from '@payloadcms/plugin-nested-docs'
+// import nestedDocs from '@payloadcms/plugin-nested-docs'
 
 import { Categories } from './collections/categories'
 import { Media } from './collections/media'
@@ -11,6 +11,7 @@ import { Pages } from './collections/pages'
 import { Tags } from './collections/tags'
 import { Users } from './collections/users'
 import { seed } from './seed'
+import { MainMenu } from './globals/main-menu'
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL as string,
@@ -64,4 +65,5 @@ export default buildConfig({
       await seed(payload)
     }
   },
+  globals: [MainMenu],
 })

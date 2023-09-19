@@ -7,6 +7,7 @@ import nestedDocs from '@payloadcms/plugin-nested-docs'
 import { Categories } from './collections/categories'
 import { Media } from './collections/media'
 import { Posts } from './collections/posts'
+import { Pages } from './collections/pages'
 import { Tags } from './collections/tags'
 import { Users } from './collections/users'
 import { seed } from './seed'
@@ -36,20 +37,20 @@ export default buildConfig({
       }
     },
   },
-  collections: [Posts, Media, Categories, Tags, Users],
+  collections: [Pages, Posts, Media, Categories, Tags, Users],
   localization: {
     locales: ['en', 'es', 'fr'],
     defaultLocale: 'en',
     fallback: true,
   },
   plugins: [
-    nestedDocs({
-      collections: ['docs'],
-      parentFieldSlug: 'parent',
-      breadcrumbsFieldSlug: 'breadcrumbs',
-      generateLabel: (_, doc: any) => doc.title,
-      generateURL: (docs) => docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
-    }),
+    // nestedDocs({
+    //   collections: ['pages'],
+    //   parentFieldSlug: 'parent',
+    //   breadcrumbsFieldSlug: 'breadcrumbs',
+    //   generateLabel: (_, doc: any) => doc.title,
+    //   generateURL: (docs) => docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
+    // }),
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

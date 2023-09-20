@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@org/cms": "workspace:*",
+    "@org/shared": "workspace:*",
     "@org/uikit": "workspace:*",
     "autoprefixer": "10.4.14",
     "copyfiles": "^2.4.1",

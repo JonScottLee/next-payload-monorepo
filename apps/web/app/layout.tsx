@@ -1,7 +1,9 @@
-import './globals.css'
 import { Inter } from 'next/font/google'
 import { Metadata } from 'next'
 import { FC, PropsWithChildren } from 'react'
+import { Button } from '@org/uikit'
+
+import './css/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 

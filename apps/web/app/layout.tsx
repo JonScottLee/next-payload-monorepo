@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { Metadata } from 'next'
+import { FC, PropsWithChildren } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,10 +14,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const RootLayout: FC<PropsWithChildren<Record<string, unknown>>> = ({ children }) => {
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
     </html>
   )
 }
+export default RootLayout

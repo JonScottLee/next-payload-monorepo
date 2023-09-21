@@ -12,6 +12,7 @@ import { Tags } from './collections/tags'
 import { Users } from './collections/users'
 import { seed } from './seed'
 import { MainMenu } from './globals/main-menu'
+import { Footer } from './globals/footer'
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL as string,
@@ -65,5 +66,5 @@ export default buildConfig({
       await seed(payload)
     }
   },
-  globals: [MainMenu],
+  globals: [Footer, MainMenu],
 })

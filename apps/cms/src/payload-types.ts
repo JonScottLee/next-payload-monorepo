@@ -15,6 +15,7 @@ export interface Config {
     users: User;
   };
   globals: {
+    footer: Footer;
     'main-menu': MainMenu;
   };
 }
@@ -140,6 +141,33 @@ export interface Category {
 export interface Tag {
   id: string;
   name?: string;
+}
+export interface Footer {
+  id: string;
+  columns: {
+    heading?: string;
+    navItems?: {
+      link: {
+        type?: 'reference' | 'custom';
+        newTab?: boolean;
+        reference:
+          | {
+              value: string | Post;
+              relationTo: 'posts';
+            }
+          | {
+              value: string | Page;
+              relationTo: 'pages';
+            };
+        url: string;
+        label: string;
+      };
+      id?: string;
+    }[];
+    id?: string;
+  }[];
+  updatedAt?: string;
+  createdAt?: string;
 }
 export interface MainMenu {
   id: string;

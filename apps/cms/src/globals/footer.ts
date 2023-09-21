@@ -13,9 +13,15 @@ export const Footer: GlobalConfig = {
     {
       name: 'columns',
       type: 'array',
+      required: true,
       minRows: 1,
       maxRows: 3,
       fields: [
+        {
+          name: 'heading',
+          type: 'text',
+          label: 'Column Heading',
+        },
         {
           name: 'navItems',
           type: 'array',

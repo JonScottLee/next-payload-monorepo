@@ -3,6 +3,7 @@
 import React, { Fragment } from 'react'
 import escapeHTML from 'escape-html'
 import { Text } from 'slate'
+import { H1, H2, H3, H4 } from '@org/uikit'
 
 // eslint-disable-next-line no-use-before-define
 export type RichTextType = Leaf[]
@@ -60,36 +61,38 @@ const serialize = (children: RichTextType): React.ReactElement[] => {
       return null
     }
 
+    const { children } = node
+
     switch (node.type) {
       case 'h1':
-        return <h1 key={i}>{serialize(node.children)}</h1>
+        return <H1 key={i}>{serialize(children)}</H1>
       case 'h2':
-        return <h2 key={i}>{serialize(node.children)}</h2>
+        return <H2 key={i}>{serialize(children)}</H2>
       case 'h3':
-        return <h3 key={i}>{serialize(node.children)}</h3>
+        return <H3 key={i}>{serialize(children)}</H3>
       case 'h4':
-        return <h4 key={i}>{serialize(node.children)}</h4>
+        return <H4 key={i}>{serialize(children)}</H4>
       case 'h5':
-        return <h5 key={i}>{serialize(node.children)}</h5>
+        return <h5 key={i}>{serialize(children)}</h5>
       case 'h6':
-        return <h6 key={i}>{serialize(node.children)}</h6>
+        return <h6 key={i}>{serialize(children)}</h6>
       case 'quote':
-        return <blockquote key={i}>{serialize(node.children)}</blockquote>
+        return <blockquote key={i}>{serialize(children)}</blockquote>
       case 'ul':
-        return <ul key={i}>{serialize(node.children)}</ul>
+        return <ul key={i}>{serialize(children)}</ul>
       case 'ol':
-        return <ol key={i}>{serialize(node.children)}</ol>
+        return <ol key={i}>{serialize(children)}</ol>
       case 'li':
-        return <li key={i}>{serialize(node.children)}</li>
+        return <li key={i}>{serialize(children)}</li>
       case 'link':
         return (
           <a href={escapeHTML(node.url)} key={i}>
-            {serialize(node.children)}
+            {serialize(children)}
           </a>
         )
 
       default:
-        return <p key={i}>{serialize(node.children)}</p>
+        return <p key={i}>{serialize(children)}</p>
     }
   })
 }

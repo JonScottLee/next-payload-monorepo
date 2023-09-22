@@ -3,6 +3,7 @@ import { type CollectionConfig } from 'payload/types'
 import { isAdmin, isAdminOrEditor, publishedOnly } from '../access'
 
 import { slugField } from '../fields/slug'
+import { TextBlock } from '../blocks'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -48,6 +49,20 @@ export const Pages: CollectionConfig = {
               type: 'richText',
               localized: true,
               required: true,
+            },
+          ],
+        },
+        {
+          label: 'Blocks',
+          fields: [
+            {
+              name: 'blocks',
+              admin: {
+                description: 'Add blocks to the page layout',
+              },
+              label: 'Blocks',
+              type: 'blocks',
+              blocks: [TextBlock],
             },
           ],
         },

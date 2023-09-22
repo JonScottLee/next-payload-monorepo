@@ -5,7 +5,7 @@ import escapeHTML from 'escape-html'
 import { Text } from 'slate'
 
 // eslint-disable-next-line no-use-before-define
-type Children = Leaf[]
+export type RichTextType = Leaf[]
 
 type Leaf = {
   type: string
@@ -13,12 +13,12 @@ type Leaf = {
     url: string
     alt: string
   }
-  children?: Children
+  children?: RichTextType
   url?: string
   [key: string]: unknown
 }
 
-const serialize = (children: Children): React.ReactElement[] => {
+const serialize = (children: RichTextType): React.ReactElement[] => {
   if (typeof children.map !== 'function') return null
 
   return children.map((node, i) => {

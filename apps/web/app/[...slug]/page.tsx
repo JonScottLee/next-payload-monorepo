@@ -4,6 +4,7 @@ import { getData } from '@/utils'
 import { type Page } from '@org/cms'
 import { Header, Footer, RichText } from '@components'
 import { H1 } from '@org/uikit'
+import { RenderBlocks } from '../components/render-blocks/render-blocks'
 
 const getPageFromSlug = ({ pages, slug }: { pages: any; slug: string }): Page | null => {
   const page = pages.docs.find((page: Page) => page.slug === slug) as Page
@@ -38,15 +39,17 @@ const Page: FC<PageProps> = async ({ params }) => {
 
   if (!pageData) return <NotFoundPage />
 
-  const { title, content } = pageData
+  const { title, content, blocks } = pageData
 
   return (
     <>
       <Header className="mb-4" />
-
       <main>
         <H1>{title}</H1>
+
         {content && <RichText content={content} />}
+
+        <RenderBlocks blocks={blocks} />
       </main>
 
       <Footer className="mt-4" />

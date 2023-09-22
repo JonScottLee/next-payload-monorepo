@@ -2,8 +2,8 @@ import { FC } from 'react'
 import NotFoundPage from '../404/page'
 import { getData } from '@/utils'
 import { type Page } from '@org/cms'
-import Link from 'next/link'
-import { Header, Footer } from '@components'
+import { Header, Footer, RichText } from '@components'
+import { H1 } from '@org/uikit'
 
 const getPageFromSlug = ({ pages, slug }: { pages: any; slug: string }): Page | null => {
   const page = pages.docs.find((page: Page) => page.slug === slug) as Page
@@ -38,15 +38,18 @@ const Page: FC<PageProps> = async ({ params }) => {
 
   if (!pageData) return <NotFoundPage />
 
+  const { title, content } = pageData
+
   return (
     <>
-      <Header />
+      <Header className="mb-4" />
 
       <main>
-        <h1>{pageData.title}</h1>
+        <H1>{title}</H1>
+        {content && <RichText content={content} />}
       </main>
 
-      <Footer />
+      <Footer className="mt-4" />
     </>
   )
 }

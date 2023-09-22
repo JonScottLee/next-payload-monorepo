@@ -10,14 +10,18 @@ const getMenuData = async (): Promise<MainMenu> => {
   return menu
 }
 
-export const Header: FC = async () => {
+type HeaderProps = {
+  className?: string
+}
+
+export const Header: FC<HeaderProps> = async ({ className }) => {
   const menuData = await getMenuData()
   const headersList = headers()
 
   const currentPath = (headersList.get('x-pathname') || '/').split('/')[1] || undefined
 
   return (
-    <header>
+    <header className={`${className}`}>
       <ul>
         {menuData.navItems?.map((item) => {
           const reference = item.link.reference.value as Page

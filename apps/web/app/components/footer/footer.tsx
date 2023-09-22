@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { getData } from '@/utils'
 import { type Page, type Footer as FooterType } from '@org/cms'
 import Link from 'next/link'
+import { H2 } from '@org/uikit'
 
 const getFooterData = async (): Promise<FooterType> => {
   const footer = await getData<FooterType>('http://localhost:3000/api/globals/footer')
@@ -9,15 +10,19 @@ const getFooterData = async (): Promise<FooterType> => {
   return footer
 }
 
-export const Footer: FC = async () => {
+type FooterProps = {
+  className?: string
+}
+
+export const Footer: FC<FooterProps> = async ({ className }) => {
   const footerData = await getFooterData()
 
   return (
-    <footer>
+    <footer className={`${className}`}>
       {(footerData.columns || []).map((column) => {
         return (
           <div key={column.heading}>
-            <h2>{column.heading}</h2>
+            <H2>{column.heading}</H2>
             <nav aria-label="Site map">
               <ul>
                 {(column.navItems || []).map((item) => {

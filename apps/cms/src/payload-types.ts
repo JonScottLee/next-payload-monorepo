@@ -25,6 +25,14 @@ export interface Page {
   content: {
     [k: string]: unknown;
   }[];
+  blocks?: {
+    text: {
+      [k: string]: unknown;
+    }[];
+    id?: string;
+    blockName?: string;
+    blockType: 'text-block';
+  }[];
   slug?: string;
   publishedOn: string;
   updatedAt: string;

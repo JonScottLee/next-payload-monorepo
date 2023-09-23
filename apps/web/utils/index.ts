@@ -1,3 +1,6 @@
+import { PageDataResponse } from '@/app/[...slug]/types'
+import { type Page } from '@org/cms'
+
 export const getData = async <T>(endpoint: string): Promise<T> => {
   const res = await fetch(endpoint, { next: { revalidate: 10 } })
 
@@ -8,4 +11,20 @@ export const getData = async <T>(endpoint: string): Promise<T> => {
   const data: T = await res.json()
 
   return data
+}
+
+const getPageFromSlug = ({ pages, slug }: { pages: any; slug: string }): Page | null => {
+  const page = pages.docs.find((page: Page) => page.slug === slug) as Page
+
+  if (!page) {
+    return null
+  }
+
+  return page
+}
+
+export const getPageData = async (slug: string): Promise<Page | null> => {
+  const pages = await getData<PageDataResponse>('http://localhost:3000/api/pages')
+
+  return getPageFromSlug({ pages, slug })
 }

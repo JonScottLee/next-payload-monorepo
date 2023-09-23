@@ -5,34 +5,25 @@ import { type Page } from '@org/cms'
 import { Header, Footer, RichText } from '@components'
 import { H1 } from '@org/uikit'
 import { RenderBlocks } from '../components/render-blocks/render-blocks'
+import { Metadata, ResolvingMetadata } from 'next'
+import { headers } from 'next/headers'
+import { getPageData } from '@/utils'
 
-const getPageFromSlug = ({ pages, slug }: { pages: any; slug: string }): Page | null => {
-  const page = pages.docs.find((page: Page) => page.slug === slug) as Page
-
-  if (!page) {
-    return null
-  }
-
-  return page
-}
-
-const getPageData = async (slug: string): Promise<Page | null> => {
-  const pages = await getData<PageData>('http://localhost:3000/api/pages')
-
-  return getPageFromSlug({ pages, slug })
-}
-
-type PageData = {
-  docs: Page[]
-}
-
-type PageProps = {
+type DynamicRouteProps = {
   params: {
     slug: string[]
   }
 }
 
-const Page: FC<PageProps> = async ({ params }) => {
+type MetaDataProps = {
+  params: { productId: string }
+}
+
+export { generateMetadata } from './generate-meta-data'
+
+const Page: FC<DynamicRouteProps> = async (props) => {
+  const { params } = props
+  console.log(props)
   const { slug = ['home'] } = params
 
   const pageData = await getPageData(slug[0])

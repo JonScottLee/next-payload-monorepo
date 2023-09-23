@@ -4,7 +4,7 @@ import { getCurrentPath, getData } from '@/utils'
 import { type Page, type MainMenu } from '@org/cms'
 
 const getMenuData = async (): Promise<MainMenu> => {
-  const menu = await getData<MainMenu>('http://localhost:3000/api/globals/main-menu')
+  const menu = await getData<MainMenu>(`${process.env.NEXT_PUBLIC_PAYLOAD_API}/globals/main-menu`)
 
   return menu
 }

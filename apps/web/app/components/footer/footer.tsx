@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { H2 } from '@org/uikit'
 
 const getFooterData = async (): Promise<FooterType> => {
-  const footer = await getData<FooterType>('http://localhost:3000/api/globals/footer')
+  const footer = await getData<FooterType>(`${process.env.NEXT_PUBLIC_PAYLOAD_API}/globals/footer`)
 
   return footer
 }

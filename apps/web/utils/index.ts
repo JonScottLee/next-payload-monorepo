@@ -25,7 +25,7 @@ const getPageFromSlug = ({ pages, slug }: { pages: any; slug: string }): Page | 
 }
 
 export const getPageData = async (slug: string): Promise<Page | null> => {
-  const pages = await getData<PageDataResponse>('http://localhost:3000/api/pages')
+  const pages = await getData<PageDataResponse>(`${process.env.NEXT_PUBLIC_PAYLOAD_API}/pages`)
 
   return getPageFromSlug({ pages, slug })
 }

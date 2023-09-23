@@ -13,6 +13,26 @@ import { Users } from './collections/users'
 import { seed } from './seed'
 import { MainMenu } from './globals/main-menu'
 import { Footer } from './globals/footer'
+import { type Page } from './payload-types'
+import { PluginConfig as SEOPluginConfig, GenerateTitle } from '@payloadcms/plugin-seo/dist/types'
+import seo from '@payloadcms/plugin-seo'
+
+interface SeoPageObject extends Omit<Page, 'title'> {
+  title: {
+    value: string
+  }
+}
+
+const SEOPluginOptions: SEOPluginConfig = {
+  collections: ['pages'],
+  uploadsCollection: 'media',
+  generateTitle: ({ doc }) => {
+    const seoDoc = doc as SeoPageObject
+
+    return `DublinEndo.com — ${seoDoc.title.value}`
+  },
+  tabbedUI: true,
+}
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL as string,
@@ -46,6 +66,7 @@ export default buildConfig({
     fallback: true,
   },
   plugins: [
+    seo(SEOPluginOptions),
     // nestedDocs({
     //   collections: ['pages'],
     //   parentFieldSlug: 'parent',

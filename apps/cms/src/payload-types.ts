@@ -33,42 +33,16 @@ export interface Page {
     blockName?: string;
     blockType: 'text-block';
   }[];
+  meta?: {
+    title?: string;
+    description?: string;
+    image?: string | Media;
+  };
   slug?: string;
   publishedOn: string;
   updatedAt: string;
   createdAt: string;
   _status?: 'draft' | 'published';
-}
-export interface Post {
-  id: string;
-  title: string;
-  author?: string | User;
-  category?: string | Category;
-  tags?: string[] | Tag[];
-  content: {
-    [k: string]: unknown;
-  }[];
-  slug?: string;
-  publishedOn: string;
-  updatedAt: string;
-  createdAt: string;
-  _status?: 'draft' | 'published';
-}
-export interface User {
-  id: string;
-  name?: string;
-  photo?: string | Media;
-  roles: ('admin' | 'editor' | 'public')[];
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string;
-  resetPasswordExpiration?: string;
-  salt?: string;
-  hash?: string;
-  loginAttempts?: number;
-  lockUntil?: string;
-  password?: string;
 }
 export interface Media {
   id: string;
@@ -141,6 +115,37 @@ export interface Media {
       filename?: string;
     };
   };
+}
+export interface Post {
+  id: string;
+  title: string;
+  author?: string | User;
+  category?: string | Category;
+  tags?: string[] | Tag[];
+  content: {
+    [k: string]: unknown;
+  }[];
+  slug?: string;
+  publishedOn: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: 'draft' | 'published';
+}
+export interface User {
+  id: string;
+  name?: string;
+  photo?: string | Media;
+  roles: ('admin' | 'editor' | 'public')[];
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string;
+  resetPasswordExpiration?: string;
+  salt?: string;
+  hash?: string;
+  loginAttempts?: number;
+  lockUntil?: string;
+  password?: string;
 }
 export interface Category {
   id: string;

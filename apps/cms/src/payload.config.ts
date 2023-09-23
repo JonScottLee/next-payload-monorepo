@@ -16,6 +16,7 @@ import { Footer } from './globals/footer'
 import { type Page } from './payload-types'
 import { PluginConfig as SEOPluginConfig, GenerateTitle } from '@payloadcms/plugin-seo/dist/types'
 import seo from '@payloadcms/plugin-seo'
+import { ThemeVariables } from './globals/theme-variables'
 
 interface SeoPageObject extends Omit<Page, 'title'> {
   title: {
@@ -87,5 +88,5 @@ export default buildConfig({
       await seed(payload)
     }
   },
-  globals: [Footer, MainMenu],
+  globals: [Footer, MainMenu, ThemeVariables],
 })

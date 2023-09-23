@@ -1,7 +1,7 @@
 import type { GlobalConfig } from 'payload/types'
 
 import { isAdmin } from '../access/isAdmin'
-import link from '../fields/link'
+import { color } from '../fields/color'
 
 export const ThemeVariables: GlobalConfig = {
   slug: 'theme-variables',
@@ -19,59 +19,41 @@ export const ThemeVariables: GlobalConfig = {
             {
               type: 'row',
               fields: [
-                {
+                color({
                   name: 'brandPrimary',
                   label: 'Brand Primary Color',
-                  type: 'text',
-                  admin: {
-                    width: '33%',
-                  },
-                },
-                {
+                  fieldWidth: '33%',
+                }),
+                color({
                   name: 'brandSecondary',
                   label: 'Brand Secondary Color',
-                  type: 'text',
-                  admin: {
-                    width: '33%',
-                  },
-                },
-                {
+                  fieldWidth: '33%',
+                }),
+                color({
                   name: 'brandTertiary',
                   label: 'Brand Tertiary Color',
-                  type: 'text',
-                  admin: {
-                    width: '33%',
-                  },
-                },
+                  fieldWidth: '33%',
+                }),
               ],
             },
             {
               type: 'row',
               fields: [
-                {
+                color({
                   name: 'linkColor',
                   label: 'Link Color',
-                  type: 'text',
-                  admin: {
-                    width: '33%',
-                  },
-                },
-                {
-                  name: 'activeLinkColor',
-                  label: 'Active Link Color',
-                  type: 'text',
-                  admin: {
-                    width: '33%',
-                  },
-                },
-                {
-                  name: 'visitedLinkColor',
-                  label: 'Visited Link Color',
-                  type: 'text',
-                  admin: {
-                    width: '33%',
-                  },
-                },
+                  fieldWidth: '33%',
+                }),
+                color({
+                  name: 'linkHoverColor',
+                  label: 'Link Hover Color',
+                  fieldWidth: '33%',
+                }),
+                color({
+                  name: 'linkActiveColor',
+                  label: 'Link Active Color',
+                  fieldWidth: '33%',
+                }),
               ],
             },
           ],
@@ -83,7 +65,6 @@ export const ThemeVariables: GlobalConfig = {
               name: 'mapsApiKey',
               label: 'Google Maps API Key',
               type: 'text',
-              required: true,
             },
             {
               name: 'analyticsSnippet',

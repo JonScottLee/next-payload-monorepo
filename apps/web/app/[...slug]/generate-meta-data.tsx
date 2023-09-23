@@ -1,4 +1,4 @@
-import { getPageData } from '@/utils'
+import { getCurrentPath, getPageData } from '@/utils'
 import { Metadata } from 'next'
 import { headers } from 'next/headers'
 
@@ -7,8 +7,7 @@ type MetaDataProps = {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const headersList = headers()
-  const currentPath = (headersList.get('x-pathname') || '/').split('/')[1] || 'home'
+  const currentPath = getCurrentPath()
 
   const pageData = await getPageData(currentPath)
 

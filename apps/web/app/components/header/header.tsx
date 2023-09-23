@@ -1,8 +1,7 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import { getData } from '@/utils'
+import { getCurrentPath, getData } from '@/utils'
 import { type Page, type MainMenu } from '@org/cms'
-import { headers } from 'next/headers'
 
 const getMenuData = async (): Promise<MainMenu> => {
   const menu = await getData<MainMenu>('http://localhost:3000/api/globals/main-menu')
@@ -16,9 +15,8 @@ type HeaderProps = {
 
 export const Header: FC<HeaderProps> = async ({ className }) => {
   const menuData = await getMenuData()
-  const headersList = headers()
 
-  const currentPath = (headersList.get('x-pathname') || '/').split('/')[1] || undefined
+  const currentPath = getCurrentPath()
 
   return (
     <header className={`${className}`}>

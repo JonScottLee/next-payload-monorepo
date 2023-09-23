@@ -1,5 +1,6 @@
 import { PageDataResponse } from '@/app/[...slug]/types'
 import { type Page } from '@org/cms'
+import { headers } from 'next/headers'
 
 export const getData = async <T>(endpoint: string): Promise<T> => {
   const res = await fetch(endpoint, { next: { revalidate: 10 } })
@@ -27,4 +28,11 @@ export const getPageData = async (slug: string): Promise<Page | null> => {
   const pages = await getData<PageDataResponse>('http://localhost:3000/api/pages')
 
   return getPageFromSlug({ pages, slug })
+}
+
+export const getCurrentPath = (): string => {
+  const headersList = headers()
+  const currentPath = (headersList.get('x-pathname') || '/').split('/')[1] || 'home'
+
+  return currentPath
 }

@@ -23,7 +23,6 @@ export { generateMetadata } from './generate-meta-data'
 
 const Page: FC<DynamicRouteProps> = async (props) => {
   const { params } = props
-  console.log(props)
   const { slug = ['home'] } = params
 
   const pageData = await getPageData(slug[0])

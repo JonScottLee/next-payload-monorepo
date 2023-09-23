@@ -21,15 +21,13 @@ export const color = ({
   label,
   required = false,
   fieldWidth = '100%',
-}: ColorFieldProps): Field => {
-  return {
-    name,
-    label,
-    type: 'text',
-    validate: validateHexColor,
-    required,
-    admin: {
-      width: fieldWidth,
-    },
-  }
-}
+}: ColorFieldProps): Field => ({
+  name,
+  label,
+  type: 'text',
+  validate: validateHexColor,
+  required,
+  admin: {
+    width: fieldWidth,
+  },
+})

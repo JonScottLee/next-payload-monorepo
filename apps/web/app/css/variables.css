@@ -1,8 +1,10 @@
 :root {
-	--global--color--brandPrimary: #9FC131;
-	--global--color--brandSecondary: #005C53;
-	--global--color--brandTertiary: #D6D58E;
-	--global--color--linkColor: #9FC131;
-	--global--color--linkHoverColor: #DBF227;
-	--global--color--linkActiveColor: #DBF227;
+	--global--color--brandPrimary: #B4CF66;
+	--global--color--brandSecondary: #44803F;
+	--global--color--brandTertiary: #FFEC5C;
+	--global--color--linkColor: #B4CF66;
+	--global--color--linkHoverColor: #44803F;
+	--global--color--linkActiveColor: #B4CF66;
+	--global--layout--columnGutter: 20px;
+	--global--layout--maxWidth: 1560;
 }

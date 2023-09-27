@@ -1,34 +1,36 @@
 const fs = require('fs')
 const path = require('path')
-const webRoot = path.resolve(__dirname, '..');
+const webRoot = path.resolve(__dirname, '..')
 
 require('dotenv').config({ path: path.join(webRoot, '.env') })
-const cssFilePath = path.join(webRoot, 'app/css/variables.css');
+const cssFilePath = path.join(webRoot, 'app/css/variables.css')
 
-function buildCSSString(variables) {
-  let string = `:root {`
+function buildCSSString(variables, prefix) {
+  let string = ''
 
   for (const name in variables) {
     if (variables.hasOwnProperty(name)) {
       const value = variables[name]
 
-      string += `\n\t--global--color--${name}: ${value};`
+      string += `\n\t${prefix}--${name}: ${value};`
     }
   }
-
-  string += `\n}\n`
 
   return string
 }
 
-function injectvariables(variables) {
+function injectvariables({ colors, layout }) {
   fs.readFile(cssFilePath, 'utf8', (err, cssData) => {
     if (err) {
       console.error('Error reading CSS file:', err)
       return
     }
 
-    const cssString = buildCSSString(variables)
+    let cssString = ''
+
+    cssString += buildCSSString(colors, '--global--color')
+    cssString += buildCSSString(layout, '--global--layout')
+    cssString = `:root {${cssString}\n}\n`
 
     // Write the updated CSS content back to the file
     fs.writeFile(cssFilePath, cssString, 'utf8', (err) => {
@@ -45,9 +47,12 @@ function injectvariables(variables) {
 async function getThemeVariables() {
   const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/theme-variables`)
 
-  const { values } = await data.json()
+  const { colors = {}, layout = {} } = await data.json()
 
-  injectvariables(values)
+  injectvariables({
+    colors,
+    layout,
+  })
 
   return {}
 }

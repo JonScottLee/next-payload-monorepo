@@ -17,6 +17,7 @@ export interface Config {
   globals: {
     footer: Footer;
     'main-menu': MainMenu;
+    'theme-variables': ThemeVariable;
   };
 }
 export interface Page {
@@ -202,6 +203,21 @@ export interface MainMenu {
     };
     id?: string;
   }[];
+  updatedAt?: string;
+  createdAt?: string;
+}
+export interface ThemeVariable {
+  id: string;
+  values: {
+    brandPrimary?: string;
+    brandSecondary?: string;
+    brandTertiary?: string;
+    linkColor?: string;
+    linkHoverColor?: string;
+    linkActiveColor?: string;
+  };
+  mapsApiKey?: string;
+  analyticsSnippet?: string;
   updatedAt?: string;
   createdAt?: string;
 }

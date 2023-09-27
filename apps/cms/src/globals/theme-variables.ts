@@ -15,6 +15,7 @@ export const ThemeVariables: GlobalConfig = {
       tabs: [
         {
           label: 'Theme Colors',
+          name: "values",
           fields: [
             {
               type: 'row',

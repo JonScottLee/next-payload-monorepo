@@ -2,6 +2,7 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { getCurrentPath, getData } from '@/utils'
 import { type Page, type MainMenu } from '@org/cms'
+import cx from 'classnames'
 
 const getMenuData = async (): Promise<MainMenu> => {
   const menu = await getData<MainMenu>(`${process.env.NEXT_PUBLIC_PAYLOAD_API}/globals/main-menu`)
@@ -30,10 +31,15 @@ export const Header: FC<HeaderProps> = async ({ className }) => {
 
           const ariaCurrent = isCurrentPage ? 'page' : undefined
 
+          const classes = cx('text-brand-secondary', {
+            'underline': isCurrentPage,
+            '!text-brand-primary': isCurrentPage,
+          })
+
           return (
             <li key={item.id}>
               <Link legacyBehavior href={slug}>
-                <a className={`${isCurrentPage ? 'underline' : null}`} aria-current={ariaCurrent}>
+                <a className={classes} aria-current={ariaCurrent}>
                   {item.link.label}
                 </a>
               </Link>

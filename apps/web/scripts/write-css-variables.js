@@ -12,7 +12,7 @@ function buildCSSString(variables) {
     if (variables.hasOwnProperty(name)) {
       const value = variables[name]
 
-      string += `\n\t--${name}: ${value};`
+      string += `\n\t--global--color--${name}: ${value};`
     }
   }
 

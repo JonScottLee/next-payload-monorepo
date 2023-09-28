@@ -4,10 +4,10 @@ import { isAdmin } from '../access/isAdmin'
 import { color } from '../fields/color'
 import { GlobalAfterChangeHook } from 'payload/types'
 
-const afterChangeHook: GlobalAfterChangeHook = async () => {
+const afterChangeHook: GlobalAfterChangeHook = async ({ doc }) => {
   fetch(`http://localhost:3000/write-css-variables`)
 
-  return {}
+  return doc
 }
 
 export const ThemeVariables: GlobalConfig = {

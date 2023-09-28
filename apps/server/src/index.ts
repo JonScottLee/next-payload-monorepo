@@ -4,8 +4,36 @@ import { next, nextBuild } from '@org/web'
 import express from 'express'
 import { payload } from '@org/cms'
 import { config as dotenv } from 'dotenv'
+import { fork } from 'child_process'
 
 console.log('Application started in:', process.cwd())
+
+function runScript(scriptPath: string, callback: (err: Error | null) => void) {
+  // keep track of whether callback has been invoked to prevent multiple invocations
+  let invoked = false
+
+  const process = fork(scriptPath)
+
+  // listen for errors as they may prevent the exit event from firing
+  process.on('error', function (err) {
+    if (invoked) return
+
+    invoked = true
+
+    callback(err)
+  })
+
+  // execute the callback once the process has finished running
+  process.on('exit', function (code) {
+    if (invoked) return
+
+    invoked = true
+
+    const err = code === 0 ? null : new Error('exit code ' + code)
+
+    callback(err)
+  })
+}
 
 const envFilePath = path.resolve(process.cwd(), '.env')
 if (fs.existsSync(envFilePath)) {
@@ -53,12 +81,24 @@ const start = async () => {
 
     const nextHandler = nextApp.getRequestHandler()
 
-    server.get('*', (req, res) => nextHandler(req, res))
+    server.use('/write-css-variables', (req, res) => {
+      const webRoot = path.join(process.cwd(), '../web')
+      const scriptPath = path.join(webRoot, 'scripts', 'write-css-variables.js')
+
+      runScript(scriptPath, function (err) {
+        if (err) throw err
+
+        console.log('finished running write-css-variables.js')
+      })
+
+      res.status(200).end()
+    })
 
     nextApp.prepare().then(() => {
       console.log('NextJS started')
 
       server
+        .get('*', (req, res) => nextHandler(req, res))
         .once('error', (err) => {
           console.error(err)
           process.exit(1)

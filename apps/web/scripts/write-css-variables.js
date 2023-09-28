@@ -11,7 +11,7 @@ function log(string) {
 }
 
 function buildCSSString(variables, prefix) {
-  log('Building CSS variables string...')
+  log(`Building CSS variables (${prefix}) string...`)
 
   let string = ''
 
@@ -27,7 +27,7 @@ function buildCSSString(variables, prefix) {
 }
 
 function injectvariables({ colors, layout }) {
-  log('Writing CSS variables string to fil...')
+  log('Writing CSS variables string to file...')
 
   fs.readFile(cssFilePath, 'utf8', (err, cssData) => {
     if (err) {
@@ -48,7 +48,7 @@ function injectvariables({ colors, layout }) {
         return
       }
 
-      log('CSS file updated successfully.')
+      log(`CSS file ${cssFilePath} updated successfully.`)
     })
   })
 }

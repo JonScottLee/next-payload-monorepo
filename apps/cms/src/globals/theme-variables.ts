@@ -2,6 +2,13 @@ import type { GlobalConfig } from 'payload/types'
 
 import { isAdmin } from '../access/isAdmin'
 import { color } from '../fields/color'
+import { GlobalAfterChangeHook } from 'payload/types'
+
+const afterChangeHook: GlobalAfterChangeHook = async () => {
+  fetch(`http://localhost:3000/write-css-variables`)
+
+  return {}
+}
 
 export const ThemeVariables: GlobalConfig = {
   slug: 'theme-variables',
@@ -14,8 +21,8 @@ export const ThemeVariables: GlobalConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Theme Colors',
-          name: "values",
+          label: 'Colors',
+          name: 'colors',
           fields: [
             {
               type: 'row',
@@ -60,6 +67,37 @@ export const ThemeVariables: GlobalConfig = {
           ],
         },
         {
+          label: 'Layout',
+          name: 'layout',
+          fields: [
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'columnGutter',
+                  label: 'Column Gutter',
+                  defaultValue: '20px',
+                  type: 'text',
+                  admin: {
+                    width: '33%',
+                  },
+                },
+                {
+                  name: 'maxWidth',
+                  label: 'Large Scren Max Width',
+                  defaultValue: '1560',
+                  type: 'text',
+                  admin: {
+                    width: '33%',
+                    description:
+                      'On screens >= 1560px, the content will be centered and the width will be limited to this value, to avoid making the site uncomfortably wide',
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
           label: 'Google',
           fields: [
             {
@@ -80,4 +118,7 @@ export const ThemeVariables: GlobalConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [afterChangeHook],
+  },
 }

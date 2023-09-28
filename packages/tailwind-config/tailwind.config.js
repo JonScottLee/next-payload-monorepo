@@ -3,7 +3,7 @@
 // The server was started in app/server - so for the moment
 // we make the config path relative for content[]
 
-const defaultTheme = require("tailwindcss/defaultTheme")
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   // darkMode: 'class',
@@ -13,10 +13,7 @@ module.exports = {
     '../web/app/**/*.{js,ts,jsx,tsx,mdx}',
     '../../packages/uikit/src/**/*.{js,ts,jsx,tsx}',
   ],
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
   variants: {
     extend: {},
   },
@@ -24,14 +21,13 @@ module.exports = {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        "brand-primary": "var(--global--color--brandPrimary)",
-        "brand-secondary": "var(--global--color--brandSecondary)",
-        "brand-tertiary": "var(--global--color--brandTertiary)",
-      }
+        'brand-primary': 'var(--global--color--brandPrimary)',
+        'brand-secondary': 'var(--global--color--brandSecondary)',
+        'brand-tertiary': 'var(--global--color--brandTertiary)',
+      },
     },
   },
 }

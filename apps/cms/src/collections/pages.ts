@@ -3,7 +3,7 @@ import { type CollectionConfig } from 'payload/types'
 import { isAdmin, isAdminOrEditor, publishedOnly } from '../access'
 
 import { slugField } from '../fields/slug'
-import { TextBlock } from '../blocks'
+import { TextBlock, MapBlock } from '../blocks'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -62,7 +62,7 @@ export const Pages: CollectionConfig = {
               },
               label: 'Blocks',
               type: 'blocks',
-              blocks: [TextBlock],
+              blocks: [TextBlock, MapBlock],
             },
           ],
         },

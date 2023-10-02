@@ -1,13 +1,6 @@
 import { Block } from 'payload/types'
 
-export const TextBlock: Block = {
+export const MapBlock: Block = {
   slug: 'map-block',
-  fields: [
-    {
-      name: 'text',
-      label: 'Text',
-      type: 'richText',
-      required: true,
-    },
-  ],
+  fields: [],
 }

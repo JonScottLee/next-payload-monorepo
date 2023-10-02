@@ -1,9 +1,11 @@
 import { FC, Fragment } from 'react'
 import { TextBlock } from '../text-block/text-block'
+import { MapBlock } from '../map-block/map-block'
 import { type Page } from '@org/cms'
 
 const cmsBlockComponents: Record<string, FC<any>> = {
   'text-block': TextBlock,
+  'map-block': MapBlock,
 }
 
 type RenderBlocksProps = {

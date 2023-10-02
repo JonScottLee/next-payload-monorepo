@@ -18,6 +18,7 @@ export interface Config {
     footer: Footer;
     'main-menu': MainMenu;
     'theme-variables': ThemeVariable;
+    address: Address;
   };
 }
 export interface Page {
@@ -208,7 +209,7 @@ export interface MainMenu {
 }
 export interface ThemeVariable {
   id: string;
-  values: {
+  colors: {
     brandPrimary?: string;
     brandSecondary?: string;
     brandTertiary?: string;
@@ -216,8 +217,24 @@ export interface ThemeVariable {
     linkHoverColor?: string;
     linkActiveColor?: string;
   };
+  layout: {
+    columnGutter?: string;
+    maxWidth?: string;
+  };
   mapsApiKey?: string;
   analyticsSnippet?: string;
+  updatedAt?: string;
+  createdAt?: string;
+}
+export interface Address {
+  id: string;
+  street: string;
+  unit?: string;
+  city: string;
+  state: string;
+  zip?: number;
+  phone: number;
+  email: string;
   updatedAt?: string;
   createdAt?: string;
 }

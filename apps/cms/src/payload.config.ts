@@ -11,12 +11,11 @@ import { Pages } from './collections/pages'
 import { Tags } from './collections/tags'
 import { Users } from './collections/users'
 import { seed } from './seed'
-import { MainMenu } from './globals/main-menu'
-import { Footer } from './globals/footer'
+import { MainMenu, Footer, Address, ThemeVariables } from './globals'
+
 import { type Page } from './payload-types'
-import { PluginConfig as SEOPluginConfig, GenerateTitle } from '@payloadcms/plugin-seo/dist/types'
+import { PluginConfig as SEOPluginConfig } from '@payloadcms/plugin-seo/dist/types'
 import seo from '@payloadcms/plugin-seo'
-import { ThemeVariables } from './globals/theme-variables'
 
 interface SeoPageObject extends Omit<Page, 'title'> {
   title: {
@@ -88,5 +87,5 @@ export default buildConfig({
       await seed(payload)
     }
   },
-  globals: [Footer, MainMenu, ThemeVariables],
+  globals: [Footer, MainMenu, ThemeVariables, Address],
 })

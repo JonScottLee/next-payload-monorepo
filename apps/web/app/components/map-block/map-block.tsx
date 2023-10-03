@@ -3,6 +3,10 @@ import { type Address, type ThemeVariable } from '@org/cms'
 import { getData } from '@/utils'
 import { Globals } from '@/enums'
 
+type MapBlockProps = {
+  mapQuery?: string | undefined
+}
+
 const getAddressData = async (): Promise<Address> => {
   const address = await getData<Address>(
     `${process.env.NEXT_PUBLIC_PAYLOAD_API}/globals/${Globals.ADDRESS}`
@@ -19,15 +23,18 @@ const getMapsApiKey = async (): Promise<ThemeVariable['mapsApiKey']> => {
   return themeVariables?.mapsApiKey
 }
 
-export const MapBlock: FC = async () => {
+const getDefaultMapQuery = async (): Promise<string> => {
   const address = await getAddressData()
+
+  return `${address.street} ${address.city} ${address.state} ${address.zip}`
+}
+
+export const MapBlock: FC<MapBlockProps> = async ({ mapQuery }) => {
   const apiKey = await getMapsApiKey()
 
-  const query = encodeURIComponent(
-    `${address.street} ${address.city} ${address.state} ${address.zip}`
-  )
+  let queryString = mapQuery || (await getDefaultMapQuery())
 
-  if (!apiKey) return <h1>Wat</h1>
+  if (!apiKey || !queryString) return null
 
   return (
     <iframe
@@ -36,7 +43,7 @@ export const MapBlock: FC = async () => {
       height="350"
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
-      src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${query}`}
+      src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${queryString}`}
     />
   )
 }

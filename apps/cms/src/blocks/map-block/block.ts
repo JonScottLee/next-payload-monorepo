@@ -2,6 +2,7 @@ import { Block } from 'payload/types'
 
 export const MapBlock: Block = {
   slug: 'map-block',
+  interfaceName: 'IMapBlock',
   fields: [
     {
       name: 'mapQuery',

@@ -2,10 +2,8 @@ import { FC } from 'react'
 import { type Address, type ThemeVariable } from '@org/cms'
 import { getData } from '@/utils'
 import { Globals } from '@/enums'
-
-type MapBlockProps = {
-  mapQuery?: string | undefined
-}
+import { StripBlockFields } from '@/utils'
+import { IMapBlock } from '@org/cms'
 
 const getAddressData = async (): Promise<Address> => {
   const address = await getData<Address>(
@@ -29,7 +27,7 @@ const getDefaultMapQuery = async (): Promise<string> => {
   return `${address.street} ${address.city} ${address.state} ${address.zip}`
 }
 
-export const MapBlock: FC<MapBlockProps> = async ({ mapQuery }) => {
+export const MapBlock: FC<StripBlockFields<IMapBlock>> = async ({ mapQuery }) => {
   const apiKey = await getMapsApiKey()
 
   let queryString = mapQuery || (await getDefaultMapQuery())

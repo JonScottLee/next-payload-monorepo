@@ -30,20 +30,8 @@ export interface Page {
     [k: string]: unknown;
   }[];
   blocks?: (
-    | {
-        text: {
-          [k: string]: unknown;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'text-block';
-      }
-    | {
-        mapQuery?: string;
-        id?: string;
-        blockName?: string;
-        blockType: 'map-block';
-      }
+    | ITextBlock
+    | IMapBlock
     | {
         form: string | Form;
         enableIntro?: boolean;
@@ -66,6 +54,20 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
   _status?: 'draft' | 'published';
+}
+export interface ITextBlock {
+  text: {
+    [k: string]: unknown;
+  }[];
+  id?: string;
+  blockName?: string;
+  blockType: 'text-block';
+}
+export interface IMapBlock {
+  mapQuery?: string;
+  id?: string;
+  blockName?: string;
+  blockType: 'map-block';
 }
 export interface Form {
   id: string;

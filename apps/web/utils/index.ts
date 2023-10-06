@@ -36,3 +36,5 @@ export const getCurrentPath = (): string => {
 
   return currentPath
 }
+
+export type StripBlockFields<T> = Omit<T, 'id' | 'blockName' | 'blockType'>

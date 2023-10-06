@@ -6,7 +6,7 @@ import { Text } from 'slate'
 import { H1, H2, H3, H4 } from '@org/uikit'
 
 // eslint-disable-next-line no-use-before-define
-export type RichTextType = Leaf[]
+export type RichText = Leaf[]
 
 type Leaf = {
   type: string
@@ -14,7 +14,7 @@ type Leaf = {
     url: string
     alt: string
   }
-  children?: RichTextType
+  children?: RichText
   url?: string
   [key: string]: unknown
 }

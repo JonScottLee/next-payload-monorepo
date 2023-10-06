@@ -13,6 +13,8 @@ export interface Config {
     categories: Category;
     tags: Tag;
     users: User;
+    forms: Form;
+    'form-submissions': FormSubmission;
   };
   globals: {
     footer: Footer;
@@ -42,6 +44,17 @@ export interface Page {
         blockName?: string;
         blockType: 'map-block';
       }
+    | {
+        form: string | Form;
+        enableIntro?: boolean;
+        introContent: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'form-block';
+      }
+    | IMediaBlock
   )[];
   meta?: {
     title?: string;
@@ -53,6 +66,136 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
   _status?: 'draft' | 'published';
+}
+export interface Form {
+  id: string;
+  title: string;
+  fields?: (
+    | {
+        name: string;
+        label?: string;
+        width?: number;
+        defaultValue?: string;
+        required?: boolean;
+        id?: string;
+        blockName?: string;
+        blockType: 'text';
+      }
+    | {
+        name: string;
+        label?: string;
+        width?: number;
+        defaultValue?: string;
+        required?: boolean;
+        id?: string;
+        blockName?: string;
+        blockType: 'textarea';
+      }
+    | {
+        name: string;
+        label?: string;
+        width?: number;
+        defaultValue?: string;
+        options?: {
+          label: string;
+          value: string;
+          id?: string;
+        }[];
+        required?: boolean;
+        id?: string;
+        blockName?: string;
+        blockType: 'select';
+      }
+    | {
+        name: string;
+        label?: string;
+        width?: number;
+        required?: boolean;
+        id?: string;
+        blockName?: string;
+        blockType: 'email';
+      }
+    | {
+        name: string;
+        label?: string;
+        width?: number;
+        required?: boolean;
+        id?: string;
+        blockName?: string;
+        blockType: 'state';
+      }
+    | {
+        name: string;
+        label?: string;
+        width?: number;
+        required?: boolean;
+        id?: string;
+        blockName?: string;
+        blockType: 'country';
+      }
+    | {
+        name: string;
+        label?: string;
+        width?: number;
+        defaultValue?: number;
+        required?: boolean;
+        id?: string;
+        blockName?: string;
+        blockType: 'number';
+      }
+    | {
+        name: string;
+        label?: string;
+        width?: number;
+        required?: boolean;
+        defaultValue?: boolean;
+        id?: string;
+        blockName?: string;
+        blockType: 'checkbox';
+      }
+    | {
+        message?: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'message';
+      }
+  )[];
+  submitButtonLabel?: string;
+  confirmationType?: 'message' | 'redirect';
+  confirmationMessage: {
+    [k: string]: unknown;
+  }[];
+  redirect?: {
+    url: string;
+  };
+  emails?: {
+    emailTo?: string;
+    cc?: string;
+    bcc?: string;
+    replyTo?: string;
+    emailFrom?: string;
+    subject: string;
+    message?: {
+      [k: string]: unknown;
+    }[];
+    id?: string;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+export interface IMediaBlock {
+  text: {
+    [k: string]: unknown;
+  }[];
+  Image: {
+    image: string | Media;
+    position?: 'left' | 'right';
+  };
+  id?: string;
+  blockName?: string;
+  blockType: 'media-block';
 }
 export interface Media {
   id: string;
@@ -164,6 +307,17 @@ export interface Category {
 export interface Tag {
   id: string;
   name?: string;
+}
+export interface FormSubmission {
+  id: string;
+  form: string | Form;
+  submissionData?: {
+    field: string;
+    value: string;
+    id?: string;
+  }[];
+  updatedAt: string;
+  createdAt: string;
 }
 export interface Footer {
   id: string;

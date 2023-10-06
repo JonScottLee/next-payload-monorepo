@@ -1,13 +1,15 @@
 import React from 'react'
 import serialize from './serialize'
 
-export const RichText: React.FC<{ className?: string; content: any }> = ({
-  className,
-  content,
-}) => {
+type RichTextProps = {
+  className?: string
+  content: any
+}
+
+export const RichText: React.FC<RichTextProps> = ({ className, content }) => {
   if (!content) {
     return null
   }
 
-  return <div>{serialize(content)}</div>
+  return <div className={className}>{serialize(content)}</div>
 }

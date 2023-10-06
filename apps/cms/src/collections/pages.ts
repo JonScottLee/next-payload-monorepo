@@ -5,6 +5,7 @@ import { isAdmin, isAdminOrEditor, publishedOnly } from '../access'
 import { slugField } from '../fields/slug'
 import { TextBlock, MapBlock } from '../blocks'
 import { FormBlock } from '../blocks/form/block'
+import { MediaBlock } from '../blocks/media-block/block'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -62,7 +63,7 @@ export const Pages: CollectionConfig = {
               },
               label: 'Blocks',
               type: 'blocks',
-              blocks: [TextBlock, MapBlock, FormBlock],
+              blocks: [TextBlock, MapBlock, FormBlock, MediaBlock],
             },
           ],
         },

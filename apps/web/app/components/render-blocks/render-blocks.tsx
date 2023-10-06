@@ -3,10 +3,12 @@ import { TextBlock } from '../text-block/text-block'
 import { MapBlock } from '../map-block/map-block'
 import { type Page } from '@org/cms'
 import { FormBlock } from '../form-builder/form'
+import { MediaBlock } from '../media-block/media-block'
 
 const cmsBlockComponents: Record<string, FC<any>> = {
   'form-block': FormBlock,
   'map-block': MapBlock,
+  'media-block': MediaBlock,
   'text-block': TextBlock,
 }
 

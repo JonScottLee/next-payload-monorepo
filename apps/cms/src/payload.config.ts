@@ -2,9 +2,8 @@ import path from 'path'
 
 import { buildConfig } from 'payload/config'
 
-// import nestedDocs from '@payloadcms/plugin-nested-docs'
-
 import { Categories } from './collections/categories'
+import { FormSubmissions } from './collections/form-submissions'
 import { Media } from './collections/media'
 import { Posts } from './collections/posts'
 import { Pages } from './collections/pages'
@@ -59,22 +58,13 @@ export default buildConfig({
       }
     },
   },
-  collections: [Pages, Posts, Media, Categories, Tags, Users],
+  collections: [Pages, Posts, Media, Categories, Tags, Users, FormSubmissions],
   localization: {
     locales: ['en', 'es', 'fr'],
     defaultLocale: 'en',
     fallback: true,
   },
-  plugins: [
-    seo(SEOPluginOptions),
-    // nestedDocs({
-    //   collections: ['pages'],
-    //   parentFieldSlug: 'parent',
-    //   breadcrumbsFieldSlug: 'breadcrumbs',
-    //   generateLabel: (_, doc: any) => doc.title,
-    //   generateURL: (docs) => docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
-    // }),
-  ],
+  plugins: [seo(SEOPluginOptions)],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

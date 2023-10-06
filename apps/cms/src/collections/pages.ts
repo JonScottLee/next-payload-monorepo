@@ -4,13 +4,13 @@ import { isAdmin, isAdminOrEditor, publishedOnly } from '../access'
 
 import { slugField } from '../fields/slug'
 import { TextBlock, MapBlock } from '../blocks'
+import { FormBlock } from '../blocks/form/block'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
     defaultColumns: ['title', 'status'],
     useAsTitle: 'title',
-    group: 'Documents',
   },
   versions: {
     drafts: true,
@@ -62,7 +62,7 @@ export const Pages: CollectionConfig = {
               },
               label: 'Blocks',
               type: 'blocks',
-              blocks: [TextBlock, MapBlock],
+              blocks: [TextBlock, MapBlock, FormBlock],
             },
           ],
         },

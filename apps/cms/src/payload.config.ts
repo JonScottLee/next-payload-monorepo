@@ -1,25 +1,29 @@
-import path from 'path'
-
 import { buildConfig } from 'payload/config'
-
 import { Categories } from './collections/categories'
-import { FormSubmissions } from './collections/form-submissions'
-import { Media } from './collections/media'
-import { Posts } from './collections/posts'
-import { Pages } from './collections/pages'
-import { Tags } from './collections/tags'
-import { Users } from './collections/users'
-import { seed } from './seed'
 import { MainMenu, Footer, Address, ThemeVariables } from './globals'
-
+import { Media } from './collections/media'
+import { Pages } from './collections/pages'
+import { Posts } from './collections/posts'
+import { seed } from './seed'
+import { Tags } from './collections/tags'
 import { type Page } from './payload-types'
-import { PluginConfig as SEOPluginConfig } from '@payloadcms/plugin-seo/dist/types'
+import { type PluginConfig as FormBuilderPluginConfig } from '@payloadcms/plugin-form-builder/dist/types'
+import { type PluginConfig as SEOPluginConfig } from '@payloadcms/plugin-seo/dist/types'
+import { Users } from './collections/users'
+import FormBuilder from '@payloadcms/plugin-form-builder'
+import path from 'path'
 import seo from '@payloadcms/plugin-seo'
 
 interface SeoPageObject extends Omit<Page, 'title'> {
   title: {
     value: string
   }
+}
+
+const formBuilderPluginOptions: FormBuilderPluginConfig = {
+  fields: {
+    payment: false,
+  },
 }
 
 const SEOPluginOptions: SEOPluginConfig = {
@@ -58,13 +62,13 @@ export default buildConfig({
       }
     },
   },
-  collections: [Pages, Posts, Media, Categories, Tags, Users, FormSubmissions],
+  collections: [Pages, Posts, Media, Categories, Tags, Users],
   localization: {
     locales: ['en', 'es', 'fr'],
     defaultLocale: 'en',
     fallback: true,
   },
-  plugins: [seo(SEOPluginOptions)],
+  plugins: [seo(SEOPluginOptions), FormBuilder(formBuilderPluginOptions)],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

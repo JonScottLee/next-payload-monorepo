@@ -9,7 +9,6 @@ export const Posts: CollectionConfig = {
   admin: {
     defaultColumns: ['title', 'author', 'category', 'tags', 'status'],
     useAsTitle: 'title',
-    group: 'Documents',
   },
   versions: {
     drafts: true,

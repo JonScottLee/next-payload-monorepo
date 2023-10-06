@@ -37,6 +37,7 @@
   "dependencies": {
     "@faceless-ui/modal": "^2.0.1",
     "@org/uikit": "workspace:*",
+    "@payloadcms/plugin-form-builder": "^1.0.15",
     "@payloadcms/plugin-nested-docs": "^1.0.6",
     "@payloadcms/plugin-seo": "1.0.14-canary.0",
     "classnames": "^2.3.2",

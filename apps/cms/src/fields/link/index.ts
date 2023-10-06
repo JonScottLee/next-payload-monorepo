@@ -4,7 +4,7 @@ import deepMerge from '../../utilities/deepMerge'
 
 type LinkType = (options?: { disableLabel?: boolean; overrides?: Partial<GroupField> }) => Field
 
-export const linkField: LinkType = ({ disableLabel = false, overrides = {} } = {}) => {
+export const link: LinkType = ({ disableLabel = false, overrides = {} } = {}) => {
   const linkResult: Field = {
     name: 'link',
     type: 'group',
@@ -100,5 +100,3 @@ export const linkField: LinkType = ({ disableLabel = false, overrides = {} } = {
 
   return deepMerge(linkResult, overrides)
 }
-
-export default linkField

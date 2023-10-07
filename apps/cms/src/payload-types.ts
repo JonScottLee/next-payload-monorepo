@@ -43,6 +43,7 @@ export interface Page {
         blockType: 'form-block';
       }
     | IMediaBlock
+    | IFancyTextBlock
   )[];
   meta?: {
     title?: string;
@@ -270,6 +271,18 @@ export interface Media {
       filename?: string;
     };
   };
+}
+export interface IFancyTextBlock {
+  text: {
+    [k: string]: unknown;
+  }[];
+  textEffects?: {
+    fadeIn?: boolean;
+    sliding?: 'none' | 'left' | 'right' | 'up' | 'down';
+  };
+  id?: string;
+  blockName?: string;
+  blockType: 'fancy-text-block';
 }
 export interface Post {
   id: string;

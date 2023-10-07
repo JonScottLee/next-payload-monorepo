@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import { FC, PropsWithChildren } from 'react'
 
 import './css/globals.css'
-import { ParallaxProvider } from 'react-scroll-parallax'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,9 +18,7 @@ export const metadata: Metadata = {
 const RootLayout: FC<PropsWithChildren<Record<string, unknown>>> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ParallaxProvider>{children}</ParallaxProvider>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }

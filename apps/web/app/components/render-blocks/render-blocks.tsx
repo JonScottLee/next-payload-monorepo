@@ -4,8 +4,10 @@ import { MapBlock } from '../map-block/map-block'
 import { type Page } from '@org/cms'
 import { FormBlock } from '../form-builder/form'
 import { MediaBlock } from '../media-block/media-block'
+import { FancyTextBlock } from '../fancy-text-block/fancy-text-block'
 
 const cmsBlockComponents: Record<string, FC<any>> = {
+  'fancy-text-block': FancyTextBlock,
   'form-block': FormBlock,
   'map-block': MapBlock,
   'media-block': MediaBlock,

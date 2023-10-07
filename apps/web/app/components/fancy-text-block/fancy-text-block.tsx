@@ -6,7 +6,7 @@ import { StripBlockFields } from '@/utils'
 import { IFancyTextBlock } from '@org/cms'
 import { useInView } from 'react-intersection-observer'
 import classNames from 'classnames'
-import { useTextEffects } from '@/app/hooks/use-text-effects'
+import { useTextEffects } from '@hooks'
 
 export const FancyTextBlock: FC<StripBlockFields<IFancyTextBlock>> = ({
   text,

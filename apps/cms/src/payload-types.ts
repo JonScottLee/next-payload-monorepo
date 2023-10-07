@@ -192,6 +192,7 @@ export interface IMediaBlock {
   text: {
     [k: string]: unknown;
   }[];
+  textEffects?: ITextEffects;
   Image: {
     image: string | Media;
     position?: 'left' | 'right';
@@ -199,6 +200,10 @@ export interface IMediaBlock {
   id?: string;
   blockName?: string;
   blockType: 'media-block';
+}
+export interface ITextEffects {
+  fadeIn?: boolean;
+  sliding?: 'none' | 'left' | 'right' | 'up' | 'down';
 }
 export interface Media {
   id: string;
@@ -276,10 +281,7 @@ export interface IFancyTextBlock {
   text: {
     [k: string]: unknown;
   }[];
-  textEffects?: {
-    fadeIn?: boolean;
-    sliding?: 'none' | 'left' | 'right' | 'up' | 'down';
-  };
+  textEffects?: ITextEffects;
   id?: string;
   blockName?: string;
   blockType: 'fancy-text-block';

@@ -1,4 +1,5 @@
 import { Block } from 'payload/types'
+import { textEffects } from '../../fields/text-effects'
 
 export const MediaBlock: Block = {
   slug: 'media-block',
@@ -10,6 +11,7 @@ export const MediaBlock: Block = {
       type: 'richText',
       required: true,
     },
+    textEffects,
     {
       type: 'group',
       name: 'Image',

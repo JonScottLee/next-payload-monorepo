@@ -2,6 +2,7 @@ import { Field } from 'payload/types'
 
 export const textEffects: Field = {
   name: 'textEffects',
+  interfaceName: 'ITextEffects',
   label: 'Text Effects',
   type: 'group',
   fields: [

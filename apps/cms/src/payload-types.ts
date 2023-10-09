@@ -29,22 +29,7 @@ export interface Page {
   content: {
     [k: string]: unknown;
   }[];
-  blocks?: (
-    | ITextBlock
-    | IMapBlock
-    | {
-        form: string | Form;
-        enableIntro?: boolean;
-        introContent: {
-          [k: string]: unknown;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'form-block';
-      }
-    | IMediaBlock
-    | IFancyTextBlock
-  )[];
+  blocks?: (ITextBlock | IMapBlock | IFormBlock | IMediaBlock | IFancyTextBlock | IResponsiveGrid)[];
   meta?: {
     title?: string;
     description?: string;
@@ -69,6 +54,16 @@ export interface IMapBlock {
   id?: string;
   blockName?: string;
   blockType: 'map-block';
+}
+export interface IFormBlock {
+  form: string | Form;
+  enableIntro?: boolean;
+  introContent: {
+    [k: string]: unknown;
+  }[];
+  id?: string;
+  blockName?: string;
+  blockType: 'form-block';
 }
 export interface Form {
   id: string;
@@ -285,6 +280,12 @@ export interface IFancyTextBlock {
   id?: string;
   blockName?: string;
   blockType: 'fancy-text-block';
+}
+export interface IResponsiveGrid {
+  blocks?: ITextBlock[];
+  id?: string;
+  blockName?: string;
+  blockType: 'responsive-grid-block';
 }
 export interface Post {
   id: string;

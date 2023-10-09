@@ -7,6 +7,7 @@ import { TextBlock, MapBlock } from '../blocks'
 import { FormBlock } from '../blocks/form/block'
 import { MediaBlock } from '../blocks/media-block/block'
 import { FancyTextBlock } from '../blocks/fancy-text/block'
+import { ResponsiveGrid } from '../blocks/responsive-grid/block'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -64,7 +65,8 @@ export const Pages: CollectionConfig = {
               },
               label: 'Blocks',
               type: 'blocks',
-              blocks: [TextBlock, MapBlock, FormBlock, MediaBlock, FancyTextBlock],
+              unique: true,
+              blocks: [TextBlock, MapBlock, FormBlock, MediaBlock, FancyTextBlock, ResponsiveGrid],
             },
           ],
         },

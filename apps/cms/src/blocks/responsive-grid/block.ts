@@ -7,6 +7,11 @@ export const ResponsiveGrid: Block = {
   interfaceName: 'IResponsiveGrid',
   fields: [
     {
+      name: 'headerText',
+      required: true,
+      type: 'richText',
+    },
+    {
       name: 'blocks',
       admin: {
         description: 'Add blocks to the page layout',

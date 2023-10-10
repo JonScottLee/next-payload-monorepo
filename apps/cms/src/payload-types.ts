@@ -282,6 +282,9 @@ export interface IFancyTextBlock {
   blockType: 'fancy-text-block';
 }
 export interface IResponsiveGrid {
+  headerText: {
+    [k: string]: unknown;
+  }[];
   blocks?: ITextBlock[];
   id?: string;
   blockName?: string;

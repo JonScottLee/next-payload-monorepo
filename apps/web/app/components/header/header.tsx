@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { getCurrentPath, getData } from '@/utils'
 import { type Page, type MainMenu } from '@org/cms'
 import cx from 'classnames'
+import { useLink } from '@hooks/use-link'
+import { useCurrentPage } from '@hooks/use-current-page'
 
 const getMenuData = async (): Promise<MainMenu> => {
   const menu = await getData<MainMenu>(`${process.env.NEXT_PUBLIC_PAYLOAD_API}/globals/main-menu`)
@@ -40,14 +42,11 @@ export const Header: FC<HeaderProps> = async ({ className }) => {
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <ul className="text-sm lg:flex-grow">
             {menuData.navItems?.map((item) => {
-              const reference = item.link.reference.value as Page
+              const { link } = item;
 
-              const slug = reference.slug || '/'
-
-              const isCurrentPage = slug === currentPath
-
-              const ariaCurrent = isCurrentPage ? 'page' : undefined
-
+              const { href, label } = useLink(link);
+              const isCurrentPage = useCurrentPage(link);
+              
               const classes = cx('text-brand-secondary', {
                 underline: isCurrentPage,
                 '!text-brand-primary': isCurrentPage,
@@ -58,9 +57,9 @@ export const Header: FC<HeaderProps> = async ({ className }) => {
                   key={item.id}
                   className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
                 >
-                  <Link legacyBehavior href={slug}>
-                    <a className={classes} aria-current={ariaCurrent}>
-                      {item.link.label}
+                  <Link legacyBehavior href={href}>
+                    <a className={classes} aria-current={isCurrentPage}>
+                      {label}
                     </a>
                   </Link>
                 </li>

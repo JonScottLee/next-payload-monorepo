@@ -3,6 +3,8 @@ import { getData } from '@/utils'
 import { type Page, type Footer as FooterType } from '@org/cms'
 import Link from 'next/link'
 import { H2 } from '@org/uikit'
+import { useLink } from '@hooks/use-link'
+import { useCurrentPage } from '@hooks/use-current-page'
 
 const getFooterData = async (): Promise<FooterType> => {
   const footer = await getData<FooterType>(`${process.env.NEXT_PUBLIC_PAYLOAD_API}/globals/footer`)
@@ -39,16 +41,18 @@ export const Footer: FC<FooterProps> = async ({ classNameName }) => {
                   <ul>
                     {(column.navItems || []).map((item) => {
                       const { link } = item
-
-                      const isCustomUrl = link.type === 'custom'
-
-                      const href = isCustomUrl
-                        ? link.url
-                        : (link.reference.value as Page).slug || '/'
+                      const { href, label } = useLink(link);
+                      const isCurrentPage = useCurrentPage(link);
 
                       return (
                         <li key={item.id} className="mr-4 hover:underline md:mr-6">
                           <Link href={href}>{link.label}</Link>
+                          
+                          <Link legacyBehavior href={href}>
+                            <a aria-current={isCurrentPage}>
+                              {label}
+                            </a>
+                          </Link>
                         </li>
                       )
                     })}

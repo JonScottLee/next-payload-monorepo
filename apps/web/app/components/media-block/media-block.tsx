@@ -5,7 +5,7 @@ import { RichText } from '../rich-text/rich-text'
 import { IMediaBlock, Media } from '@org/cms'
 import classNames from 'classnames'
 import { StripBlockFields } from '@/utils'
-import { useTextEffects } from '@hooks'
+import { useTextEffects } from '@hooks/use-text-effects'
 import { useInView } from 'react-intersection-observer'
 
 export const MediaBlock: FC<StripBlockFields<IMediaBlock>> = ({

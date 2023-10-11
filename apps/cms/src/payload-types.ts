@@ -29,7 +29,7 @@ export interface Page {
   content: {
     [k: string]: unknown;
   }[];
-  blocks?: (ITextBlock | IMapBlock | IFormBlock | IMediaBlock | IFancyTextBlock | IResponsiveGrid)[];
+  blocks?: (ICallToAction | IFancyTextBlock | IFormBlock | IMapBlock | IMediaBlock | IResponsiveGrid | ITextBlock)[];
   meta?: {
     title?: string;
     description?: string;
@@ -41,19 +41,154 @@ export interface Page {
   createdAt: string;
   _status?: 'draft' | 'published';
 }
-export interface ITextBlock {
+export interface ICallToAction {
   text: {
     [k: string]: unknown;
   }[];
+  textEffects?: ITextEffects;
+  link: ILink;
   id?: string;
   blockName?: string;
-  blockType: 'text-block';
+  blockType: 'call-to-action-block';
 }
-export interface IMapBlock {
-  mapQuery?: string;
+export interface ITextEffects {
+  fadeIn?: boolean;
+  sliding?: 'none' | 'left' | 'right' | 'up' | 'down';
+}
+export interface ILink {
+  type?: 'reference' | 'custom';
+  newTab?: boolean;
+  reference:
+    | {
+        value: string | Post;
+        relationTo: 'posts';
+      }
+    | {
+        value: string | Page;
+        relationTo: 'pages';
+      };
+  url: string;
+  label: string;
+}
+export interface Post {
+  id: string;
+  title: string;
+  author?: string | User;
+  category?: string | Category;
+  tags?: string[] | Tag[];
+  content: {
+    [k: string]: unknown;
+  }[];
+  slug?: string;
+  publishedOn: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: 'draft' | 'published';
+}
+export interface User {
+  id: string;
+  name?: string;
+  photo?: string | Media;
+  roles: ('admin' | 'editor' | 'public')[];
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string;
+  resetPasswordExpiration?: string;
+  salt?: string;
+  hash?: string;
+  loginAttempts?: number;
+  lockUntil?: string;
+  password?: string;
+}
+export interface Media {
+  id: string;
+  alt: string;
+  caption?: string;
+  darkModeFallback?: string | Media;
+  updatedAt: string;
+  createdAt: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+  sizes?: {
+    thumbnail?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    small?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    medium?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    large?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    small_webp?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    medium_webp?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    large_webp?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+  };
+}
+export interface Category {
+  id: string;
+  name?: string;
+}
+export interface Tag {
+  id: string;
+  name?: string;
+}
+export interface IFancyTextBlock {
+  text: {
+    [k: string]: unknown;
+  }[];
+  textEffects?: ITextEffects;
   id?: string;
   blockName?: string;
-  blockType: 'map-block';
+  blockType: 'fancy-text-block';
 }
 export interface IFormBlock {
   form: string | Form;
@@ -183,6 +318,12 @@ export interface Form {
   updatedAt: string;
   createdAt: string;
 }
+export interface IMapBlock {
+  mapQuery?: string;
+  id?: string;
+  blockName?: string;
+  blockType: 'map-block';
+}
 export interface IMediaBlock {
   text: {
     [k: string]: unknown;
@@ -196,91 +337,6 @@ export interface IMediaBlock {
   blockName?: string;
   blockType: 'media-block';
 }
-export interface ITextEffects {
-  fadeIn?: boolean;
-  sliding?: 'none' | 'left' | 'right' | 'up' | 'down';
-}
-export interface Media {
-  id: string;
-  alt: string;
-  caption?: string;
-  darkModeFallback?: string | Media;
-  updatedAt: string;
-  createdAt: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
-  sizes?: {
-    thumbnail?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-    small?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-    medium?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-    large?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-    small_webp?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-    medium_webp?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-    large_webp?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-  };
-}
-export interface IFancyTextBlock {
-  text: {
-    [k: string]: unknown;
-  }[];
-  textEffects?: ITextEffects;
-  id?: string;
-  blockName?: string;
-  blockType: 'fancy-text-block';
-}
 export interface IResponsiveGrid {
   headerText: {
     [k: string]: unknown;
@@ -290,44 +346,13 @@ export interface IResponsiveGrid {
   blockName?: string;
   blockType: 'responsive-grid-block';
 }
-export interface Post {
-  id: string;
-  title: string;
-  author?: string | User;
-  category?: string | Category;
-  tags?: string[] | Tag[];
-  content: {
+export interface ITextBlock {
+  text: {
     [k: string]: unknown;
   }[];
-  slug?: string;
-  publishedOn: string;
-  updatedAt: string;
-  createdAt: string;
-  _status?: 'draft' | 'published';
-}
-export interface User {
-  id: string;
-  name?: string;
-  photo?: string | Media;
-  roles: ('admin' | 'editor' | 'public')[];
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string;
-  resetPasswordExpiration?: string;
-  salt?: string;
-  hash?: string;
-  loginAttempts?: number;
-  lockUntil?: string;
-  password?: string;
-}
-export interface Category {
-  id: string;
-  name?: string;
-}
-export interface Tag {
-  id: string;
-  name?: string;
+  id?: string;
+  blockName?: string;
+  blockType: 'text-block';
 }
 export interface FormSubmission {
   id: string;
@@ -345,21 +370,7 @@ export interface Footer {
   columns: {
     heading?: string;
     navItems?: {
-      link: {
-        type?: 'reference' | 'custom';
-        newTab?: boolean;
-        reference:
-          | {
-              value: string | Post;
-              relationTo: 'posts';
-            }
-          | {
-              value: string | Page;
-              relationTo: 'pages';
-            };
-        url: string;
-        label: string;
-      };
+      link: ILink;
       id?: string;
     }[];
     id?: string;
@@ -370,21 +381,7 @@ export interface Footer {
 export interface MainMenu {
   id: string;
   navItems?: {
-    link: {
-      type?: 'reference' | 'custom';
-      newTab?: boolean;
-      reference:
-        | {
-            value: string | Post;
-            relationTo: 'posts';
-          }
-        | {
-            value: string | Page;
-            relationTo: 'pages';
-          };
-      url: string;
-      label: string;
-    };
+    link: ILink;
     id?: string;
   }[];
   updatedAt?: string;

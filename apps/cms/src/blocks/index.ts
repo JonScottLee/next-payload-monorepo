@@ -1,2 +1,7 @@
+export * from './call-to-action/block'
+export * from './fancy-text/block'
+export * from './form/block'
 export * from './map-block/block'
+export * from './media-block/block'
+export * from './responsive-grid/block'
 export * from './text-block/block'

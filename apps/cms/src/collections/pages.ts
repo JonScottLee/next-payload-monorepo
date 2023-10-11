@@ -3,11 +3,7 @@ import { type CollectionConfig } from 'payload/types'
 import { isAdmin, isAdminOrEditor, publishedOnly } from '../access'
 
 import { slugField } from '../fields/slug'
-import { TextBlock, MapBlock } from '../blocks'
-import { FormBlock } from '../blocks/form/block'
-import { MediaBlock } from '../blocks/media-block/block'
-import { FancyTextBlock } from '../blocks/fancy-text/block'
-import { ResponsiveGrid } from '../blocks/responsive-grid/block'
+import * as blocks from '../blocks'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -66,7 +62,7 @@ export const Pages: CollectionConfig = {
               label: 'Blocks',
               type: 'blocks',
               unique: true,
-              blocks: [TextBlock, MapBlock, FormBlock, MediaBlock, FancyTextBlock, ResponsiveGrid],
+              blocks: Object.values(blocks),
             },
           ],
         },

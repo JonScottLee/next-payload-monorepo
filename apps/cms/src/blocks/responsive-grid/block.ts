@@ -1,8 +1,8 @@
 import { Block } from 'payload/types'
-// import { textEffects } from '../../fields/text-effects'
 import { TextBlock } from '../text-block/block'
+import { CallToActionBlock } from '../call-to-action/block'
 
-export const ResponsiveGrid: Block = {
+export const ResponsiveGridBlock: Block = {
   slug: 'responsive-grid-block',
   interfaceName: 'IResponsiveGrid',
   fields: [
@@ -18,7 +18,7 @@ export const ResponsiveGrid: Block = {
       },
       label: 'Blocks',
       type: 'blocks',
-      blocks: [TextBlock],
+      blocks: [TextBlock, CallToActionBlock],
     },
   ],
 }

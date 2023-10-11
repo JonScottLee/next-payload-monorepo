@@ -7,6 +7,7 @@ type LinkType = (options?: { disableLabel?: boolean; overrides?: Partial<GroupFi
 export const link: LinkType = ({ disableLabel = false, overrides = {} } = {}) => {
   const linkResult: Field = {
     name: 'link',
+    interfaceName: 'ILink',
     type: 'group',
     admin: {
       hideGutter: true,

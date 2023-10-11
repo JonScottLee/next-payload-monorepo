@@ -13,6 +13,7 @@ import { FancyTextBlock } from '../fancy-text-block/fancy-text-block'
 import { ResponsiveGridBlock } from '../responsive-grid-block/responsive-grid-block'
 import { MapBlock } from '../map-block/map-block'
 import { TextBlock } from '../text-block/text-block'
+import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
 
 type Block = IFancyTextBlock | IFormBlock | IMapBlock | IMediaBlock | ITextBlock | IResponsiveGrid
 
@@ -23,6 +24,7 @@ export const cmsBlockComponents: Record<string, FC<any>> = {
   'media-block': MediaBlock,
   'text-block': TextBlock,
   'responsive-grid-block': ResponsiveGridBlock,
+  'call-to-action-block': CallToActionBlock,
 }
 
 type BlockWithBlocks = {

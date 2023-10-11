@@ -24,3 +24,8 @@ body {
   background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
     rgb(var(--background-start-rgb));
 }
+
+.link {
+  color: var(--global--color--brandPrimary);
+  text-decoration: underline;
+}

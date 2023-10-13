@@ -1,9 +1,11 @@
 import { FC, Fragment } from 'react'
 import {
+  ICallToAction,
   IFancyTextBlock,
   IFormBlock,
   IMapBlock,
   IMediaBlock,
+  INumberTout,
   IResponsiveGrid,
   ITextBlock,
 } from '@org/cms'
@@ -16,7 +18,7 @@ import { TextBlock } from '../text-block/text-block'
 import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
 import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 
-type Block = IFancyTextBlock | IFormBlock | IMapBlock | IMediaBlock | ITextBlock | IResponsiveGrid
+type Block = IFancyTextBlock | IFormBlock | IMapBlock | IMediaBlock | ITextBlock | IResponsiveGrid | ICallToAction | INumberTout
 
 export const cmsBlockComponents: Record<string, FC<any>> = {
   'fancy-text-block': FancyTextBlock,

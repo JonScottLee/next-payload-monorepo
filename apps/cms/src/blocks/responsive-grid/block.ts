@@ -1,6 +1,7 @@
 import { Block } from 'payload/types'
 import { TextBlock } from '../text-block/block'
 import { CallToActionBlock } from '../call-to-action/block'
+import { NumberTout } from '../number-tout/block'
 
 export const ResponsiveGridBlock: Block = {
   slug: 'responsive-grid-block',
@@ -18,7 +19,7 @@ export const ResponsiveGridBlock: Block = {
       },
       label: 'Blocks',
       type: 'blocks',
-      blocks: [TextBlock, CallToActionBlock],
+      blocks: [TextBlock, CallToActionBlock, NumberTout],
     },
   ],
 }

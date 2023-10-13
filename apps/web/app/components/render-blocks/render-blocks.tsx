@@ -14,6 +14,7 @@ import { ResponsiveGridBlock } from '../responsive-grid-block/responsive-grid-bl
 import { MapBlock } from '../map-block/map-block'
 import { TextBlock } from '../text-block/text-block'
 import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
+import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 
 type Block = IFancyTextBlock | IFormBlock | IMapBlock | IMediaBlock | ITextBlock | IResponsiveGrid
 
@@ -25,6 +26,7 @@ export const cmsBlockComponents: Record<string, FC<any>> = {
   'text-block': TextBlock,
   'responsive-grid-block': ResponsiveGridBlock,
   'call-to-action-block': CallToActionBlock,
+  'number-tout-block': NumberToutBlock
 }
 
 type BlockWithBlocks = {

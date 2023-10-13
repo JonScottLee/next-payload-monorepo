@@ -2,6 +2,7 @@ import { Block } from 'payload/types'
 import { TextBlock } from '../text-block/block'
 import { CallToActionBlock } from '../call-to-action/block'
 import { NumberTout } from '../number-tout/block'
+import { MediaBlock } from '../media-block/block'
 
 export const ResponsiveGridBlock: Block = {
   slug: 'responsive-grid-block',
@@ -9,7 +10,6 @@ export const ResponsiveGridBlock: Block = {
   fields: [
     {
       name: 'headerText',
-      required: true,
       type: 'richText',
     },
     {
@@ -19,7 +19,7 @@ export const ResponsiveGridBlock: Block = {
       },
       label: 'Blocks',
       type: 'blocks',
-      blocks: [TextBlock, CallToActionBlock, NumberTout],
+      blocks: [TextBlock, CallToActionBlock, NumberTout, MediaBlock],
     },
   ],
 }

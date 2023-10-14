@@ -19,7 +19,7 @@ export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
 
   return (
     <>
-      <RichText content={headerText} />
+      <RichText className="mb-4" content={headerText} />
       <div className={classes}>{blocks?.map((block, i) => renderBlock(block))}</div>
       <RichText className="mt-10" content={trailingContent} />
     </>

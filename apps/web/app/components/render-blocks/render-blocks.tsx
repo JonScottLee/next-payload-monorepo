@@ -8,6 +8,7 @@ import {
   INumberTout,
   IResponsiveGrid,
   IRowBlock,
+  ITestimonialBlock,
   ITextBlock,
 } from '@org/cms'
 import { FormBlock } from '../form-builder/form'
@@ -19,6 +20,7 @@ import { TextBlock } from '../text-block/text-block'
 import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
 import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 import { RowBlock } from '../row-block/row-block'
+import { TestimonialBlock } from '../testimonial-block/testimonial-block'
 
 type Block =
   | IFancyTextBlock
@@ -30,6 +32,7 @@ type Block =
   | ICallToAction
   | INumberTout
   | IRowBlock
+  | ITestimonialBlock
 
 export const cmsBlockComponents: Record<string, FC<any>> = {
   'call-to-action-block': CallToActionBlock,
@@ -41,6 +44,7 @@ export const cmsBlockComponents: Record<string, FC<any>> = {
   'responsive-grid-block': ResponsiveGridBlock,
   'row-block': RowBlock,
   'text-block': TextBlock,
+  'testimonial-block': TestimonialBlock,
 }
 
 type BlockWithBlocks = {
@@ -57,9 +61,9 @@ export const renderBlock = (block: Block) => {
   if (!BlockComponent) return null
 
   return (
-    <Fragment key={block.id}>
+    <div key={block.id} className="mb-4">
       <BlockComponent {...block} />
-    </Fragment>
+    </div>
   )
 }
 

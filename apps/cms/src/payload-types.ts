@@ -39,6 +39,7 @@ export interface Page {
     | ITextBlock
     | INumberTout
     | IRowBlock
+    | ITestimonialBlock
   )[];
   meta?: {
     title?: string;
@@ -350,7 +351,10 @@ export interface IResponsiveGrid {
   headerText?: {
     [k: string]: unknown;
   }[];
-  blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock)[];
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
+  blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock | ITestimonialBlock)[];
   id?: string;
   blockName?: string;
   blockType: 'responsive-grid-block';
@@ -372,12 +376,24 @@ export interface INumberTout {
   blockName?: string;
   blockType: 'number-tout-block';
 }
+export interface ITestimonialBlock {
+  headline: string;
+  text: {
+    [k: string]: unknown;
+  }[];
+  author: string;
+  title?: string;
+  image?: string | Media;
+  id?: string;
+  blockName?: string;
+  blockType: 'testimonial-block';
+}
 export interface IRowBlock {
   headerText?: {
     [k: string]: unknown;
   }[];
   wrap?: boolean;
-  blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock)[];
+  blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock | ITestimonialBlock)[];
   id?: string;
   blockName?: string;
   blockType: 'row-block';
@@ -431,6 +447,21 @@ export interface ThemeVariable {
   };
   mapsApiKey?: string;
   analyticsSnippet?: string;
+  elements: {
+    Background?: string;
+    Color?: string;
+  };
+  header: {
+    Background?: string;
+    Color?: string;
+    linkColor?: string;
+    linkHoverColor?: string;
+    linkActiveColor?: string;
+  };
+  footer: {
+    Background?: string;
+    Color?: string;
+  };
   updatedAt?: string;
   createdAt?: string;
 }

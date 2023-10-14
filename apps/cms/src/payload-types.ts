@@ -38,6 +38,7 @@ export interface Page {
     | IResponsiveGrid
     | ITextBlock
     | INumberTout
+    | IRowBlock
   )[];
   meta?: {
     title?: string;
@@ -347,10 +348,10 @@ export interface IMediaBlock {
   blockType: 'media-block';
 }
 export interface IResponsiveGrid {
-  headerText: {
+  headerText?: {
     [k: string]: unknown;
   }[];
-  blocks?: (ITextBlock | ICallToAction)[];
+  blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock)[];
   id?: string;
   blockName?: string;
   blockType: 'responsive-grid-block';
@@ -365,12 +366,22 @@ export interface ITextBlock {
 }
 export interface INumberTout {
   number: number;
-  countUp?: boolean;
   numberSuffix?: string;
+  countUp?: boolean;
   text: string;
   id?: string;
   blockName?: string;
   blockType: 'number-tout-block';
+}
+export interface IRowBlock {
+  headerText?: {
+    [k: string]: unknown;
+  }[];
+  blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock)[];
+  wrap?: boolean;
+  id?: string;
+  blockName?: string;
+  blockType: 'row-block';
 }
 export interface FormSubmission {
   id: string;

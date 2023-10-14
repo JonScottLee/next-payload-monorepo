@@ -7,6 +7,7 @@ import {
   IMediaBlock,
   INumberTout,
   IResponsiveGrid,
+  IRowBlock,
   ITextBlock,
 } from '@org/cms'
 import { FormBlock } from '../form-builder/form'
@@ -17,18 +18,29 @@ import { MapBlock } from '../map-block/map-block'
 import { TextBlock } from '../text-block/text-block'
 import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
 import { NumberToutBlock } from '../number-tout-block/number-tout-block'
+import { RowBlock } from '../row-block/row-block'
 
-type Block = IFancyTextBlock | IFormBlock | IMapBlock | IMediaBlock | ITextBlock | IResponsiveGrid | ICallToAction | INumberTout
+type Block =
+  | IFancyTextBlock
+  | IFormBlock
+  | IMapBlock
+  | IMediaBlock
+  | ITextBlock
+  | IResponsiveGrid
+  | ICallToAction
+  | INumberTout
+  | IRowBlock
 
 export const cmsBlockComponents: Record<string, FC<any>> = {
+  'call-to-action-block': CallToActionBlock,
   'fancy-text-block': FancyTextBlock,
   'form-block': FormBlock,
   'map-block': MapBlock,
   'media-block': MediaBlock,
-  'text-block': TextBlock,
+  'number-tout-block': NumberToutBlock,
   'responsive-grid-block': ResponsiveGridBlock,
-  'call-to-action-block': CallToActionBlock,
-  'number-tout-block': NumberToutBlock
+  'row-block': RowBlock,
+  'text-block': TextBlock,
 }
 
 type BlockWithBlocks = {

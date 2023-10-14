@@ -13,15 +13,15 @@ export const RowBlock: Block = {
       type: 'richText',
     },
     {
+      name: 'wrap',
+      type: 'checkbox',
+      defaultValue: true,
+    },
+    {
       name: 'blocks',
       label: 'Blocks',
       type: 'blocks',
       blocks: [TextBlock, CallToActionBlock, NumberTout, MediaBlock],
     },
-    {
-        name: 'wrap',
-        type: 'checkbox',
-        defaultValue: true,
-    }
   ],
 }

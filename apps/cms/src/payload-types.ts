@@ -335,14 +335,13 @@ export interface IMapBlock {
   blockType: 'map-block';
 }
 export interface IMediaBlock {
+  orientation?: 'vertical' | 'horizontal' | 'responsive';
   text: {
     [k: string]: unknown;
   }[];
   textEffects?: ITextEffects;
-  Image: {
-    image: string | Media;
-    position?: 'left' | 'right';
-  };
+  image: string | Media;
+  position?: 'left' | 'right';
   id?: string;
   blockName?: string;
   blockType: 'media-block';
@@ -377,8 +376,8 @@ export interface IRowBlock {
   headerText?: {
     [k: string]: unknown;
   }[];
-  blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock)[];
   wrap?: boolean;
+  blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock)[];
   id?: string;
   blockName?: string;
   blockType: 'row-block';

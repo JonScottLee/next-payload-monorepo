@@ -9,16 +9,20 @@ import { useTextEffects } from '@hooks/use-text-effects'
 import { useInView } from 'react-intersection-observer'
 
 export const MediaBlock: FC<StripBlockFields<IMediaBlock>> = ({
+  orientation,
+  position,
   text,
-  Image,
+  image: stringableImage,
   textEffects = {},
 }) => {
-  const { image } = Image as { image: Media }
-  const { position } = Image
+  const isVertical = orientation === 'vertical'
+
+  const image = stringableImage as Media
 
   const { ref, inView } = useInView()
 
-  const imageClasses = classNames('sm:w-1/2', {
+  const imageClasses = classNames({
+    'sm:w-1/2': !isVertical,
     'order-first': position === 'left',
     'order-last': position === 'right',
   })
@@ -27,14 +31,24 @@ export const MediaBlock: FC<StripBlockFields<IMediaBlock>> = ({
     textEffects,
   })
 
-  const textClasses = classNames(textBaseClasses, {
+  const textWrapperClasses = classNames(textBaseClasses, {
+    'sm:w-1/2': !isVertical,
     [textVisibleClasses]: inView,
   })
 
+  const textClasses = classNames({
+    'sm:w-1/2 sm:mx-auto': !isVertical,
+  })
+
+  const wrapperClasses = classNames('flex text-center flex-col items-center', {
+    'sm:text-left sm:flex-row sm:justify-between sm:items-center': orientation === 'responsive',
+    'text-left flex-row justify-between items-center': orientation === 'horizontal',
+  })
+
   return (
-    <div className="flex text-center sm:text-left flex-col sm:flex-row sm:justify-between sm:items-center">
-      <div ref={ref} className={`sm:w-1/2 ${textClasses}`}>
-        <RichText className="sm:w-1/2 sm:mx-auto" content={text} />
+    <div className={wrapperClasses}>
+      <div ref={ref} className={textWrapperClasses}>
+        <RichText className={textClasses} content={text} />
       </div>
 
       <img className={imageClasses} src={image.url} alt={image.alt} />

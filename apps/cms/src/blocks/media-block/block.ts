@@ -6,6 +6,26 @@ export const MediaBlock: Block = {
   interfaceName: 'IMediaBlock',
   fields: [
     {
+      name: 'orientation',
+      label: 'Orientation',
+      type: 'radio',
+      defaultValue: 'responsive',
+      options: [
+        {
+          label: 'Vertical',
+          value: 'vertical',
+        },
+        {
+          label: 'Horizontal',
+          value: 'horizontal',
+        },
+        {
+          label: 'Responsive',
+          value: 'responsive',
+        },
+      ],
+    },
+    {
       name: 'text',
       label: 'Text',
       type: 'richText',
@@ -13,33 +33,30 @@ export const MediaBlock: Block = {
     },
     textEffects,
     {
-      type: 'group',
-      name: 'Image',
-      fields: [
+      name: 'image',
+      label: 'Image',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
+    {
+      name: 'position',
+      label: 'Position',
+      type: 'radio',
+      defaultValue: 'left',
+      options: [
         {
-          name: 'image',
-          label: 'Image',
-          type: 'upload',
-          relationTo: 'media',
-          required: true,
+          label: 'Left',
+          value: 'left',
         },
         {
-          name: 'position',
-          label: 'Position',
-          type: 'radio',
-          defaultValue: 'left',
-          options: [
-            {
-              label: 'Left',
-              value: 'left',
-            },
-            {
-              label: 'Right',
-              value: 'right',
-            },
-          ],
+          label: 'Right',
+          value: 'right',
         },
       ],
+      admin: {
+        condition: (_, siblingData): boolean => siblingData.orientation !== 'vertical',
+      },
     },
   ],
 }

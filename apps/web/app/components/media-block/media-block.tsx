@@ -18,7 +18,7 @@ export const MediaBlock: FC<StripBlockFields<IMediaBlock>> = ({
 
   const { ref, inView } = useInView()
 
-  const imageClasses = classNames('w-1/2', {
+  const imageClasses = classNames('sm:w-1/2', {
     'order-first': position === 'left',
     'order-last': position === 'right',
   })
@@ -32,9 +32,9 @@ export const MediaBlock: FC<StripBlockFields<IMediaBlock>> = ({
   })
 
   return (
-    <div className="flex justify-between items-center">
-      <div ref={ref} className={`w-1/2 ${textClasses}`}>
-        <RichText className="w-1/2 mx-auto" content={text} />
+    <div className="flex text-center sm:text-left flex-col sm:flex-row sm:justify-between sm:items-center">
+      <div ref={ref} className={`sm:w-1/2 ${textClasses}`}>
+        <RichText className="sm:w-1/2 sm:mx-auto" content={text} />
       </div>
 
       <img className={imageClasses} src={image.url} alt={image.alt} />

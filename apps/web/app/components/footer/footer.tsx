@@ -13,10 +13,10 @@ const getFooterData = async (): Promise<FooterType> => {
 }
 
 type FooterProps = {
-  classNameName?: string
+  className?: string
 }
 
-export const Footer: FC<FooterProps> = async ({ classNameName }) => {
+export const Footer: FC<FooterProps> = async ({ className }) => {
   const footerData = await getFooterData()
 
   return (
@@ -41,17 +41,15 @@ export const Footer: FC<FooterProps> = async ({ classNameName }) => {
                   <ul>
                     {(column.navItems || []).map((item) => {
                       const { link } = item
-                      const { href, label } = useLink(link);
-                      const isCurrentPage = useCurrentPage(link);
+                      const { href, label } = useLink(link)
+                      const isCurrentPage = useCurrentPage(link)
 
                       return (
                         <li key={item.id} className="mr-4 hover:underline md:mr-6">
                           <Link href={href}>{link.label}</Link>
-                          
+
                           <Link legacyBehavior href={href}>
-                            <a aria-current={isCurrentPage}>
-                              {label}
-                            </a>
+                            <a aria-current={isCurrentPage}>{label}</a>
                           </Link>
                         </li>
                       )
@@ -72,7 +70,7 @@ export const Footer: FC<FooterProps> = async ({ classNameName }) => {
         </span>
       </div>
     </footer>
-    // <footer classNameName={`${classNameName}`}>
+    // <footer className={`${className}`}>
     //   {(footerData.columns || []).map((column) => {
     //     return (
     //       <div key={column.heading}>

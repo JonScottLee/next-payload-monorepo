@@ -32,7 +32,7 @@ const Page: FC<DynamicRouteProps> = async (props) => {
   const { title, content, blocks } = pageData
 
   return (
-    <>
+    <div className="flex flex-col h-screen justify-between">
       <Header className="mb-4" />
       <main>
         <H1>{title}</H1>
@@ -43,7 +43,7 @@ const Page: FC<DynamicRouteProps> = async (props) => {
       </main>
 
       <Footer className="mt-4" />
-    </>
+    </div>
   )
 }
 

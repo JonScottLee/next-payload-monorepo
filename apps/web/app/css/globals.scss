@@ -20,12 +20,29 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
-    rgb(var(--background-start-rgb));
+  color: var(--global__Color);
+  background: var(--global__Background);
+}
+
+footer {
+  background: var(--footer__Background);
+  color: var(--footer__Color);
+}
+
+header {
+  background: var(--header__Background);
+  color: var(--header__Color);
+
+  a {
+    color: var(--header__linkColor);
+
+    &:hover {
+      color: var(--header__linkHoverColor);
+    }
+  }
 }
 
 .link {
-  color: var(--global--color--brandPrimary);
+  color: var(--global__color__brandPrimary);
   text-decoration: underline;
 }

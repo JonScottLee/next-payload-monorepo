@@ -19,6 +19,7 @@ export const ThemeVariables: GlobalConfig = {
   fields: [
     {
       type: 'tabs',
+      label: 'Globals',
       tabs: [
         {
           label: 'Colors',
@@ -113,6 +114,90 @@ export const ThemeVariables: GlobalConfig = {
                 description: 'Paste your analytics snippet here',
               },
             },
+          ],
+        },
+        {
+          label: 'Global Styles',
+          name: 'elements',
+          fields: [
+            {
+              type: 'row',
+              fields: [
+                color({
+                  name: 'Background',
+                  label: 'Primary BG Color',
+                  fieldWidth: '33%',
+                }),
+                color({
+                  name: 'Color',
+                  label: 'Text Color',
+                  fieldWidth: '33%',
+                }),
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'tabs',
+      label: 'Site Elements',
+      tabs: [
+        {
+          name: 'header',
+          label: 'Header',
+          fields: [
+            {
+              type: 'row',
+              fields: [
+                color({
+                  name: 'Background',
+                  label: 'Header Background Color',
+                  fieldWidth: '33%',
+                }),
+                color({
+                  name: 'Color',
+                  label: 'Header Text Color',
+                  fieldWidth: '33%',
+                }),
+              ],
+            },
+            {
+              type: 'row',
+              fields: [
+                color({
+                  name: 'linkColor',
+                  label: 'Link Color',
+                  fieldWidth: '33%',
+                }),
+                color({
+                  name: 'linkHoverColor',
+                  label: 'Link Hover Color',
+                  fieldWidth: '33%',
+                }),
+                color({
+                  name: 'linkActiveColor',
+                  label: 'Link Active Color',
+                  fieldWidth: '33%',
+                }),
+              ],
+            },
+          ],
+        },
+        {
+          name: 'footer',
+          label: 'Footer',
+          fields: [
+            color({
+              name: 'Background',
+              label: 'Footer Background Color',
+              fieldWidth: '33%',
+            }),
+            color({
+              name: 'Color',
+              label: 'Footer Text Color',
+              fieldWidth: '33%',
+            }),
           ],
         },
       ],

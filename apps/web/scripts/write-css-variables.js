@@ -19,14 +19,14 @@ function buildCSSString(variables, prefix) {
     if (variables.hasOwnProperty(name)) {
       const value = variables[name]
 
-      string += `\n\t${prefix}--${name}: ${value};`
+      string += `\n\t${prefix}__${name}: ${value};`
     }
   }
 
   return string
 }
 
-function injectvariables({ colors, layout }) {
+function injectvariables({ colors, layout, elements, footer, header }) {
   log('Writing CSS variables string to file...')
 
   fs.readFile(cssFilePath, 'utf8', (err, cssData) => {
@@ -37,8 +37,11 @@ function injectvariables({ colors, layout }) {
 
     let cssString = ''
 
-    cssString += buildCSSString(colors, '--global--color')
-    cssString += buildCSSString(layout, '--global--layout')
+    cssString += buildCSSString(colors, '--global__color')
+    cssString += buildCSSString(footer, '--footer')
+    cssString += buildCSSString(header, '--header')
+    cssString += buildCSSString(layout, '--global__layout')
+    cssString += buildCSSString(elements, '--global')
     cssString = `:root {${cssString}\n}\n`
 
     // Write the updated CSS content back to the file
@@ -60,11 +63,14 @@ async function getThemeVariables() {
 
   const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/theme-variables`)
 
-  const { colors = {}, layout = {} } = await data.json()
+  const { colors = {}, layout = {}, elements = {}, footer = {}, header = {} } = await data.json()
 
   injectvariables({
     colors,
+    footer,
+    header,
     layout,
+    elements,
   })
 
   return {}

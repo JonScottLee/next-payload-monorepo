@@ -23,12 +23,12 @@ export const Header: FC<HeaderProps> = async ({ className }) => {
 
   return (
     <header className={`${className}`}>
-      <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-        <div className="flex items-center flex-shrink-0 text-white mr-6">
+      <nav className="flex items-center justify-between flex-wrap p-6">
+        <div className="flex items-center flex-shrink-0 mr-6">
           <span className="font-semibold text-xl tracking-tight">Dublin Endo</span>
         </div>
         <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+          <button className="flex items-center px-3 py-2 border rounded">
             <svg
               className="fill-current h-3 w-3"
               viewBox="0 0 20 20"
@@ -42,21 +42,17 @@ export const Header: FC<HeaderProps> = async ({ className }) => {
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <ul className="text-sm lg:flex-grow">
             {menuData.navItems?.map((item) => {
-              const { link } = item;
+              const { link } = item
 
-              const { href, label } = useLink(link);
-              const isCurrentPage = useCurrentPage(link);
-              
-              const classes = cx('text-brand-secondary', {
+              const { href, label } = useLink(link)
+              const isCurrentPage = useCurrentPage(link)
+
+              const classes = cx({
                 underline: isCurrentPage,
-                '!text-brand-primary': isCurrentPage,
               })
 
               return (
-                <li
-                  key={item.id}
-                  className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-                >
+                <li key={item.id} className="block mt-4 lg:inline-block lg:mt-0 mr-4">
                   <Link legacyBehavior href={href}>
                     <a className={classes} aria-current={isCurrentPage}>
                       {label}

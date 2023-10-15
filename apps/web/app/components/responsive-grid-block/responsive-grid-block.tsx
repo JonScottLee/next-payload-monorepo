@@ -2,20 +2,25 @@ import { FC } from 'react'
 import { RichText } from '../rich-text/rich-text'
 import { StripBlockFields } from '@/utils'
 import { IResponsiveGrid, IReusableContentBlock } from '@org/cms'
-import { AllBlocks, normalizeBlocks, renderBlock } from '../render-blocks/render-blocks'
+import {
+  AllBlocks,
+  isReusableContentBlock,
+  normalizeBlocks,
+  renderBlock,
+} from '../render-blocks/render-blocks'
 import classNames from 'classnames'
 import { renderReusableContentBlock } from '../render-blocks/render-blocks'
 
 export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
   headerText,
-  blocks,
+  blocks: _blocks,
   trailingContent,
 }) => {
-  if (!blocks) return null
+  if (!_blocks) return null
 
-  let myBlocks: AllBlocks[] = normalizeBlocks(blocks)
+  let blocks: AllBlocks[] = normalizeBlocks(_blocks)
 
-  const columns = myBlocks?.length || 0
+  const columns = blocks?.length || 0
 
   const classes = classNames('flex flex-col md:grid gap-8', {
     'md:grid-cols-2': [2, 4, 5].indexOf(columns) > -1,
@@ -25,15 +30,7 @@ export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
   return (
     <>
       <RichText className="mb-4" content={headerText} />
-      <div className={classes}>
-        {myBlocks?.map((block, i) => {
-          if ('reusableContent' in block) {
-            return renderReusableContentBlock(block as unknown as IReusableContentBlock)
-          }
-
-          return renderBlock(block)
-        })}
-      </div>
+      <div className={classes}>{blocks?.map((block) => renderBlock(block))}</div>
       <RichText className="mt-10" content={trailingContent} />
     </>
   )

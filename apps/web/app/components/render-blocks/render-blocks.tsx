@@ -95,13 +95,17 @@ export const renderReusableContentBlock = (block: IReusableContentBlock) => {
   )
 }
 
+export const isReusableContentBlock = (block: AllBlocks): block is IReusableContentBlock => {
+  return 'reusableContent' in block
+}
+
 export const RenderBlocks: FC<RenderBlocksProps> = ({ blocks }) => {
   if (!blocks) return null
 
   return (
     <>
       {blocks.map((block) => {
-        if (block.blockType === 'reusable-content-block') {
+        if (isReusableContentBlock(block)) {
           return renderReusableContentBlock(block as IReusableContentBlock)
         }
 

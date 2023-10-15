@@ -58,6 +58,19 @@ type RenderBlocksProps = {
   blocks?: AllBlocks[] | BlockWithBlocks[]
 }
 
+export const normalizeBlocks = (blocks: AllBlocks[]): AllBlocks[] => {
+  let normalizedBlocks: AllBlocks[] = []
+
+  try {
+    //@ts-ignore
+    normalizedBlocks = blocks[0].reusableContent.layout
+  } catch {
+    normalizedBlocks = blocks
+  }
+
+  return normalizedBlocks
+}
+
 export const renderBlock = (block: AllBlocks) => {
   const BlockComponent = cmsBlockComponents[block.blockType]
 

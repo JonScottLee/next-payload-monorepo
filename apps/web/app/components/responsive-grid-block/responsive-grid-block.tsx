@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { RichText } from '../rich-text/rich-text'
 import { StripBlockFields } from '@/utils'
 import { IResponsiveGrid, IReusableContentBlock } from '@org/cms'
-import { AllBlocks, renderBlock } from '../render-blocks/render-blocks'
+import { AllBlocks, normalizeBlocks, renderBlock } from '../render-blocks/render-blocks'
 import classNames from 'classnames'
 import { renderReusableContentBlock } from '../render-blocks/render-blocks'
 
@@ -13,14 +13,7 @@ export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
 }) => {
   if (!blocks) return null
 
-  let myBlocks: AllBlocks[] = []
-
-  try {
-    //@ts-ignore
-    myBlocks = blocks[0].reusableContent.layout
-  } catch {
-    myBlocks = blocks
-  }
+  let myBlocks: AllBlocks[] = normalizeBlocks(blocks)
 
   const columns = myBlocks?.length || 0
 

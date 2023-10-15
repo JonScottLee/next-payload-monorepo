@@ -13,6 +13,7 @@ import { Users } from './collections/users'
 import FormBuilder from '@payloadcms/plugin-form-builder'
 import path from 'path'
 import seo from '@payloadcms/plugin-seo'
+import { ReusableContent } from './collections/reusable-content'
 
 interface SeoPageObject extends Omit<Page, 'title'> {
   title: {
@@ -62,7 +63,7 @@ export default buildConfig({
       }
     },
   },
-  collections: [Pages, Posts, Media, Categories, Tags, Users],
+  collections: [Pages, Posts, Media, Categories, Tags, Users, ReusableContent],
   localization: {
     locales: ['en', 'es', 'fr'],
     defaultLocale: 'en',

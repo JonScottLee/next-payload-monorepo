@@ -13,6 +13,7 @@ export interface Config {
     categories: Category;
     tags: Tag;
     users: User;
+    'reusable-content': ReusableContent;
     forms: Form;
     'form-submissions': FormSubmission;
   };
@@ -40,6 +41,7 @@ export interface Page {
     | INumberTout
     | IRowBlock
     | ITestimonialBlock
+    | IReusableContentBlock
   )[];
   meta?: {
     title?: string;
@@ -397,6 +399,20 @@ export interface IRowBlock {
   id?: string;
   blockName?: string;
   blockType: 'row-block';
+}
+export interface IReusableContentBlock {
+  reusableContent: string | ReusableContent;
+  id?: string;
+  blockName?: string;
+  blockType: 'reusable-content-block';
+}
+export interface ReusableContent {
+  id: string;
+  title: string;
+  layout: ITestimonialBlock[];
+  updatedAt: string;
+  createdAt: string;
+  _status?: 'draft' | 'published';
 }
 export interface FormSubmission {
   id: string;

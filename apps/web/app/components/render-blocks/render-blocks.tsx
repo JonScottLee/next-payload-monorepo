@@ -7,6 +7,7 @@ import {
   IMediaBlock,
   INumberTout,
   IResponsiveGrid,
+  IReusableContentBlock,
   IRowBlock,
   ITestimonialBlock,
   ITextBlock,
@@ -21,8 +22,9 @@ import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
 import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 import { RowBlock } from '../row-block/row-block'
 import { TestimonialBlock } from '../testimonial-block/testimonial-block'
+import { type ReusableContent as relatedCollectionType } from '@org/cms'
 
-type Block =
+export type AllBlocks =
   | IFancyTextBlock
   | IFormBlock
   | IMapBlock
@@ -33,6 +35,7 @@ type Block =
   | INumberTout
   | IRowBlock
   | ITestimonialBlock
+  | IReusableContentBlock
 
 export const cmsBlockComponents: Record<string, FC<any>> = {
   'call-to-action-block': CallToActionBlock,
@@ -47,15 +50,15 @@ export const cmsBlockComponents: Record<string, FC<any>> = {
   'testimonial-block': TestimonialBlock,
 }
 
-type BlockWithBlocks = {
-  blocks: Block[]
+type BlockWithBlocks = AllBlocks & {
+  blocks: AllBlocks[]
 }
 
 type RenderBlocksProps = {
-  blocks?: Block[] | BlockWithBlocks[]
+  blocks?: AllBlocks[] | BlockWithBlocks[]
 }
 
-export const renderBlock = (block: Block) => {
+export const renderBlock = (block: AllBlocks) => {
   const BlockComponent = cmsBlockComponents[block.blockType]
 
   if (!BlockComponent) return null
@@ -67,24 +70,29 @@ export const renderBlock = (block: Block) => {
   )
 }
 
+export const renderReusableContentBlock = (block: IReusableContentBlock) => {
+  const relatedCollection = block.reusableContent as unknown as relatedCollectionType
+
+  return (
+    <>
+      {relatedCollection.layout.map((block) => (
+        <Fragment key={block.id}>{renderBlock(block as AllBlocks)}</Fragment>
+      ))}
+    </>
+  )
+}
+
 export const RenderBlocks: FC<RenderBlocksProps> = ({ blocks }) => {
   if (!blocks) return null
 
   return (
     <>
-      {blocks.map((block, i) => {
-        if ('blocks' in block && block.blocks) {
-          // return (
-          //   <Fragment key={(block as Block).id}>
-          //     {renderBlock(block as Block)}
-
-          //     <RenderBlocks blocks={block.blocks} />
-          //   </Fragment>
-          // )
-          return renderBlock(block as Block)
-        } else {
-          return renderBlock(block as Block)
+      {blocks.map((block) => {
+        if (block.blockType === 'reusable-content-block') {
+          return renderReusableContentBlock(block as IReusableContentBlock)
         }
+
+        return renderBlock(block as AllBlocks)
       })}
     </>
   )

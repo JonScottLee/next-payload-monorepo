@@ -4,6 +4,7 @@ import { CallToActionBlock } from '../call-to-action/block'
 import { NumberTout } from '../number-tout/block'
 import { MediaBlock } from '../media-block/block'
 import { TestimonialBlock } from '../testimonial-block/block'
+import { ReusableContent } from '../reusable-content/block'
 
 export const ResponsiveGridBlock: Block = {
   slug: 'responsive-grid-block',
@@ -24,7 +25,14 @@ export const ResponsiveGridBlock: Block = {
       },
       label: 'Blocks',
       type: 'blocks',
-      blocks: [TextBlock, CallToActionBlock, NumberTout, MediaBlock, TestimonialBlock],
+      blocks: [
+        TextBlock,
+        CallToActionBlock,
+        NumberTout,
+        MediaBlock,
+        TestimonialBlock,
+        ReusableContent,
+      ],
     },
   ],
 }

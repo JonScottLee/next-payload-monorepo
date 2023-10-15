@@ -104,13 +104,11 @@ export const RenderBlocks: FC<RenderBlocksProps> = ({ blocks }) => {
 
   return (
     <>
-      {blocks.map((block) => {
-        if (isReusableContentBlock(block)) {
-          return renderReusableContentBlock(block as IReusableContentBlock)
-        }
-
-        return renderBlock(block as AllBlocks)
-      })}
+      {blocks.map((block) => (
+        <Fragment key={block.id}>
+          {isReusableContentBlock(block) ? renderReusableContentBlock(block) : renderBlock(block)}
+        </Fragment>
+      ))}
     </>
   )
 }

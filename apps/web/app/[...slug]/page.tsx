@@ -1,22 +1,15 @@
 import { FC } from 'react'
 import NotFoundPage from '../404/page'
-import { getData } from '@/utils'
 import { type Page } from '@org/cms'
 import { Header, Footer, RichText } from '@components'
 import { H1 } from '@org/uikit'
 import { RenderBlocks } from '../components/render-blocks/render-blocks'
-import { Metadata, ResolvingMetadata } from 'next'
-import { headers } from 'next/headers'
 import { getPageData } from '@/utils'
 
 type DynamicRouteProps = {
   params: {
     slug: string[]
   }
-}
-
-type MetaDataProps = {
-  params: { productId: string }
 }
 
 export { generateMetadata } from './generate-meta-data'

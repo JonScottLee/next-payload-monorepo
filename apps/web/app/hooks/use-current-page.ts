@@ -1,12 +1,21 @@
-import { getCurrentPath } from "@/utils";
-import { ILink } from "@org/cms";
-import { useLink } from "@hooks/use-link"
+import { getCurrentPath } from '@/utils'
+import { ILink, type Page } from '@org/cms'
+import { useLink } from '@hooks/use-link'
 
-export const useCurrentPage = (link: ILink): boolean => {
-    const currentPath = getCurrentPath()
-    const { href } = useLink(link);
+const linkIsCurrentPage = (link: ILink): boolean => {
+  const currentPath = getCurrentPath()
+  const { reference } = link
+  const slug = ((reference?.value ?? {}) as Page).slug
 
-    const sanitizedHref = href === '/' ? 'home' : href
+  console.log('fuck', link)
 
-    return sanitizedHref === currentPath
+  if (!slug) return false
+
+  return slug === currentPath
+}
+
+export const useCurrentPage = () => {
+  return {
+    linkIsCurrentPage,
+  }
 }

@@ -14,7 +14,11 @@ export const RowBlock: FC<IRowBlock> = ({ headerText, blocks, wrap }) => {
       <RichText content={headerText} />
       <div className={classes}>
         {blocks?.map((block, i) => {
-          return <div className="flex-1">{renderBlock(block)}</div>
+          return (
+            <div key={block.id} className="flex-1">
+              {renderBlock(block)}
+            </div>
+          )
         })}
       </div>
     </div>

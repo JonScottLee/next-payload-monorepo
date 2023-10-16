@@ -18,14 +18,14 @@ type HeaderProps = {
 
 export const Header: FC<HeaderProps> = async ({ className }) => {
   const menuData = await getMenuData()
-
-  const currentPath = getCurrentPath()
+  const { linkIsCurrentPage } = useCurrentPage()
+  const { getLinkObject } = useLink()
 
   return (
     <header className={`${className}`}>
       <nav className="flex items-center justify-between flex-wrap p-6">
         <div className="flex items-center flex-shrink-0 mr-6">
-          <span className="font-semibold text-xl tracking-tight">Dublin Endo</span>
+          <span className="font-semibold text-xl tracking-tight">Some Fake Company</span>
         </div>
         <div className="block lg:hidden">
           <button className="flex items-center px-3 py-2 border rounded">
@@ -41,20 +41,19 @@ export const Header: FC<HeaderProps> = async ({ className }) => {
         </div>
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <ul className="text-sm lg:flex-grow">
-            {menuData.navItems?.map((item) => {
-              const { link } = item
+            {menuData.navItems?.map(({ id: itemId, link }) => {
+              const { href, label } = getLinkObject(link)
+              const isCurrentPage = linkIsCurrentPage(link)
 
-              const { href, label } = useLink(link)
-              const isCurrentPage = useCurrentPage(link)
-
+              console.log(href, label)
               const classes = cx({
                 underline: isCurrentPage,
               })
 
               return (
-                <li key={item.id} className="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                <li key={itemId} className="block mt-4 lg:inline-block lg:mt-0 mr-4">
                   <Link legacyBehavior href={href}>
-                    <a className={classes} aria-current={isCurrentPage}>
+                    <a className={classes} {...(isCurrentPage && { 'aria-current': 'page' })}>
                       {label}
                     </a>
                   </Link>

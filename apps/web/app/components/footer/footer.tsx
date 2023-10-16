@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { H2 } from '@org/uikit'
 import { useLink } from '@hooks/use-link'
 import { useCurrentPage } from '@hooks/use-current-page'
+import Image from 'next/image'
 
 const getFooterData = async (): Promise<FooterType> => {
   const footer = await getData<FooterType>(`${process.env.NEXT_PUBLIC_PAYLOAD_API}/globals/footer`)
@@ -18,19 +19,23 @@ type FooterProps = {
 
 export const Footer: FC<FooterProps> = async ({ className }) => {
   const footerData = await getFooterData()
+  const { linkIsCurrentPage } = useCurrentPage()
+  const { getLinkObject } = useLink()
 
   return (
     <footer className="mt-10">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a href="https://flowbite.com/" className="flex items-center mb-4 sm:mb-0">
-            <img
+            <Image
+              width={32}
+              height={33}
               src="https://flowbite.com/docs/images/logo.svg"
               className="h-8 mr-3"
-              alt="Dublin Endodontics"
+              alt="Some Logo"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap">
-              Dublin Endodontics
+              Some Fake Company
             </span>
           </a>
           {(footerData.columns || []).map((column) => {
@@ -39,17 +44,14 @@ export const Footer: FC<FooterProps> = async ({ className }) => {
                 <H2>{column.heading}</H2>
                 <nav aria-label="Site map">
                   <ul>
-                    {(column.navItems || []).map((item) => {
-                      const { link } = item
-                      const { href, label } = useLink(link)
-                      const isCurrentPage = useCurrentPage(link)
+                    {(column.navItems || []).map(({ id: itemId, link }) => {
+                      const { href, label } = getLinkObject(link)
+                      const isCurrentPage = linkIsCurrentPage(link)
 
                       return (
-                        <li key={item.id} className="mr-4 hover:underline md:mr-6">
-                          <Link href={href}>{link.label}</Link>
-
+                        <li key={itemId} className="mr-4 hover:underline md:mr-6">
                           <Link legacyBehavior href={href}>
-                            <a aria-current={isCurrentPage}>{label}</a>
+                            <a {...(isCurrentPage && { 'aria-current': 'page' })}>{label}</a>
                           </Link>
                         </li>
                       )
@@ -64,7 +66,7 @@ export const Footer: FC<FooterProps> = async ({ className }) => {
         <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © 2023{' '}
           <a href="https://flowbite.com/" className="hover:underline">
-            Dublin Endodontics
+            Some Fake Company
           </a>
           . All Rights Reserved.
         </span>

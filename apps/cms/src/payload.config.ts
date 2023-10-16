@@ -1,11 +1,8 @@
 import { buildConfig } from 'payload/config'
-import { Categories } from './collections/categories'
 import { MainMenu, Footer, Address, ThemeVariables } from './globals'
 import { Media } from './collections/media'
 import { Pages } from './collections/pages'
-import { Posts } from './collections/posts'
 import { seed } from './seed'
-import { Tags } from './collections/tags'
 import { type Page } from './payload-types'
 import { type PluginConfig as FormBuilderPluginConfig } from '@payloadcms/plugin-form-builder/dist/types'
 import { type PluginConfig as SEOPluginConfig } from '@payloadcms/plugin-seo/dist/types'
@@ -63,7 +60,7 @@ export default buildConfig({
       }
     },
   },
-  collections: [Pages, Posts, Media, Categories, Tags, Users, ReusableContent],
+  collections: [Pages, Media, Users, ReusableContent],
   localization: {
     locales: ['en', 'es', 'fr'],
     defaultLocale: 'en',

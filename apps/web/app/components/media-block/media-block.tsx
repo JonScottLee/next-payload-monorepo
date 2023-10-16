@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import { StripBlockFields } from '@/utils'
 import { useTextEffects } from '@hooks/use-text-effects'
 import { useInView } from 'react-intersection-observer'
+import { Image } from './image'
 
 export const MediaBlock: FC<StripBlockFields<IMediaBlock>> = ({
   orientation,
@@ -51,7 +52,10 @@ export const MediaBlock: FC<StripBlockFields<IMediaBlock>> = ({
         <RichText className={textClasses} content={text} />
       </div>
 
-      <img className={imageClasses} src={image.url} alt={image.alt} />
+      <div className={imageClasses}>
+        {/*eslint-disable-next-line jsx-a11y/alt-text*/}
+        <Image {...image} />
+      </div>
     </div>
   )
 }

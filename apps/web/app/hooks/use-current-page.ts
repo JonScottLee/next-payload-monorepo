@@ -7,8 +7,6 @@ const linkIsCurrentPage = (link: ILink): boolean => {
   const { reference } = link
   const slug = ((reference?.value ?? {}) as Page).slug
 
-  console.log('fuck', link)
-
   if (!slug) return false
 
   return slug === currentPath

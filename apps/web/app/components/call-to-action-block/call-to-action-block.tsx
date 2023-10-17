@@ -18,16 +18,20 @@ export const CallToActionBlock: FC<StripBlockFields<ICallToAction>> = ({
   const { ref, inView } = useInView()
   const { baseClasses, visibleClasses } = useTextEffects({ textEffects })
 
-  const { href, label } = useLink(link);
-  
+  const { getLinkObject } = useLink()
+
   const classes = classNames(baseClasses, {
     [visibleClasses]: inView,
   })
 
+  const { href, label } = getLinkObject(link)
+
   return (
     <div ref={ref} className={classes}>
       <RichText content={text} />
-      <Link className="link" href={href}>{label}</Link>
+      <Link className="link" href={href}>
+        {label}
+      </Link>
     </div>
   )
 }

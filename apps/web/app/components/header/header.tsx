@@ -45,7 +45,6 @@ export const Header: FC<HeaderProps> = async ({ className }) => {
               const { href, label } = getLinkObject(link)
               const isCurrentPage = linkIsCurrentPage(link)
 
-              console.log(href, label)
               const classes = cx({
                 underline: isCurrentPage,
               })

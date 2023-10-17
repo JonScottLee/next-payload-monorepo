@@ -6,16 +6,14 @@ import { H1 } from '@org/uikit'
 import { RenderBlocks } from '../components/render-blocks/render-blocks'
 import { getPageData } from '@/utils'
 
-type DynamicRouteProps = {
-  params: {
-    slug: string[]
-  }
-}
-
 export { generateMetadata } from './generate-meta-data'
 
-const Page: FC<DynamicRouteProps> = async (props) => {
-  const { params } = props
+export default async function Page({
+  params,
+}: {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
   const { slug = ['home'] } = params
 
   const pageData = await getPageData(slug[0])
@@ -39,5 +37,3 @@ const Page: FC<DynamicRouteProps> = async (props) => {
     </div>
   )
 }
-
-export default Page

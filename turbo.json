@@ -3,13 +3,14 @@
   "pipeline": {
     "build": {
       "cache": false,
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "dist/**",
-        "build/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "build/**"]
+    },
+    "wait": {
+      "cache": false
+    },
+    "payload": {
+      "outputs": []
     },
     "lint": {
       "outputs": []
@@ -28,9 +29,7 @@
     },
     "serve": {
       "cache": false,
-      "dependsOn": [
-        "^serve"
-      ]
+      "dependsOn": ["^serve"]
     }
   },
   "globalEnv": [
@@ -46,6 +45,7 @@
     "PAYLOAD_SECRET",
     "NODE_ENV",
     "PAYLOAD_CONFIG_PATH",
-    "PAYLOAD_SEED"
+    "PAYLOAD_SEED",
+    "PAYLOAD_ONLY"
   ]
 }

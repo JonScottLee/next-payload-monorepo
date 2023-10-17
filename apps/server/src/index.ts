@@ -63,6 +63,18 @@ const HOSTNAME = process.env.HOSTNAME ?? '127.0.0.1'
 
 const server = express()
 
+const startPayload = async () => {
+  await payload.init({
+    secret: PAYLOAD_SECRET,
+    mongoURL: MONGODB_URL,
+    express: server,
+  })
+
+  server.listen(3000, async () => {
+    console.log('Express is now listening for incoming connections on port 3000.')
+  })
+}
+
 const start = async () => {
   await payload.init({
     secret: PAYLOAD_SECRET,
@@ -120,4 +132,8 @@ const start = async () => {
   }
 }
 
-start()
+if (process.env.PAYLOAD_ONLY) {
+  startPayload()
+} else {
+  start()
+}

@@ -24,7 +24,8 @@ export interface Config {
 export interface Page {
   id: string;
   title: string;
-  content: {
+  renderTitle?: boolean;
+  content?: {
     [k: string]: unknown;
   }[];
   blocks?: (

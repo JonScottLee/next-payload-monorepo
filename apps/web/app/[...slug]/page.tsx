@@ -20,13 +20,13 @@ export default async function Page({
 
   if (!pageData) return <NotFoundPage />
 
-  const { title, content, blocks } = pageData
+  const { title, content, blocks, renderTitle } = pageData
 
   return (
     <div className="flex flex-col h-screen justify-between">
       <Header className="mb-4" />
       <main>
-        <H1>{title}</H1>
+        {renderTitle && <H1>{title}</H1>}
 
         {content && <RichText content={content} />}
 

@@ -38,6 +38,15 @@ export const Pages: CollectionConfig = {
               localized: true,
               required: true,
             },
+            {
+              name: 'renderTitle',
+              type: 'checkbox',
+              label: 'Render Title',
+              defaultValue: true,
+              admin: {
+                description: 'Render the title in the page layout',
+              },
+            },
           ],
         },
         {
@@ -47,7 +56,6 @@ export const Pages: CollectionConfig = {
               name: 'content',
               type: 'richText',
               localized: true,
-              required: true,
             },
           ],
         },

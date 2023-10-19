@@ -92,7 +92,11 @@ const serialize = (children: RichTextType): React.ReactElement[] => {
         )
 
       default:
-        return <p key={i}>{serialize(children)}</p>
+        return (
+          <p className="mt-4" key={i}>
+            {serialize(children)}
+          </p>
+        )
     }
   })
 }

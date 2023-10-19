@@ -40,6 +40,7 @@ export interface Page {
     | IRowBlock
     | ITestimonialBlock
     | IReusableContentBlock
+    | ISpacerBlock
   )[];
   meta?: {
     title?: string;
@@ -367,6 +368,12 @@ export interface IRowBlock {
   id?: string;
   blockName?: string;
   blockType: 'row-block';
+}
+export interface ISpacerBlock {
+  space?: 'small' | 'medium' | 'large';
+  id?: string;
+  blockName?: string;
+  blockType: 'spacer-block';
 }
 export interface User {
   id: string;

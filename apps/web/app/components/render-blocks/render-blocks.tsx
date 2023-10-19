@@ -11,6 +11,7 @@ import {
   IRowBlock,
   ITestimonialBlock,
   ITextBlock,
+  ISpacerBlock,
 } from '@org/cms'
 import { FormBlock } from '../form-builder/form'
 import { MediaBlock } from '../media-block/media-block'
@@ -23,6 +24,7 @@ import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 import { RowBlock } from '../row-block/row-block'
 import { TestimonialBlock } from '../testimonial-block/testimonial-block'
 import { type ReusableContent as relatedCollectionType } from '@org/cms'
+import { SpacerBlock } from '../spacer-block/spacer-block'
 
 export type AllBlocks =
   | IFancyTextBlock
@@ -36,6 +38,7 @@ export type AllBlocks =
   | IRowBlock
   | ITestimonialBlock
   | IReusableContentBlock
+  | ISpacerBlock
 
 export const cmsBlockComponents: Record<string, FC<any>> = {
   'call-to-action-block': CallToActionBlock,
@@ -48,6 +51,7 @@ export const cmsBlockComponents: Record<string, FC<any>> = {
   'row-block': RowBlock,
   'text-block': TextBlock,
   'testimonial-block': TestimonialBlock,
+  'spacer-block': SpacerBlock,
 }
 
 type BlockWithBlocks = AllBlocks & {

@@ -49,7 +49,9 @@ export const MediaBlock: FC<StripBlockFields<IMediaBlock>> = ({
   return (
     <div className={wrapperClasses}>
       <div ref={ref} className={textWrapperClasses}>
-        <RichText className={textClasses} content={text} />
+        <div className={textClasses}>
+          <RichText content={text} />
+        </div>
       </div>
 
       <div className={imageClasses}>

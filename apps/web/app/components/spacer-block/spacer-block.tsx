@@ -4,8 +4,6 @@ import classNames from 'classnames'
 import { FC } from 'react'
 
 export const SpacerBlock: FC<StripBlockFields<ISpacerBlock>> = ({ space }) => {
-  console.log('fuck', space)
-
   const classes = classNames({
     'mt-4 lg:mt-6': space === 'small',
     'mt-8 lg:mt-10': space === 'medium',

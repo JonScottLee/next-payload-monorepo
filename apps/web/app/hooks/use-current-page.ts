@@ -1,6 +1,5 @@
-import { getCurrentPath } from '@/utils'
+import { getCurrentPath } from '@/utils/get-current-path'
 import { ILink, type Page } from '@org/cms'
-import { useLink } from '@hooks/use-link'
 
 const linkIsCurrentPage = (link: ILink): boolean => {
   const currentPath = getCurrentPath()

@@ -1,6 +1,6 @@
-import { getCurrentPath, getPageData } from '@/utils'
+import { getPageData } from '@/utils'
+import { getCurrentPath } from '@/utils/get-current-path'
 import { Metadata } from 'next'
-import { headers } from 'next/headers'
 
 type MetaDataProps = {
   params: { productId: string }

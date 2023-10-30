@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import { getCurrentPath, getData } from '@/utils'
+import { getData } from '@/utils'
+import { getCurrentPath } from '@/utils/get-current-path'
 import { type Page, type MainMenu } from '@org/cms'
 import cx from 'classnames'
 import { useLink } from '@hooks/use-link'

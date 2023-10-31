@@ -1,15 +1,28 @@
 import { FC } from 'react'
 import { RichText } from '../rich-text/rich-text'
 import { StripBlockFields } from '@/utils'
-import { IResponsiveGrid, IReusableContentBlock } from '@org/cms'
-import {
-  AllBlocks,
-  isReusableContentBlock,
-  normalizeBlocks,
-  renderBlock,
-} from '../render-blocks/render-blocks'
+import { IResponsiveGrid } from '@org/cms'
+import { RenderBlocks } from '../render-blocks/render-blocks'
 import classNames from 'classnames'
-import { renderReusableContentBlock } from '../render-blocks/render-blocks'
+import { AllBlocks } from '../render-blocks/types'
+import { TestimonialBlock } from '../testimonial-block/testimonial-block'
+import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
+import { FancyTextBlock } from '../fancy-text-block/fancy-text-block'
+import { FormBlock } from '../form-builder/form'
+import { MediaBlock } from '../media-block/media-block'
+import { NumberToutBlock } from '../number-tout-block/number-tout-block'
+import { TextBlock } from '../text-block/text-block'
+import { normalizeBlocks } from '@/utils/normalize-blocks'
+
+const childBlocks = {
+  'call-to-action-block': CallToActionBlock,
+  'fancy-text-block': FancyTextBlock,
+  'form-block': FormBlock,
+  'media-block': MediaBlock,
+  'number-tout-block': NumberToutBlock,
+  'text-block': TextBlock,
+  'testimonial-block': TestimonialBlock,
+}
 
 export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
   headerText,
@@ -33,7 +46,9 @@ export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
         <RichText content={headerText} />
       </div>
 
-      <div className={classes}>{blocks?.map((block) => renderBlock(block))}</div>
+      <div className={classes}>
+        <RenderBlocks componentMap={childBlocks} blocks={blocks} />
+      </div>
 
       <div className="mt-10">
         <RichText content={trailingContent} />

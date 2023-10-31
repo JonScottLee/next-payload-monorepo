@@ -5,6 +5,7 @@ import { Header, Footer, RichText } from '@components'
 import { H1 } from '@org/uikit'
 import { RenderBlocks } from '../components/render-blocks/render-blocks'
 import { getPageData } from '@/utils'
+import { allComponents } from '../components/component-map'
 
 export { generateMetadata } from './generate-meta-data'
 
@@ -25,12 +26,13 @@ export default async function Page({
   return (
     <div className="flex flex-col h-screen justify-between">
       <Header className="mb-4" />
+
       <main>
         {renderTitle && <H1>{title}</H1>}
 
         {content && <RichText content={content} />}
 
-        <RenderBlocks blocks={blocks} />
+        <RenderBlocks componentMap={allComponents} blocks={blocks} />
       </main>
 
       <Footer className="mt-4" />

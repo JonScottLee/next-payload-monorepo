@@ -2,7 +2,24 @@ import { FC } from 'react'
 import { IRowBlock } from '@org/cms'
 import classNames from 'classnames'
 import { RichText } from '../rich-text/rich-text'
-import { renderBlock } from '../render-blocks/render-blocks'
+import { RenderBlocks } from '../render-blocks/render-blocks'
+import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
+import { FancyTextBlock } from '../fancy-text-block/fancy-text-block'
+import { FormBlock } from '../form-builder/form'
+import { MediaBlock } from '../media-block/media-block'
+import { NumberToutBlock } from '../number-tout-block/number-tout-block'
+import { TestimonialBlock } from '../testimonial-block/testimonial-block'
+import { TextBlock } from '../text-block/text-block'
+
+const childBlocks = {
+  'call-to-action-block': CallToActionBlock,
+  'fancy-text-block': FancyTextBlock,
+  'form-block': FormBlock,
+  'media-block': MediaBlock,
+  'number-tout-block': NumberToutBlock,
+  'text-block': TextBlock,
+  'testimonial-block': TestimonialBlock,
+}
 
 export const RowBlock: FC<IRowBlock> = ({ headerText, blocks, wrap }) => {
   const classes = classNames('flex', {
@@ -13,13 +30,7 @@ export const RowBlock: FC<IRowBlock> = ({ headerText, blocks, wrap }) => {
     <div>
       <RichText content={headerText} />
       <div className={classes}>
-        {blocks?.map((block, i) => {
-          return (
-            <div key={block.id} className="flex-1">
-              {renderBlock(block)}
-            </div>
-          )
-        })}
+        <RenderBlocks blocks={blocks} componentMap={childBlocks} classNames="flex-1" />
       </div>
     </div>
   )

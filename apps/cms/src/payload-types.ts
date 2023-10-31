@@ -34,13 +34,14 @@ export interface Page {
     | IFormBlock
     | IMapBlock
     | IMediaBlock
-    | IResponsiveGrid
-    | ITextBlock
     | INumberTout
-    | IRowBlock
-    | ITestimonialBlock
+    | IResponsiveGrid
     | IReusableContentBlock
+    | IRowBlock
+    | ISlider
     | ISpacerBlock
+    | ITestimonialBlock
+    | ITextBlock
   )[];
   meta?: {
     title?: string;
@@ -306,6 +307,15 @@ export interface IMediaBlock {
   blockName?: string;
   blockType: 'media-block';
 }
+export interface INumberTout {
+  number: number;
+  numberSuffix?: string;
+  countUp?: boolean;
+  text: string;
+  id?: string;
+  blockName?: string;
+  blockType: 'number-tout-block';
+}
 export interface IResponsiveGrid {
   headerText?: {
     [k: string]: unknown;
@@ -325,15 +335,6 @@ export interface ITextBlock {
   id?: string;
   blockName?: string;
   blockType: 'text-block';
-}
-export interface INumberTout {
-  number: number;
-  numberSuffix?: string;
-  countUp?: boolean;
-  text: string;
-  id?: string;
-  blockName?: string;
-  blockType: 'number-tout-block';
 }
 export interface ITestimonialBlock {
   headline: string;
@@ -370,6 +371,18 @@ export interface IRowBlock {
   id?: string;
   blockName?: string;
   blockType: 'row-block';
+}
+export interface ISlider {
+  headerText?: {
+    [k: string]: unknown;
+  }[];
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
+  blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock | ITestimonialBlock | IReusableContentBlock)[];
+  id?: string;
+  blockName?: string;
+  blockType: 'slider-block';
 }
 export interface ISpacerBlock {
   space?: 'small' | 'medium' | 'large';

@@ -10,6 +10,7 @@ import { RowBlock } from './row-block/row-block'
 import { SpacerBlock } from './spacer-block/spacer-block'
 import { TestimonialBlock } from './testimonial-block/testimonial-block'
 import { TextBlock } from './text-block/text-block'
+import { SliderBlock } from './slider/slider'
 
 export const allComponents: Record<string, FC<any>> = {
   'call-to-action-block': CallToActionBlock,
@@ -20,7 +21,8 @@ export const allComponents: Record<string, FC<any>> = {
   'number-tout-block': NumberToutBlock,
   'responsive-grid-block': ResponsiveGridBlock,
   'row-block': RowBlock,
-  'text-block': TextBlock,
-  'testimonial-block': TestimonialBlock,
+  'slider-block': SliderBlock,
   'spacer-block': SpacerBlock,
+  'testimonial-block': TestimonialBlock,
+  'text-block': TextBlock,
 }

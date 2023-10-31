@@ -5,17 +5,19 @@ import { ITestimonialBlock } from '@org/cms'
 import classNames from 'classnames'
 
 export const TestimonialBlock: FC<StripBlockFields<ITestimonialBlock>> = ({
-  text,
   author,
   headline,
+  text,
+  title,
 }) => {
-  const classes = classNames('text-center sm:text-left')
-
   return (
-    <div className={classes}>
+    <div>
       <h3 className="text-xl mb-2">{headline}</h3>
       <RichText content={text} />
-      <p className="mt-4">-{author}</p>
+      <p className="mt-4">
+        <div>{author}</div>
+        <div>{title}</div>
+      </p>
     </div>
   )
 }

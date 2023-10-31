@@ -49,7 +49,7 @@ export const SliderBlock: FC<StripBlockFields<ISlider>> = ({
         <RichText content={headerText} />
       </div>
 
-      <div className="text-center mx-auto w-1/3">
+      <div className="text-center mx-auto md:w-3/4 lg:w-1/3">
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           onSlideChange={() => console.log('slide change')}

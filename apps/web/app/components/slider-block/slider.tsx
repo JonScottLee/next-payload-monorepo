@@ -23,6 +23,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
+import { BlockHeaderField } from '../block-header-field/block-header-field'
 
 const childBlocks = {
   'call-to-action-block': CallToActionBlock,
@@ -35,19 +36,19 @@ const childBlocks = {
 }
 
 export const SliderBlock: FC<StripBlockFields<ISlider>> = ({
-  headerText,
+  blockHeader,
   blocks: _blocks,
   trailingContent,
 }) => {
+  const { showHeader, headerText } = blockHeader || {}
+
   if (!_blocks) return null
 
   let blocks: AllBlocks[] = normalizeBlocks(_blocks)
 
   return (
     <>
-      <div className="mb-4">
-        <RichText content={headerText} />
-      </div>
+      <BlockHeaderField showHeader={showHeader} headerText={headerText} />
 
       <div className="text-center mx-auto md:w-3/4 lg:w-1/3">
         <Swiper

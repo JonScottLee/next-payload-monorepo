@@ -5,15 +5,13 @@ import { NumberTout } from '../number-tout/block'
 import { MediaBlock } from '../media-block/block'
 import { TestimonialBlock } from '../testimonial-block/block'
 import { ReusableContent } from '../reusable-content/block'
+import { blockHeader } from '../../fields/block-header'
 
 export const ResponsiveGridBlock: Block = {
   slug: 'responsive-grid-block',
   interfaceName: 'IResponsiveGrid',
   fields: [
-    {
-      name: 'headerText',
-      type: 'richText',
-    },
+    blockHeader,
     {
       name: 'trailingContent',
       type: 'richText',

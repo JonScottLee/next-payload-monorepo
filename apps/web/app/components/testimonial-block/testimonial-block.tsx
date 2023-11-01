@@ -14,10 +14,10 @@ export const TestimonialBlock: FC<StripBlockFields<ITestimonialBlock>> = ({
     <div>
       <h3 className="text-xl mb-2">{headline}</h3>
       <RichText content={text} />
-      <p className="mt-4">
-        <div>{author}</div>
-        <div>{title}</div>
-      </p>
+      <ul className="mt-4">
+        <li>{author}</li>
+        <li>{title}</li>
+      </ul>
     </div>
   )
 }

@@ -10,7 +10,7 @@ import { RowBlock } from './row-block/row-block'
 import { SpacerBlock } from './spacer-block/spacer-block'
 import { TestimonialBlock } from './testimonial-block/testimonial-block'
 import { TextBlock } from './text-block/text-block'
-import { SliderBlock } from './slider/slider'
+import { SliderBlock } from './slider-block/slider'
 
 export const allComponents: Record<string, FC<any>> = {
   'call-to-action-block': CallToActionBlock,

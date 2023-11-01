@@ -317,9 +317,7 @@ export interface INumberTout {
   blockType: 'number-tout-block';
 }
 export interface IResponsiveGrid {
-  headerText?: {
-    [k: string]: unknown;
-  }[];
+  blockHeader?: IBlockHeader;
   trailingContent?: {
     [k: string]: unknown;
   }[];
@@ -327,6 +325,12 @@ export interface IResponsiveGrid {
   id?: string;
   blockName?: string;
   blockType: 'responsive-grid-block';
+}
+export interface IBlockHeader {
+  headerText?: {
+    [k: string]: unknown;
+  }[];
+  showHeader?: boolean;
 }
 export interface ITextBlock {
   text: {
@@ -373,9 +377,7 @@ export interface IRowBlock {
   blockType: 'row-block';
 }
 export interface ISlider {
-  headerText?: {
-    [k: string]: unknown;
-  }[];
+  blockHeader?: IBlockHeader;
   trailingContent?: {
     [k: string]: unknown;
   }[];

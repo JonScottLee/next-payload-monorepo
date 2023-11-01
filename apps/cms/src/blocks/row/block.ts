@@ -4,15 +4,13 @@ import { CallToActionBlock } from '../call-to-action/block'
 import { NumberTout } from '../number-tout/block'
 import { MediaBlock } from '../media-block/block'
 import { TestimonialBlock } from '../testimonial-block/block'
+import { blockHeader } from '../../fields/block-header'
 
 export const RowBlock: Block = {
   slug: 'row-block',
   interfaceName: 'IRowBlock',
   fields: [
-    {
-      name: 'headerText',
-      type: 'richText',
-    },
+    blockHeader,
     {
       name: 'wrap',
       type: 'checkbox',

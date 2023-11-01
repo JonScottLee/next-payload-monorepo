@@ -14,6 +14,7 @@ import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 import { TextBlock } from '../text-block/text-block'
 import { normalizeBlocks } from '@/utils/normalize-blocks'
 import { BlockHeaderField } from '../block-header-field/block-header-field'
+import { useBlockHeader } from '@/app/hooks/use-block-header'
 
 const childBlocks = {
   'call-to-action-block': CallToActionBlock,
@@ -30,7 +31,7 @@ export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
   blocks: _blocks,
   trailingContent,
 }) => {
-  const { showHeader, headerText } = blockHeader || {}
+  const header = useBlockHeader(blockHeader)
 
   let blocks: AllBlocks[] = normalizeBlocks(_blocks || [])
 
@@ -43,9 +44,7 @@ export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
 
   return (
     <>
-      <div className="mb-4">
-        <BlockHeaderField showHeader={showHeader} headerText={headerText} />
-      </div>
+      <div className="mb-4">{header}</div>
 
       <div className={classes}>
         <RenderBlocks componentMap={childBlocks} blocks={blocks} />

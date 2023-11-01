@@ -10,6 +10,7 @@ import { MediaBlock } from '../media-block/media-block'
 import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 import { TestimonialBlock } from '../testimonial-block/testimonial-block'
 import { TextBlock } from '../text-block/text-block'
+import { useBlockHeader } from '@/app/hooks/use-block-header'
 
 const childBlocks = {
   'call-to-action-block': CallToActionBlock,
@@ -21,14 +22,16 @@ const childBlocks = {
   'testimonial-block': TestimonialBlock,
 }
 
-export const RowBlock: FC<IRowBlock> = ({ headerText, blocks, wrap }) => {
+export const RowBlock: FC<IRowBlock> = ({ blockHeader, blocks, wrap }) => {
+  const header = useBlockHeader(blockHeader)
+
   const classes = classNames('flex', {
     'flex-wrap': wrap,
   })
 
   return (
     <div>
-      <RichText content={headerText} />
+      {header}
       <div className={classes}>
         <RenderBlocks blocks={blocks} componentMap={childBlocks} classNames="flex-1" />
       </div>

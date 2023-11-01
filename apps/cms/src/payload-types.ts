@@ -367,9 +367,7 @@ export interface ReusableContent {
   _status?: 'draft' | 'published';
 }
 export interface IRowBlock {
-  headerText?: {
-    [k: string]: unknown;
-  }[];
+  blockHeader?: IBlockHeader;
   wrap?: boolean;
   blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock | ITestimonialBlock)[];
   id?: string;

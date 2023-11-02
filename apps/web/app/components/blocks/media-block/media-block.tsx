@@ -1,7 +1,7 @@
 'use client'
 
 import { FC } from 'react'
-import { RichText } from '../rich-text/rich-text'
+import { RichText } from '../../rich-text/rich-text'
 import { IMediaBlock, Media } from '@org/cms'
 import classNames from 'classnames'
 import { StripBlockFields } from '@/utils'

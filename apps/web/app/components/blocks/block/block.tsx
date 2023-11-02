@@ -1,6 +1,6 @@
 import { IBlockHeader } from '@org/cms'
 import { PropsWithChildren, FC } from 'react'
-import { RichText } from '../rich-text/rich-text'
+import { RichText } from '../../rich-text/rich-text'
 
 interface BlockHeaderProps extends IBlockHeader {
   className?: string

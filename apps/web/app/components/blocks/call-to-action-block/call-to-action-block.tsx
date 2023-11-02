@@ -1,7 +1,7 @@
 'use client'
 
 import { FC } from 'react'
-import { RichText } from '../rich-text/rich-text'
+import { RichText } from '../../rich-text/rich-text'
 import { StripBlockFields } from '@/utils'
 import { ICallToAction, IFancyTextBlock, Media } from '@org/cms'
 import { useInView } from 'react-intersection-observer'

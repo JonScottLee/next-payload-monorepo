@@ -3,7 +3,7 @@ import NotFoundPage from '../404/page'
 import { type Page } from '@org/cms'
 import { Header, Footer, RichText } from '@components'
 import { H1 } from '@org/uikit'
-import { RenderBlocks } from '../components/block-helpers/render-blocks'
+import { RenderBlocks } from '../components/blocks/block-helpers/render-blocks'
 import { getPageData } from '@/utils'
 import { allComponents } from '../components/component-map'
 

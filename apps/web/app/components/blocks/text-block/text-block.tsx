@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { RichText } from '../rich-text/rich-text'
+import { RichText } from '../../rich-text/rich-text'
 import { StripBlockFields } from '@/utils'
 import { ITextBlock } from '@org/cms'
 import { Block } from '../block/block'

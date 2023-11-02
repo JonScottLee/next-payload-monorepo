@@ -1,7 +1,7 @@
 'use client'
 
 import { FC } from 'react'
-import { RichText } from '../rich-text/rich-text'
+import { RichText } from '../../rich-text/rich-text'
 import { StripBlockFields } from '@/utils'
 
 import { ISlider } from '@org/cms'
@@ -9,7 +9,7 @@ import { AllBlocks } from '../block-helpers/types'
 import { TestimonialBlock } from '../testimonial-block/testimonial-block'
 import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
 import { FancyTextBlock } from '../fancy-text-block/fancy-text-block'
-import { FormBlock } from '../form-builder/form'
+import { FormBlock } from '../../form-builder/form'
 import { MediaBlock } from '../media-block/media-block'
 import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 import { TextBlock } from '../text-block/text-block'

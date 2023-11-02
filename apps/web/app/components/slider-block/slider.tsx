@@ -23,7 +23,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
-import { BlockHeaderField } from '../block-header-field/block-header-field'
+import { Block } from '../block/block'
 
 const childBlocks = {
   'call-to-action-block': CallToActionBlock,
@@ -40,17 +40,15 @@ export const SliderBlock: FC<StripBlockFields<ISlider>> = ({
   blocks: _blocks,
   trailingContent,
 }) => {
-  const { showHeader, headerText } = blockHeader || {}
-
   if (!_blocks) return null
 
   let blocks: AllBlocks[] = normalizeBlocks(_blocks)
 
   return (
-    <>
-      <BlockHeaderField showHeader={showHeader} headerText={headerText} />
+    <Block>
+      <Block.Header {...blockHeader} />
 
-      <div className="text-center mx-auto md:w-3/4 lg:w-1/3">
+      <Block.Body className="text-center mx-auto md:w-3/4 lg:w-1/3">
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           onSlideChange={() => console.log('slide change')}
@@ -64,10 +62,11 @@ export const SliderBlock: FC<StripBlockFields<ISlider>> = ({
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
-      <div className="mt-10">
+      </Block.Body>
+
+      <Block.Footer>
         <RichText content={trailingContent} />
-      </div>
-    </>
+      </Block.Footer>
+    </Block>
   )
 }

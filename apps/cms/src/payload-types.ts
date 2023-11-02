@@ -55,6 +55,7 @@ export interface Page {
   _status?: 'draft' | 'published';
 }
 export interface ICallToAction {
+  blockHeader?: IBlockHeader;
   text: {
     [k: string]: unknown;
   }[];
@@ -65,6 +66,12 @@ export interface ICallToAction {
   id?: string;
   blockName?: string;
   blockType: 'call-to-action-block';
+}
+export interface IBlockHeader {
+  headerText?: {
+    [k: string]: unknown;
+  }[];
+  showHeader?: boolean;
 }
 export interface Media {
   id: string;
@@ -153,6 +160,7 @@ export interface ILink {
   label: string;
 }
 export interface IFancyTextBlock {
+  blockHeader?: IBlockHeader;
   text: {
     [k: string]: unknown;
   }[];
@@ -162,6 +170,7 @@ export interface IFancyTextBlock {
   blockType: 'fancy-text-block';
 }
 export interface IFormBlock {
+  blockHeader?: IBlockHeader;
   form: string | Form;
   enableIntro?: boolean;
   introContent: {
@@ -290,12 +299,14 @@ export interface Form {
   createdAt: string;
 }
 export interface IMapBlock {
+  blockHeader?: IBlockHeader;
   mapQuery?: string;
   id?: string;
   blockName?: string;
   blockType: 'map-block';
 }
 export interface IMediaBlock {
+  blockHeader?: IBlockHeader;
   orientation?: 'vertical' | 'horizontal' | 'responsive';
   text: {
     [k: string]: unknown;
@@ -308,6 +319,7 @@ export interface IMediaBlock {
   blockType: 'media-block';
 }
 export interface INumberTout {
+  blockHeader?: IBlockHeader;
   number: number;
   numberSuffix?: string;
   countUp?: boolean;
@@ -326,13 +338,8 @@ export interface IResponsiveGrid {
   blockName?: string;
   blockType: 'responsive-grid-block';
 }
-export interface IBlockHeader {
-  headerText?: {
-    [k: string]: unknown;
-  }[];
-  showHeader?: boolean;
-}
 export interface ITextBlock {
+  blockHeader?: IBlockHeader;
   text: {
     [k: string]: unknown;
   }[];
@@ -341,7 +348,7 @@ export interface ITextBlock {
   blockType: 'text-block';
 }
 export interface ITestimonialBlock {
-  headline: string;
+  blockHeader?: IBlockHeader;
   text: {
     [k: string]: unknown;
   }[];

@@ -13,8 +13,7 @@ import { MediaBlock } from '../media-block/media-block'
 import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 import { TextBlock } from '../text-block/text-block'
 import { normalizeBlocks } from '@/utils/normalize-blocks'
-import { BlockHeaderField } from '../block-header-field/block-header-field'
-import { useBlockHeader } from '@/app/hooks/use-block-header'
+import { Block } from '../block/block'
 
 const childBlocks = {
   'call-to-action-block': CallToActionBlock,
@@ -31,8 +30,6 @@ export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
   blocks: _blocks,
   trailingContent,
 }) => {
-  const header = useBlockHeader(blockHeader)
-
   let blocks: AllBlocks[] = normalizeBlocks(_blocks || [])
 
   const columns = blocks?.length || 0
@@ -43,16 +40,16 @@ export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
   })
 
   return (
-    <>
-      <div className="mb-4">{header}</div>
+    <Block>
+      <Block.Header {...blockHeader} />
 
-      <div className={classes}>
+      <Block.Body className={classes}>
         <RenderBlocks componentMap={childBlocks} blocks={blocks} />
-      </div>
+      </Block.Body>
 
-      <div className="mt-10">
+      <Block.Footer>
         <RichText content={trailingContent} />
-      </div>
-    </>
+      </Block.Footer>
+    </Block>
   )
 }

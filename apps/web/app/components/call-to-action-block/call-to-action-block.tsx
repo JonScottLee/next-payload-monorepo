@@ -9,14 +9,19 @@ import classNames from 'classnames'
 import { useTextEffects } from '@hooks/use-text-effects'
 import Link from 'next/link'
 import { useLink } from '@hooks/use-link'
+import { useBlockHeader } from '@/app/hooks/use-block-header'
+import { Block } from '../block/block'
 
 export const CallToActionBlock: FC<StripBlockFields<ICallToAction>> = ({
   alignment,
   background,
+  blockHeader,
   text,
   textEffects = {},
   link,
 }) => {
+  const header = useBlockHeader(blockHeader)
+
   const { ref, inView } = useInView()
   const { baseClasses: baseTextClasses, visibleClasses: visibleTextClasses } = useTextEffects({
     textEffects,
@@ -42,17 +47,23 @@ export const CallToActionBlock: FC<StripBlockFields<ICallToAction>> = ({
   const { href, label } = getLinkObject(link)
 
   return (
-    <div
-      ref={ref}
-      className={wrapperClasses}
-      style={{ backgroundImage: `url(${backgroundImageString})` }}
-    >
-      <div className={contentClasses}>
-        <RichText content={text} />
-        <Link className="link" href={href}>
-          {label}
-        </Link>
-      </div>
-    </div>
+    <Block>
+      <Block.Header {...blockHeader} />
+
+      <Block.Body>
+        <div
+          ref={ref}
+          className={wrapperClasses}
+          style={{ backgroundImage: `url(${backgroundImageString})` }}
+        >
+          <div className={contentClasses}>
+            <RichText content={text} />
+            <Link className="link" href={href}>
+              {label}
+            </Link>
+          </div>
+        </div>
+      </Block.Body>
+    </Block>
   )
 }

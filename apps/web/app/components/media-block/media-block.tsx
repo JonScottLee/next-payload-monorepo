@@ -8,8 +8,10 @@ import { StripBlockFields } from '@/utils'
 import { useTextEffects } from '@hooks/use-text-effects'
 import { useInView } from 'react-intersection-observer'
 import { Image } from './image'
+import { Block } from '../block/block'
 
 export const MediaBlock: FC<StripBlockFields<IMediaBlock>> = ({
+  blockHeader,
   orientation,
   position,
   text,
@@ -47,17 +49,21 @@ export const MediaBlock: FC<StripBlockFields<IMediaBlock>> = ({
   })
 
   return (
-    <div className={wrapperClasses}>
-      <div ref={ref} className={textWrapperClasses}>
-        <div className={textClasses}>
-          <RichText content={text} />
-        </div>
-      </div>
+    <Block className={wrapperClasses}>
+      <Block.Header {...blockHeader} />
 
-      <div className={imageClasses}>
-        {/*eslint-disable-next-line jsx-a11y/alt-text*/}
-        <Image {...image} />
-      </div>
-    </div>
+      <Block.Body>
+        <div ref={ref} className={textWrapperClasses}>
+          <div className={textClasses}>
+            <RichText content={text} />
+          </div>
+        </div>
+
+        <div className={imageClasses}>
+          {/*eslint-disable-next-line jsx-a11y/alt-text*/}
+          <Image {...image} />
+        </div>
+      </Block.Body>
+    </Block>
   )
 }

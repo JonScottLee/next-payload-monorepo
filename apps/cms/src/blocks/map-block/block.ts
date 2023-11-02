@@ -1,9 +1,11 @@
 import { Block } from 'payload/types'
+import { blockHeader } from '../../fields/block-header'
 
 export const MapBlock: Block = {
   slug: 'map-block',
   interfaceName: 'IMapBlock',
   fields: [
+    blockHeader,
     {
       name: 'mapQuery',
       label: 'Map Query String',

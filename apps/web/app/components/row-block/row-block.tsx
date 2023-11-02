@@ -11,6 +11,7 @@ import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 import { TestimonialBlock } from '../testimonial-block/testimonial-block'
 import { TextBlock } from '../text-block/text-block'
 import { useBlockHeader } from '@/app/hooks/use-block-header'
+import { Block } from '../block/block'
 
 const childBlocks = {
   'call-to-action-block': CallToActionBlock,
@@ -30,11 +31,12 @@ export const RowBlock: FC<IRowBlock> = ({ blockHeader, blocks, wrap }) => {
   })
 
   return (
-    <div>
-      {header}
-      <div className={classes}>
+    <Block>
+      <Block.Header {...blockHeader} />
+
+      <Block.Body className={classes}>
         <RenderBlocks blocks={blocks} componentMap={childBlocks} classNames="flex-1" />
-      </div>
-    </div>
+      </Block.Body>
+    </Block>
   )
 }

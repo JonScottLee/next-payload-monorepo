@@ -1,15 +1,11 @@
 import { Block } from 'payload/types'
+import { blockHeader } from '../../fields/block-header'
 
 export const TestimonialBlock: Block = {
   slug: 'testimonial-block',
   interfaceName: 'ITestimonialBlock',
   fields: [
-    {
-      name: 'headline',
-      label: 'Headline',
-      type: 'text',
-      required: true,
-    },
+    blockHeader,
     {
       name: 'text',
       label: 'Text',

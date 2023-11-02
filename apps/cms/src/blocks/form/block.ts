@@ -1,5 +1,6 @@
 import { Block } from 'payload/types'
 import { richText } from '../../fields/rich-text'
+import { blockHeader } from '../../fields/block-header'
 
 export const FormBlock: Block = {
   slug: 'form-block',
@@ -12,6 +13,7 @@ export const FormBlock: Block = {
     singularName: 'FormBlock',
   },
   fields: [
+    blockHeader,
     {
       name: 'form',
       type: 'relationship',

@@ -1,10 +1,12 @@
 import { Block } from 'payload/types'
 import { textEffects } from '../../fields/text-effects'
+import { blockHeader } from '../../fields/block-header'
 
 export const NumberTout: Block = {
   slug: 'number-tout-block',
   interfaceName: 'INumberTout',
   fields: [
+    blockHeader,
     {
       name: 'number',
       label: 'Number',
@@ -12,7 +14,7 @@ export const NumberTout: Block = {
       required: true,
       admin: {
         width: '25%',
-      }
+      },
     },
     {
       name: 'numberSuffix',
@@ -20,7 +22,7 @@ export const NumberTout: Block = {
       type: 'text',
       admin: {
         width: '10%',
-      }
+      },
     },
     {
       name: 'countUp',

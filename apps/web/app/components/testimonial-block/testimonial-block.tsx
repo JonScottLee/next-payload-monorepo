@@ -3,21 +3,24 @@ import { RichText } from '../rich-text/rich-text'
 import { StripBlockFields } from '@/utils'
 import { ITestimonialBlock } from '@org/cms'
 import classNames from 'classnames'
+import { Block } from '../block/block'
 
 export const TestimonialBlock: FC<StripBlockFields<ITestimonialBlock>> = ({
   author,
-  headline,
+  blockHeader,
   text,
   title,
 }) => {
   return (
-    <div>
-      <h3 className="text-xl mb-2">{headline}</h3>
-      <RichText content={text} />
-      <ul className="mt-4">
-        <li>{author}</li>
-        <li>{title}</li>
-      </ul>
-    </div>
+    <Block>
+      <Block.Header {...blockHeader} />
+      <Block.Body>
+        <RichText content={text} />
+        <ul className="mt-4">
+          <li>{author}</li>
+          <li>{title}</li>
+        </ul>
+      </Block.Body>
+    </Block>
   )
 }

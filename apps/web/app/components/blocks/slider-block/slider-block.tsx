@@ -4,8 +4,7 @@ import { FC } from 'react'
 import { RichText } from '../../fields/rich-text/rich-text'
 import { StripBlockFields } from '@utils/strip-block-fields'
 
-import { ISlider } from '@org/cms'
-import { AllBlocks } from '../block-helpers/types'
+import { ISlider, type Page } from '@org/cms'
 import { TestimonialBlock } from '../testimonial-block/testimonial-block'
 import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
 import { FancyTextBlock } from '../fancy-text-block/fancy-text-block'
@@ -42,7 +41,7 @@ export const SliderBlock: FC<StripBlockFields<ISlider>> = ({
 }) => {
   if (!_blocks) return null
 
-  let blocks: AllBlocks[] = normalizeBlocks(_blocks)
+  let blocks: Page['blocks'] = normalizeBlocks(_blocks)
 
   return (
     <Block>

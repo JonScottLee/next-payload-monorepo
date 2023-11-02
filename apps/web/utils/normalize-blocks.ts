@@ -1,4 +1,4 @@
-import { AllBlocks } from '@/app/components/blocks/block-helpers/types'
+import { AllBlocks } from '@/app/components/blocks/types'
 
 export const normalizeBlocks = (blocks: AllBlocks[]): AllBlocks[] => {
   let normalizedBlocks: AllBlocks[] = []

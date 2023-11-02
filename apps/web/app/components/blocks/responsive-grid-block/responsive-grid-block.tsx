@@ -1,10 +1,9 @@
 import { FC } from 'react'
 import { RichText } from '../../fields/rich-text/rich-text'
 import { StripBlockFields } from '@utils/strip-block-fields'
-import { IResponsiveGrid } from '@org/cms'
+import { IResponsiveGrid, type Page } from '@org/cms'
 import { RenderBlocks } from '../block-helpers/render-blocks'
 import classNames from 'classnames'
-import { AllBlocks } from '../block-helpers/types'
 import { TestimonialBlock } from '../testimonial-block/testimonial-block'
 import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
 import { FancyTextBlock } from '../fancy-text-block/fancy-text-block'
@@ -30,7 +29,7 @@ export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
   blocks: _blocks,
   trailingContent,
 }) => {
-  let blocks: AllBlocks[] = normalizeBlocks(_blocks || [])
+  let blocks: Page['blocks'] = normalizeBlocks(_blocks || [])
 
   const columns = blocks?.length || 0
 

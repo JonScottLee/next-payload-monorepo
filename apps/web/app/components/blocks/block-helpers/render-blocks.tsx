@@ -1,24 +1,15 @@
-import { FC, Fragment } from 'react'
-import { IReusableContentBlock } from '@org/cms'
-import { AllBlocks } from './types'
-
-type BlockWithBlocks = AllBlocks & {
-  blocks: AllBlocks[]
-}
+import { FC } from 'react'
+import { IReusableContentBlock, type Page } from '@org/cms'
 
 type RenderBlockProps = {
-  block: AllBlocks
+  block: NonNullable<Page['blocks']>[0]
   componentMap: Record<string, FC<any>>
 }
 
 type RenderBlocksProps = {
-  blocks?: AllBlocks[] | BlockWithBlocks[]
+  blocks?: Page['blocks']
   componentMap: Record<string, FC<any>>
   classNames?: string
-}
-
-export const isReusableContentBlock = (block: AllBlocks): block is IReusableContentBlock => {
-  return 'reusableContent' in block
 }
 
 export const renderBlock: FC<RenderBlockProps> = ({ componentMap, block }) => {
@@ -29,7 +20,7 @@ export const renderBlock: FC<RenderBlockProps> = ({ componentMap, block }) => {
   return <BlockComponent {...block} />
 }
 
-export const RenderBlocks: FC<RenderBlocksProps> = ({ classNames, componentMap, blocks }) => {
+export const RenderBlocks: FC<RenderBlocksProps> = ({ classNames, componentMap, blocks = [] }) => {
   if (!blocks) return null
 
   return (

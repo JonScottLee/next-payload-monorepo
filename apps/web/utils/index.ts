@@ -28,5 +28,3 @@ export const getPageData = async (slug: string): Promise<Page | null> => {
 
   return getPageFromSlug({ pages, slug })
 }
-
-export type StripBlockFields<T> = Omit<T, 'id' | 'blockName' | 'blockType'>

@@ -71,7 +71,6 @@ export interface IBlockHeader {
   headerText?: {
     [k: string]: unknown;
   }[];
-  showHeader?: boolean;
 }
 export interface Media {
   id: string;

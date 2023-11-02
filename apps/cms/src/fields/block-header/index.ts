@@ -13,11 +13,5 @@ export const blockHeader: Field = {
       label: 'Block Header Text',
       type: 'richText',
     },
-    {
-      name: 'showHeader',
-      label: 'Show Header Text',
-      type: 'checkbox',
-      defaultValue: true,
-    },
   ],
 }

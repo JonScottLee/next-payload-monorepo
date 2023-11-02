@@ -20,7 +20,11 @@ export const renderBlock: FC<RenderBlockProps> = ({ componentMap, block }) => {
   return <BlockComponent {...block} />
 }
 
-export const RenderBlocks: FC<RenderBlocksProps> = ({ classNames, componentMap, blocks = [] }) => {
+export const RenderBlocks: FC<RenderBlocksProps> = ({
+  classNames = '',
+  componentMap,
+  blocks = [],
+}) => {
   if (!blocks) return null
 
   return (

@@ -6,12 +6,23 @@ interface BlockHeaderProps extends IBlockHeader {
   className?: string
 }
 
+const hasHeaderText = (headerText: any): boolean => {
+  if (!headerText) return false
+
+  try {
+    //@ts-ignore
+    return blockHeader?.headerText[0].children[0].text
+  } catch {
+    return false
+  }
+}
+
 const BlockRoot: FC<PropsWithChildren<Record<string, unknown>>> = ({ children }) => {
   return <div className="my-4">{children}</div>
 }
 
-const BlockHeader: FC<BlockHeaderProps> = ({ headerText, showHeader, className }) => {
-  if (!showHeader) return null
+const BlockHeader: FC<BlockHeaderProps> = ({ headerText, className }) => {
+  if (!hasHeaderText(headerText)) return null
 
   return (
     <div className={className}>

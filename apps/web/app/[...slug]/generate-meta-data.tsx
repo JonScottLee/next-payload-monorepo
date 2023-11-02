@@ -1,4 +1,4 @@
-import { getPageData } from '@/utils'
+import { getPageData } from '@utils/get-page-data'
 import { getCurrentPath } from '@/utils/get-current-path'
 import { Metadata } from 'next'
 

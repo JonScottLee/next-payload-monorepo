@@ -23,7 +23,8 @@
       "@/*": ["./*"],
       "@components": ["./app/components"],
       "@hooks/*": ["./app/hooks/*.ts"],
-      "@enums": ["./enums"]
+      "@enums": ["./enums"],
+      "@blocks/*": ["./app/components/blocks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

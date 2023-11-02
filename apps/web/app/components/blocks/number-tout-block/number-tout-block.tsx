@@ -3,7 +3,7 @@
 import { INumberTout } from '@org/cms'
 import { FC } from 'react'
 import { useCountUp } from 'use-count-up'
-import { Block } from '../block/block'
+import { Block } from '@blocks/block'
 
 export const NumberToutBlock: FC<INumberTout> = ({
   blockHeader,

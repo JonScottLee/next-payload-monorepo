@@ -3,7 +3,7 @@ import { RichText } from '../../fields/rich-text/rich-text'
 import { StripBlockFields } from '@/utils'
 import { ITestimonialBlock } from '@org/cms'
 import classNames from 'classnames'
-import { Block } from '../block/block'
+import { Block } from '@blocks/block'
 
 export const TestimonialBlock: FC<StripBlockFields<ITestimonialBlock>> = ({
   author,

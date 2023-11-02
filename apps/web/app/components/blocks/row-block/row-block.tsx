@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { IRowBlock } from '@org/cms'
 import classNames from 'classnames'
-import { RichText } from '../../fields/rich-text/rich-text'
 import { RenderBlocks } from '../block-helpers/render-blocks'
 import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
 import { FancyTextBlock } from '../fancy-text-block/fancy-text-block'
@@ -11,7 +10,7 @@ import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 import { TestimonialBlock } from '../testimonial-block/testimonial-block'
 import { TextBlock } from '../text-block/text-block'
 import { useBlockHeader } from '@/app/hooks/use-block-header'
-import { Block } from '../block/block'
+import { Block } from '@blocks/block'
 
 const childBlocks = {
   'call-to-action-block': CallToActionBlock,

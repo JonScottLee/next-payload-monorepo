@@ -13,7 +13,7 @@ import { MediaBlock } from '../media-block/media-block'
 import { NumberToutBlock } from '../number-tout-block/number-tout-block'
 import { TextBlock } from '../text-block/text-block'
 import { normalizeBlocks } from '@/utils/normalize-blocks'
-import { Block } from '../block/block'
+import { Block } from '@blocks/block'
 
 const childBlocks = {
   'call-to-action-block': CallToActionBlock,

@@ -10,7 +10,7 @@ import { useTextEffects } from '@hooks/use-text-effects'
 import Link from 'next/link'
 import { useLink } from '@hooks/use-link'
 import { useBlockHeader } from '@/app/hooks/use-block-header'
-import { Block } from '../block/block'
+import { Block } from '@blocks/block'
 
 export const CallToActionBlock: FC<StripBlockFields<ICallToAction>> = ({
   alignment,

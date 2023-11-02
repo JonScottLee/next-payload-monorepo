@@ -23,7 +23,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
-import { Block } from '../block/block'
+import { Block } from '@blocks/block'
 
 const childBlocks = {
   'call-to-action-block': CallToActionBlock,

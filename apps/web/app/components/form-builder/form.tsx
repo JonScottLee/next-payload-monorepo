@@ -4,7 +4,7 @@ import React, { FC, useState, useCallback } from 'react'
 import { buildInitialFormState } from './build-initial-form-state'
 import { fields } from './fields'
 import { type FormFieldBlock, Form as FormType } from '@payloadcms/plugin-form-builder/dist/types'
-import { RichText } from '../rich-text/rich-text'
+import { RichText } from '../fields/rich-text/rich-text'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 

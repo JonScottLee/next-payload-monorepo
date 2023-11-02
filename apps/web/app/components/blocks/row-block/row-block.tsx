@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { IRowBlock } from '@org/cms'
 import classNames from 'classnames'
-import { RichText } from '../../rich-text/rich-text'
+import { RichText } from '../../fields/rich-text/rich-text'
 import { RenderBlocks } from '../block-helpers/render-blocks'
 import { CallToActionBlock } from '../call-to-action-block/call-to-action-block'
 import { FancyTextBlock } from '../fancy-text-block/fancy-text-block'

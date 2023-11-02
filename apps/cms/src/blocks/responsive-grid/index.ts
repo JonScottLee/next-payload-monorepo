@@ -1,15 +1,15 @@
 import { Block } from 'payload/types'
-import { TextBlock } from '../text-block/block'
-import { CallToActionBlock } from '../call-to-action/block'
-import { NumberTout } from '../number-tout/block'
-import { MediaBlock } from '../media-block/block'
-import { TestimonialBlock } from '../testimonial-block/block'
-import { ReusableContent } from '../reusable-content/block'
+import { TextBlock } from '../text-block'
+import { CallToActionBlock } from '../call-to-action'
+import { NumberTout } from '../number-tout'
+import { MediaBlock } from '../media-block'
+import { TestimonialBlock } from '../testimonial-block'
+import { ReusableContent } from '../reusable-content'
 import { blockHeader } from '../../fields/block-header'
 
-export const SliderBlock: Block = {
-  slug: 'slider-block',
-  interfaceName: 'ISlider',
+export const ResponsiveGridBlock: Block = {
+  slug: 'responsive-grid-block',
+  interfaceName: 'IResponsiveGrid',
   fields: [
     blockHeader,
     {

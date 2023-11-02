@@ -1,9 +1,9 @@
 import { Block } from 'payload/types'
-import { TextBlock } from '../text-block/block'
-import { CallToActionBlock } from '../call-to-action/block'
-import { NumberTout } from '../number-tout/block'
-import { MediaBlock } from '../media-block/block'
-import { TestimonialBlock } from '../testimonial-block/block'
+import { TextBlock } from '../text-block'
+import { CallToActionBlock } from '../call-to-action'
+import { NumberTout } from '../number-tout'
+import { MediaBlock } from '../media-block'
+import { TestimonialBlock } from '../testimonial-block'
 import { blockHeader } from '../../fields/block-header'
 
 export const RowBlock: Block = {

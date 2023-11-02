@@ -1,8 +1,7 @@
 import { FC } from 'react'
 import { RichText } from '../../fields/rich-text/rich-text'
-import { StripBlockFields } from '@/utils'
+import { StripBlockFields } from '@utils/strip-block-fields'
 import { ITestimonialBlock } from '@org/cms'
-import classNames from 'classnames'
 import { Block } from '@blocks/block'
 
 export const TestimonialBlock: FC<StripBlockFields<ITestimonialBlock>> = ({

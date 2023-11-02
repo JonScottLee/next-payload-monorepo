@@ -1,4 +1,4 @@
-import { StripBlockFields } from '@/utils'
+import { StripBlockFields } from '@utils/strip-block-fields'
 import { ISpacerBlock } from '@org/cms'
 import classNames from 'classnames'
 import { FC } from 'react'

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { RichText } from '../../fields/rich-text/rich-text'
-import { StripBlockFields } from '@/utils'
+import { StripBlockFields } from '@utils/strip-block-fields'
 import { IResponsiveGrid } from '@org/cms'
 import { RenderBlocks } from '../block-helpers/render-blocks'
 import classNames from 'classnames'

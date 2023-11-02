@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { type Address, type ThemeVariable } from '@org/cms'
 import { getData } from '@/utils'
 import { Globals } from '@/enums'
-import { StripBlockFields } from '@/utils'
+import { StripBlockFields } from '@utils/strip-block-fields'
 import { IMapBlock } from '@org/cms'
 
 const getAddressData = async (): Promise<Address> => {

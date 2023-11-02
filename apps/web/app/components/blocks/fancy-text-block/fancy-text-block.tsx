@@ -2,7 +2,7 @@
 
 import { FC } from 'react'
 import { RichText } from '../../fields/rich-text/rich-text'
-import { StripBlockFields } from '@/utils'
+import { StripBlockFields } from '@utils/strip-block-fields'
 import { IFancyTextBlock } from '@org/cms'
 import { useInView } from 'react-intersection-observer'
 import classNames from 'classnames'

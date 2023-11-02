@@ -21,6 +21,7 @@
     ],
     "paths": {
       "@/*": ["./*"],
+      "@utils/*": ["./utils/*"],
       "@components": ["./app/components"],
       "@hooks/*": ["./app/hooks/*.ts"],
       "@enums": ["./enums"],

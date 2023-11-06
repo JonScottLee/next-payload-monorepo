@@ -1,6 +1,7 @@
 export * from './call-to-action'
 export * from './fancy-text'
 export * from './form'
+export * from './image-gallery'
 export * from './map-block'
 export * from './media-block'
 export * from './number-tout'

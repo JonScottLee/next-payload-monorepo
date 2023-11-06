@@ -32,6 +32,7 @@ export interface Page {
     | ICallToAction
     | IFancyTextBlock
     | IFormBlock
+    | IImageGalleryBlock
     | IMapBlock
     | IMediaBlock
     | INumberTout
@@ -296,6 +297,17 @@ export interface Form {
   }[];
   updatedAt: string;
   createdAt: string;
+}
+export interface IImageGalleryBlock {
+  blockHeader?: IBlockHeader;
+  images: {
+    image: string | Media;
+    caption?: string;
+    id?: string;
+  }[];
+  id?: string;
+  blockName?: string;
+  blockType: 'image-gallery-block';
 }
 export interface IMapBlock {
   blockHeader?: IBlockHeader;

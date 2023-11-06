@@ -9,14 +9,13 @@ const breakpoints = {
 }
 
 export const Image: FC<Media> = (props) => {
-  const { filename, alt, width, height, sizes } = props
+  const { filename, alt, width, height } = props
 
   return (
     <NextImage
       className="w-full h-auto"
       width={width}
       height={height}
-      // sizes={sizes as string}
       src={`/media/${filename}`}
       alt={alt}
     />

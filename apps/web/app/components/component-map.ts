@@ -11,6 +11,7 @@ import { SpacerBlock } from './blocks/spacer-block/spacer-block'
 import { TestimonialBlock } from './blocks/testimonial-block/testimonial-block'
 import { TextBlock } from './blocks/text-block/text-block'
 import { SliderBlock } from './blocks/slider-block/slider-block'
+import { ImageGalleryBlock } from './blocks/image-gallery-block/image-gallery-block'
 
 export const allComponents: Record<string, FC<any>> = {
   'call-to-action-block': CallToActionBlock,
@@ -25,4 +26,5 @@ export const allComponents: Record<string, FC<any>> = {
   'spacer-block': SpacerBlock,
   'testimonial-block': TestimonialBlock,
   'text-block': TextBlock,
+  'image-gallery-block': ImageGalleryBlock,
 }

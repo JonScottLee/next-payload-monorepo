@@ -11,7 +11,7 @@ const hasHeaderText = (headerText: any): boolean => {
 
   try {
     //@ts-ignore
-    return blockHeader?.headerText[0].children[0].text
+    return headerText[0].children[0].text
   } catch {
     return false
   }

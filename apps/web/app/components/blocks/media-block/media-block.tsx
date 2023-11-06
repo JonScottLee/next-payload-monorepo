@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import { StripBlockFields } from '@utils/strip-block-fields'
 import { useTextEffects } from '@hooks/use-text-effects'
 import { useInView } from 'react-intersection-observer'
-import { Image } from './image'
+import { Image } from '../../image/image'
 import { Block } from '@blocks/block'
 
 export const MediaBlock: FC<StripBlockFields<IMediaBlock>> = ({

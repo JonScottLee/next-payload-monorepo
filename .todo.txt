@@ -1,1 +1,1 @@
-* Finish normalizing use of blockHeader component across all blocks
+Modify gallery so its easy to mark an image as being the initial main image.

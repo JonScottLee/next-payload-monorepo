@@ -6,6 +6,7 @@ import { MediaBlock } from '../media-block'
 import { TestimonialBlock } from '../testimonial-block'
 import { ReusableContent } from '../reusable-content'
 import { blockHeader } from '../../fields/block-header'
+import { ImageBlock } from '../image'
 
 export const SliderBlock: Block = {
   slug: 'slider-block',
@@ -13,8 +14,10 @@ export const SliderBlock: Block = {
   fields: [
     blockHeader,
     {
-      name: 'trailingContent',
-      type: 'richText',
+      name: 'slidesPerView',
+      label: 'Slides Per View',
+      type: 'number',
+      defaultValue: 3,
     },
     {
       name: 'blocks',
@@ -24,12 +27,13 @@ export const SliderBlock: Block = {
       label: 'Blocks',
       type: 'blocks',
       blocks: [
-        TextBlock,
         CallToActionBlock,
-        NumberTout,
+        ImageBlock,
         MediaBlock,
-        TestimonialBlock,
+        NumberTout,
         ReusableContent,
+        TestimonialBlock,
+        TextBlock,
       ],
     },
   ],

@@ -32,6 +32,7 @@ export interface Page {
     | ICallToAction
     | IFancyTextBlock
     | IFormBlock
+    | IImageBlock
     | IImageGalleryBlock
     | IMapBlock
     | IMediaBlock
@@ -298,6 +299,13 @@ export interface Form {
   updatedAt: string;
   createdAt: string;
 }
+export interface IImageBlock {
+  blockHeader?: IBlockHeader;
+  image: string | Media;
+  id?: string;
+  blockName?: string;
+  blockType: 'image-block';
+}
 export interface IImageGalleryBlock {
   blockHeader?: IBlockHeader;
   images: {
@@ -394,10 +402,16 @@ export interface IRowBlock {
 }
 export interface ISlider {
   blockHeader?: IBlockHeader;
-  trailingContent?: {
-    [k: string]: unknown;
-  }[];
-  blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock | ITestimonialBlock | IReusableContentBlock)[];
+  slidesPerView?: number;
+  blocks?: (
+    | ICallToAction
+    | IImageBlock
+    | IMediaBlock
+    | INumberTout
+    | IReusableContentBlock
+    | ITestimonialBlock
+    | ITextBlock
+  )[];
   id?: string;
   blockName?: string;
   blockType: 'slider-block';

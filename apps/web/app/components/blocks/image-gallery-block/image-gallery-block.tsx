@@ -17,18 +17,20 @@ export const ImageGalleryBlock: FC<StripBlockFields<IImageGalleryBlock>> = ({
   images = [],
 }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null)
+  const [swiperClasses, setSwiperClasses] = useState<string>('invisible')
 
   return (
     <Block>
       <Block.Header {...blockHeader} />
 
-      <Block.Body className="w-1/2">
+      <Block.Body className={`w-1/2 ${swiperClasses}`}>
         <Swiper
           spaceBetween={10}
           navigation={true}
           thumbs={{ swiper: !thumbsSwiper?.destroyed ? thumbsSwiper : null }}
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2"
+          onAfterInit={() => setSwiperClasses('')}
         >
           {images.map((imageRoot, id) => {
             const imageProps = imageRoot.image as unknown as Media

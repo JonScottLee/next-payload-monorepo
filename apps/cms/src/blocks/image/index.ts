@@ -1,17 +1,18 @@
-import { Block } from 'payload/types'
-import { blockHeader } from '../../fields/block-header'
+import { Block, Field } from 'payload/types'
+import { getContentBlockConfig } from '../content-block'
 
-export const ImageBlock: Block = {
+const fields: Field[] = [
+  {
+    name: 'image',
+    label: 'Image',
+    type: 'upload',
+    relationTo: 'media',
+    required: true,
+  },
+]
+
+export const ImageBlock: Block = getContentBlockConfig({
   slug: 'image-block',
   interfaceName: 'IImageBlock',
-  fields: [
-    blockHeader,
-    {
-      name: 'image',
-      label: 'Image',
-      type: 'upload',
-      relationTo: 'media',
-      required: true,
-    },
-  ],
-}
+  fields,
+})

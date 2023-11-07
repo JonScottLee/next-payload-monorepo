@@ -1,16 +1,17 @@
-import { Block } from 'payload/types'
-import { blockHeader } from '../../fields/block-header'
+import { Block, Field } from 'payload/types'
+import { getContentBlockConfig } from '../content-block'
 
-export const TextBlock: Block = {
+const fields: Field[] = [
+  {
+    name: 'text',
+    label: 'Text',
+    type: 'richText',
+    required: true,
+  },
+]
+
+export const TextBlock: Block = getContentBlockConfig({
   slug: 'text-block',
   interfaceName: 'ITextBlock',
-  fields: [
-    blockHeader,
-    {
-      name: 'text',
-      label: 'Text',
-      type: 'richText',
-      required: true,
-    },
-  ],
-}
+  fields,
+})

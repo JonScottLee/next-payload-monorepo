@@ -166,6 +166,9 @@ export interface ILink {
 }
 export interface IFancyTextBlock {
   blockHeader?: IBlockHeader;
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
   text: {
     [k: string]: unknown;
   }[];
@@ -176,6 +179,9 @@ export interface IFancyTextBlock {
 }
 export interface IFormBlock {
   blockHeader?: IBlockHeader;
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
   form: string | Form;
   enableIntro?: boolean;
   introContent: {
@@ -305,6 +311,9 @@ export interface Form {
 }
 export interface IImageBlock {
   blockHeader?: IBlockHeader;
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
   image: string | Media;
   id?: string;
   blockName?: string;
@@ -312,6 +321,9 @@ export interface IImageBlock {
 }
 export interface IImageGalleryBlock {
   blockHeader?: IBlockHeader;
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
   images: {
     image: string | Media;
     caption?: string;
@@ -330,6 +342,9 @@ export interface IMapBlock {
 }
 export interface IMediaBlock {
   blockHeader?: IBlockHeader;
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
   orientation?: 'vertical' | 'horizontal' | 'responsive';
   text: {
     [k: string]: unknown;
@@ -343,6 +358,9 @@ export interface IMediaBlock {
 }
 export interface INumberTout {
   blockHeader?: IBlockHeader;
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
   number: number;
   numberSuffix?: string;
   countUp?: boolean;
@@ -363,6 +381,9 @@ export interface IResponsiveGrid {
 }
 export interface ITextBlock {
   blockHeader?: IBlockHeader;
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
   text: {
     [k: string]: unknown;
   }[];
@@ -372,6 +393,9 @@ export interface ITextBlock {
 }
 export interface ITestimonialBlock {
   blockHeader?: IBlockHeader;
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
   text: {
     [k: string]: unknown;
   }[];
@@ -398,6 +422,9 @@ export interface ReusableContent {
 }
 export interface IRowBlock {
   blockHeader?: IBlockHeader;
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
   wrap?: boolean;
   blocks?: (ITextBlock | ICallToAction | INumberTout | IMediaBlock | ITestimonialBlock)[];
   id?: string;
@@ -406,6 +433,9 @@ export interface IRowBlock {
 }
 export interface ISlider {
   blockHeader?: IBlockHeader;
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
   slidesPerView?: number;
   blocks?: (
     | ICallToAction

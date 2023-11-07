@@ -1,33 +1,34 @@
-import { Block } from 'payload/types'
-import { blockHeader } from '../../fields/block-header'
+import { Block, Field } from 'payload/types'
+import { getContentBlockConfig } from '../content-block'
 
-export const TestimonialBlock: Block = {
+const fields: Field[] = [
+  {
+    name: 'text',
+    label: 'Text',
+    type: 'richText',
+    required: true,
+  },
+  {
+    name: 'author',
+    label: 'Author',
+    type: 'text',
+    required: true,
+  },
+  {
+    name: 'title',
+    label: 'Title',
+    type: 'text',
+  },
+  {
+    name: 'image',
+    label: 'Image',
+    type: 'upload',
+    relationTo: 'media',
+  },
+]
+
+export const TestimonialBlock: Block = getContentBlockConfig({
   slug: 'testimonial-block',
   interfaceName: 'ITestimonialBlock',
-  fields: [
-    blockHeader,
-    {
-      name: 'text',
-      label: 'Text',
-      type: 'richText',
-      required: true,
-    },
-    {
-      name: 'author',
-      label: 'Author',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'title',
-      label: 'Title',
-      type: 'text',
-    },
-    {
-      name: 'image',
-      label: 'Image',
-      type: 'upload',
-      relationTo: 'media',
-    },
-  ],
-}
+  fields,
+})

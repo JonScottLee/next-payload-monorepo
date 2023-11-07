@@ -1,31 +1,31 @@
-import { Block } from 'payload/types'
-import { textEffects } from '../../fields/text-effects'
-import { blockHeader } from '../../fields/block-header'
+import { Block, Field } from 'payload/types'
+import { getContentBlockConfig } from '../content-block'
 
-export const ImageGalleryBlock: Block = {
+const fields: Field[] = [
+  {
+    name: 'images',
+    label: 'Images',
+    type: 'array',
+    required: true,
+    fields: [
+      {
+        name: 'image',
+        label: 'Image',
+        type: 'upload',
+        relationTo: 'media',
+        required: true,
+      },
+      {
+        name: 'caption',
+        label: 'Caption',
+        type: 'text',
+      },
+    ],
+  },
+]
+
+export const ImageGalleryBlock: Block = getContentBlockConfig({
   slug: 'image-gallery-block',
   interfaceName: 'IImageGalleryBlock',
-  fields: [
-    blockHeader,
-    {
-      name: 'images',
-      label: 'Images',
-      type: 'array',
-      required: true,
-      fields: [
-        {
-          name: 'image',
-          label: 'Image',
-          type: 'upload',
-          relationTo: 'media',
-          required: true,
-        },
-        {
-          name: 'caption',
-          label: 'Caption',
-          type: 'text',
-        },
-      ],
-    },
-  ],
-}
+  fields,
+})

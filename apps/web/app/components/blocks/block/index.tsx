@@ -1,6 +1,7 @@
 import { IBlockHeader } from '@org/cms'
 import { PropsWithChildren, FC } from 'react'
 import { RichText } from '../../fields/rich-text/rich-text'
+import cx from 'classnames'
 
 interface BlockHeaderProps extends IBlockHeader {
   className?: string
@@ -17,15 +18,21 @@ const hasHeaderText = (headerText: any): boolean => {
   }
 }
 
-const BlockRoot: FC<PropsWithChildren<Record<string, unknown>>> = ({ children }) => {
-  return <div className="my-4">{children}</div>
+const BlockRoot: FC<PropsWithChildren<Record<string, unknown>>> = ({ className, children }) => {
+  return <div className={`my-4 ${className}`}>{children}</div>
 }
 
-const BlockHeader: FC<BlockHeaderProps> = ({ headerText, className }) => {
+const BlockHeader: FC<BlockHeaderProps> = ({ headerText, className, headerAlginment }) => {
   if (!hasHeaderText(headerText)) return null
 
+  const classNames = cx(className, {
+    'text-center': headerAlginment === 'center',
+    'text-left': headerAlginment === 'left',
+    'text-right': headerAlginment === 'right',
+  })
+
   return (
-    <div className={className}>
+    <div className={`${classNames}`}>
       <RichText content={headerText} />
     </div>
   )

@@ -23,37 +23,39 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import { Block } from '@blocks/block'
+import { ImageBlock } from '../image-block'
 
 const childBlocks = {
   'call-to-action-block': CallToActionBlock,
   'fancy-text-block': FancyTextBlock,
   'form-block': FormBlock,
+  'image-block': ImageBlock,
   'media-block': MediaBlock,
   'number-tout-block': NumberToutBlock,
-  'text-block': TextBlock,
   'testimonial-block': TestimonialBlock,
+  'text-block': TextBlock,
 }
 
 export const SliderBlock: FC<StripBlockFields<ISlider>> = ({
   blockHeader,
   blocks: _blocks,
-  trailingContent,
+  slidesPerView,
 }) => {
   if (!_blocks) return null
 
   let blocks: Page['blocks'] = normalizeBlocks(_blocks)
 
   return (
-    <Block>
+    <Block className="text-center mx-auto md:w-3/4 lg:w-2/3">
       <Block.Header {...blockHeader} />
 
-      <Block.Body className="text-center mx-auto md:w-3/4 lg:w-1/3">
+      <Block.Body>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
           pagination={{ clickable: true }}
-          slidesPerView={1}
+          slidesPerView={3}
         >
           {blocks.map((block) => (
             <SwiperSlide key={block.id}>
@@ -62,10 +64,6 @@ export const SliderBlock: FC<StripBlockFields<ISlider>> = ({
           ))}
         </Swiper>
       </Block.Body>
-
-      <Block.Footer>
-        <RichText content={trailingContent} />
-      </Block.Footer>
     </Block>
   )
 }

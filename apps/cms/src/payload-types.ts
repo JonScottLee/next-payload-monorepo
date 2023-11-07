@@ -58,6 +58,9 @@ export interface Page {
 }
 export interface ICallToAction {
   blockHeader?: IBlockHeader;
+  trailingContent?: {
+    [k: string]: unknown;
+  }[];
   text: {
     [k: string]: unknown;
   }[];
@@ -73,6 +76,7 @@ export interface IBlockHeader {
   headerText?: {
     [k: string]: unknown;
   }[];
+  headerAlginment?: 'left' | 'center' | 'right';
 }
 export interface Media {
   id: string;

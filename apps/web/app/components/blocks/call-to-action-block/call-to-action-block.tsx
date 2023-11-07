@@ -20,8 +20,6 @@ export const CallToActionBlock: FC<StripBlockFields<ICallToAction>> = ({
   textEffects = {},
   link,
 }) => {
-  const header = useBlockHeader(blockHeader)
-
   const { ref, inView } = useInView()
   const { baseClasses: baseTextClasses, visibleClasses: visibleTextClasses } = useTextEffects({
     textEffects,

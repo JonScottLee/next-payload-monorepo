@@ -1,1 +1,2 @@
 Modify gallery so its easy to mark an image as being the initial main image.
+Create a block that all CMS blocks extend from, so we can define header and trailing content in one place

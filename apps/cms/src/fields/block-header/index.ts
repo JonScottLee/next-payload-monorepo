@@ -13,5 +13,25 @@ export const blockHeader: Field = {
       label: 'Block Header Text',
       type: 'richText',
     },
+    {
+      name: 'headerAlginment',
+      label: 'Header Text Alignment',
+      type: 'radio',
+      defaultValue: 'left',
+      options: [
+        {
+          label: 'Left',
+          value: 'left',
+        },
+        {
+          label: 'Center',
+          value: 'center',
+        },
+        {
+          label: 'Right',
+          value: 'right',
+        },
+      ],
+    },
   ],
 }

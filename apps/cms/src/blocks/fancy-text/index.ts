@@ -1,18 +1,19 @@
-import { Block } from 'payload/types'
+import { Block, Field } from 'payload/types'
 import { textEffects } from '../../fields/text-effects'
-import { blockHeader } from '../../fields/block-header'
+import { getContentBlockConfig } from '../content-block'
 
-export const FancyTextBlock: Block = {
+const fields: Field[] = [
+  {
+    name: 'text',
+    label: 'Text',
+    type: 'richText',
+    required: true,
+  },
+  textEffects,
+]
+
+export const FancyTextBlock: Block = getContentBlockConfig({
   slug: 'fancy-text-block',
   interfaceName: 'IFancyTextBlock',
-  fields: [
-    blockHeader,
-    {
-      name: 'text',
-      label: 'Text',
-      type: 'richText',
-      required: true,
-    },
-    textEffects,
-  ],
-}
+  fields,
+})

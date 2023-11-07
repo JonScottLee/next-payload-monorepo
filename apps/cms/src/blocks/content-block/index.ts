@@ -25,6 +25,7 @@ interface GetContentBlockConfig {
   slug: string
   interfaceName: string
   fields: Field[]
+  [key: string]: unknown
 }
 
 export const getContentBlockConfig = ({

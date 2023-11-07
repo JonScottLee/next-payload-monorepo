@@ -1,8 +1,30 @@
-import { Block } from 'payload/types'
+import { Block, Field } from 'payload/types'
 import { richText } from '../../fields/rich-text'
 import { blockHeader } from '../../fields/block-header'
+import { getContentBlockConfig } from '../content-block'
 
-export const FormBlock: Block = {
+const fields: Field[] = [
+  {
+    name: 'form',
+    type: 'relationship',
+    relationTo: 'forms',
+    required: true,
+  },
+  {
+    name: 'enableIntro',
+    label: 'Enable Intro Content',
+    type: 'checkbox',
+  },
+  richText({
+    name: 'introContent',
+    label: 'Intro Content',
+    admin: {
+      condition: (_, { enableIntro }) => Boolean(enableIntro),
+    },
+  }),
+]
+
+export const FormBlock = getContentBlockConfig({
   slug: 'form-block',
   interfaceName: 'IFormBlock',
   labels: {
@@ -12,25 +34,5 @@ export const FormBlock: Block = {
   graphQL: {
     singularName: 'FormBlock',
   },
-  fields: [
-    blockHeader,
-    {
-      name: 'form',
-      type: 'relationship',
-      relationTo: 'forms',
-      required: true,
-    },
-    {
-      name: 'enableIntro',
-      label: 'Enable Intro Content',
-      type: 'checkbox',
-    },
-    richText({
-      name: 'introContent',
-      label: 'Intro Content',
-      admin: {
-        condition: (_, { enableIntro }) => Boolean(enableIntro),
-      },
-    }),
-  ],
-}
+  fields,
+})

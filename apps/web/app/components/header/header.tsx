@@ -52,7 +52,7 @@ export const Header: FC<HeaderProps> = async ({ className }) => {
 
               return (
                 <li key={itemId} className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-                  <Link legacyBehavior href={href}>
+                  <Link legacyBehavior href={href || ''}>
                     <a className={classes} {...(isCurrentPage && { 'aria-current': 'page' })}>
                       {label}
                     </a>

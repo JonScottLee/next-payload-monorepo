@@ -50,7 +50,7 @@ export const Footer: FC<FooterProps> = async ({ className }) => {
 
                       return (
                         <li key={itemId} className="mr-4 hover:underline md:mr-6">
-                          <Link legacyBehavior href={href}>
+                          <Link legacyBehavior href={href || ''}>
                             <a {...(isCurrentPage && { 'aria-current': 'page' })}>{label}</a>
                           </Link>
                         </li>

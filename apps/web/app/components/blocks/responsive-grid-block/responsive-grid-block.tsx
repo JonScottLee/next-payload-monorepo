@@ -26,29 +26,31 @@ const childBlocks = {
 
 export const ResponsiveGridBlock: FC<StripBlockFields<IResponsiveGrid>> = ({
   blockHeader,
-  blocks: _blocks,
+  // blocks: _blocks,
   trailingContent,
 }) => {
-  let blocks: Page['blocks'] = normalizeBlocks(_blocks || [])
+  return 'Response Grid Block'
 
-  const columns = blocks?.length || 0
+  // let blocks: Page['blocks'] = normalizeBlocks(_blocks || [])
 
-  const classes = classNames('flex flex-col md:grid gap-8', {
-    'md:grid-cols-2': [2, 4, 5].indexOf(columns) > -1,
-    'md:grid-cols-3': columns % 3 === 0,
-  })
+  // const columns = blocks?.length || 0
 
-  return (
-    <Block>
-      <Block.Header {...blockHeader} />
+  // const classes = classNames('flex flex-col md:grid gap-8', {
+  //   'md:grid-cols-2': [2, 4, 5].indexOf(columns) > -1,
+  //   'md:grid-cols-3': columns % 3 === 0,
+  // })
 
-      <Block.Body className={classes}>
-        <RenderBlocks componentMap={childBlocks} blocks={blocks} />
-      </Block.Body>
+  // return (
+  //   <Block>
+  //     <Block.Header {...blockHeader} />
 
-      <Block.Footer>
-        <RichText content={trailingContent} />
-      </Block.Footer>
-    </Block>
-  )
+  //     <Block.Body className={classes}>
+  //       <RenderBlocks componentMap={childBlocks} blocks={blocks} />
+  //     </Block.Body>
+
+  //     <Block.Footer>
+  //       <RichText content={trailingContent} />
+  //     </Block.Footer>
+  //   </Block>
+  // )
 }

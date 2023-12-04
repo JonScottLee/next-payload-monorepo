@@ -1,8 +1,19 @@
-import { type CollectionConfig } from 'payload/types'
-
+import { Field, type CollectionConfig } from 'payload/types'
 import { isAdmin, isAdminOrEditor, publishedOnly } from '../access'
 
-import { TestimonialBlock } from '../blocks'
+const fields: Field[] = [
+  {
+    name: 'title',
+    type: 'text',
+    required: true,
+  },
+  {
+    name: 'layout',
+    type: 'blocks',
+    required: true,
+    blocks: [],
+  },
+]
 
 export const ReusableContent: CollectionConfig = {
   slug: 'reusable-content',
@@ -24,17 +35,5 @@ export const ReusableContent: CollectionConfig = {
     update: isAdminOrEditor,
     delete: isAdmin,
   },
-  fields: [
-    {
-      name: 'title',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'layout',
-      type: 'blocks',
-      required: true,
-      blocks: [TestimonialBlock],
-    },
-  ],
+  fields: [],
 }

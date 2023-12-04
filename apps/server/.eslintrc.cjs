@@ -6,9 +6,9 @@ module.exports = {
       files: ['*.ts'],
       settings: {
         react: {
-          version: '18' // React is not installed here - so simply set a version to prevent the 'detect' warning
+          version: '18', // React is not installed here - so simply set a version to prevent the 'detect' warning
         },
       },
     },
   ],
-};
+}

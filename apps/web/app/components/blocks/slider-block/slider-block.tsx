@@ -38,32 +38,33 @@ const childBlocks = {
 
 export const SliderBlock: FC<StripBlockFields<ISlider>> = ({
   blockHeader,
-  blocks: _blocks,
-  slidesPerView,
+  // blocks: _blocks,
 }) => {
-  if (!_blocks) return null
+  return 'Slider Block'
 
-  let blocks: Page['blocks'] = normalizeBlocks(_blocks)
+  // if (!_blocks) return null
 
-  return (
-    <Block className="text-center mx-auto md:w-3/4 lg:w-2/3">
-      <Block.Header {...blockHeader} />
+  // let blocks: Page['blocks'] = normalizeBlocks(_blocks)
 
-      <Block.Body>
-        <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-          pagination={{ clickable: true }}
-          slidesPerView={3}
-        >
-          {blocks.map((block) => (
-            <SwiperSlide key={block.id}>
-              <div className="pb-10">{renderBlock({ componentMap: childBlocks, block })}</div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </Block.Body>
-    </Block>
-  )
+  // return (
+  //   <Block className="text-center mx-auto md:w-3/4 lg:w-2/3">
+  //     <Block.Header {...blockHeader} />
+
+  //     <Block.Body>
+  //       <Swiper
+  //         modules={[Navigation, Pagination, Scrollbar, A11y]}
+  //         onSlideChange={() => console.log('slide change')}
+  //         onSwiper={(swiper) => console.log(swiper)}
+  //         pagination={{ clickable: true }}
+  //         slidesPerView={3}
+  //       >
+  //         {blocks.map((block) => (
+  //           <SwiperSlide key={block.id}>
+  //             <div className="pb-10">{renderBlock({ componentMap: childBlocks, block })}</div>
+  //           </SwiperSlide>
+  //         ))}
+  //       </Swiper>
+  //     </Block.Body>
+  //   </Block>
+  // )
 }

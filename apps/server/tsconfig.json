@@ -7,5 +7,8 @@
   "ts-node": {
     "transpileOnly": true
   },
-  "include": ["src/**/*", "remix.d.ts"]
+  "include": ["src/**/*", "remix.d.ts"],
+  "paths": {
+    "payload/*": ["../cms/node_modules/payload/*"]
+  }
 }

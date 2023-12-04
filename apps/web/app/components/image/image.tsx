@@ -14,8 +14,8 @@ export const Image: FC<Media> = (props) => {
   return (
     <NextImage
       className="w-full h-auto"
-      width={width}
-      height={height}
+      width={width || 0}
+      height={height || 0}
       src={`/media/${filename}`}
       alt={alt}
     />

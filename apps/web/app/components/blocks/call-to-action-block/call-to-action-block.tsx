@@ -56,7 +56,7 @@ export const CallToActionBlock: FC<StripBlockFields<ICallToAction>> = ({
         >
           <div className={contentClasses}>
             <RichText content={text} />
-            <Link className="link" href={href}>
+            <Link className="link" href={href || ''}>
               {label}
             </Link>
           </div>

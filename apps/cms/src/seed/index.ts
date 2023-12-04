@@ -1,6 +1,6 @@
 import { type Payload } from 'payload'
 
-import { User } from '../payload-types'
+// import { User } from '../payload-types'
 
 export const seed = async (payload: Payload): Promise<void> => {
   // const site1 = await payload.create<Site>({

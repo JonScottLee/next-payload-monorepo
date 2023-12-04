@@ -37,140 +37,98 @@ export const FormBlock: FC<
     id?: string
   }
 > = (props) => {
-  const {
-    enableIntro,
-    introContent,
-    form: formFromProps,
-    form: { id: formID, submitButtonLabel, confirmationType, redirect, confirmationMessage } = {},
-  } = props
+  return 'FormBlock'
 
-  const formMethods = useForm({
-    defaultValues: buildInitialFormState(formFromProps.fields),
-  })
+  // const {
+  //   enableIntro,
+  //   introContent,
+  //   form: formFromProps,
+  //   form: { id: formID, submitButtonLabel, confirmationType, redirect, confirmationMessage } = {},
+  // } = props
 
-  const {
-    control,
-    formState: { errors },
-    handleSubmit,
-    register,
-  } = formMethods
+  // const formMethods = useForm({
+  //   defaultValues: buildInitialFormState(formFromProps.fields),
+  // })
 
-  const [isLoading, setIsLoading] = useState(false)
-  const [hasSubmitted, setHasSubmitted] = useState<boolean>()
-  const [error, setError] = useState<{ status?: string; message: string } | undefined>()
+  // const {
+  //   control,
+  //   formState: { errors },
+  //   handleSubmit,
+  //   register,
+  // } = formMethods
 
-  const { push } = useRouter()
+  // const [isLoading, setIsLoading] = useState(false)
+  // const [hasSubmitted, setHasSubmitted] = useState<boolean>()
+  // const [error, setError] = useState<{ status?: string; message: string } | undefined>()
 
-  const onSubmit = useCallback(
-    (data: Data) => {
-      let loadingTimerID: NodeJS.Timer
+  // const { push } = useRouter()
 
-      const submitForm = async () => {
-        setError(undefined)
+  // const onSubmit = useCallback(
+  //   (data: Data) => {
+  //     let loadingTimerID: NodeJS.Timer
 
-        const dataToSend = Object.entries(data).map(([name, value]) => ({
-          field: name,
-          value,
-        }))
+  //     const submitForm = async () => {
+  //       setError(undefined)
 
-        // delay loading indicator by 1s
-        loadingTimerID = setTimeout(() => {
-          setIsLoading(true)
-        }, 1000)
+  //       const dataToSend = Object.entries(data).map(([name, value]) => ({
+  //         field: name,
+  //         value,
+  //       }))
 
-        try {
-          const req = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_API}/form-submissions`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              form: formID,
-              submissionData: dataToSend,
-            }),
-          })
+  //       // delay loading indicator by 1s
+  //       loadingTimerID = setTimeout(() => {
+  //         setIsLoading(true)
+  //       }, 1000)
 
-          const res = await req.json()
+  //       try {
+  //         const req = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_API}/form-submissions`, {
+  //           method: 'POST',
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //           },
+  //           body: JSON.stringify({
+  //             form: formID,
+  //             submissionData: dataToSend,
+  //           }),
+  //         })
 
-          clearTimeout(loadingTimerID)
+  //         const res = await req.json()
 
-          if (req.status >= 400) {
-            setIsLoading(false)
-            setError({
-              status: res.status,
-              message: res.errors?.[0]?.message || 'Internal Server Error',
-            })
+  //         clearTimeout(loadingTimerID)
 
-            return
-          }
+  //         if (req.status >= 400) {
+  //           setIsLoading(false)
+  //           setError({
+  //             status: res.status,
+  //             message: res.errors?.[0]?.message || 'Internal Server Error',
+  //           })
 
-          setIsLoading(false)
-          setHasSubmitted(true)
+  //           return
+  //         }
 
-          if (confirmationType === 'redirect' && redirect) {
-            const { url } = redirect
+  //         setIsLoading(false)
+  //         setHasSubmitted(true)
 
-            const redirectUrl = url
+  //         if (confirmationType === 'redirect' && redirect) {
+  //           const { url } = redirect
 
-            if (redirectUrl) push(redirectUrl)
-          }
-        } catch (err) {
-          console.warn(err)
-          setIsLoading(false)
-          setError({
-            message: 'Something went wrong.',
-          })
-        }
-      }
+  //           const redirectUrl = url
 
-      submitForm()
-    },
-    [push, formID, redirect, confirmationType]
-  )
+  //           if (redirectUrl) push(redirectUrl)
+  //         }
+  //       } catch (err) {
+  //         console.warn(err)
+  //         setIsLoading(false)
+  //         setError({
+  //           message: 'Something went wrong.',
+  //         })
+  //       }
+  //     }
 
-  return (
-    <>
-      <div>
-        {enableIntro && introContent && !hasSubmitted && (
-          <div>
-            <RichText content={introContent} />
-          </div>
-        )}
-        {!isLoading && hasSubmitted && confirmationType === 'message' && (
-          <RichText content={confirmationMessage} />
-        )}
+  //     submitForm()
+  //   },
+  //   [push, formID, redirect, confirmationType]
+  // )
 
-        {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
-
-        {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
-
-        <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            {formFromProps &&
-              formFromProps.fields &&
-              formFromProps.fields.map((field: FormFieldType, index) => {
-                const Field: FC<Record<string, unknown>> = fields?.[field.blockType]
-
-                if (!Field) return null
-
-                return (
-                  <div key={index}>
-                    <Field
-                      form={formFromProps}
-                      {...field}
-                      {...formMethods}
-                      register={register}
-                      errors={errors}
-                      control={control}
-                    />
-                  </div>
-                )
-              })}
-          </div>
-
-          <button type="submit">{submitButtonLabel}</button>
-        </form>
-      </div>
-    </>
-  )
+  // return <div>FormBuilder</div>
 }

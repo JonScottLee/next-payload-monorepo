@@ -1,3 +1,9 @@
 Modify gallery so its easy to mark an image as being the initial main image.
 
 Make sure all blocks still work after creating getContentBlockConfig
+
+Get form builder working again
+
+Get build running. Right now working on lexical integration: https://raw.githubusercontent.com/payloadcms/public-demo/master
+
+Fix meta data on NextJS

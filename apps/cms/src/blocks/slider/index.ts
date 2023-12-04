@@ -3,7 +3,6 @@ import { TextBlock } from '../text-block'
 import { CallToActionBlock } from '../call-to-action'
 import { NumberTout } from '../number-tout'
 import { MediaBlock } from '../media-block'
-import { TestimonialBlock } from '../testimonial-block'
 import { ReusableContent } from '../reusable-content'
 import { ImageBlock } from '../image'
 import { getContentBlockConfig } from '../content-block'
@@ -22,20 +21,12 @@ const fields: Field[] = [
     },
     label: 'Blocks',
     type: 'blocks',
-    blocks: [
-      CallToActionBlock,
-      ImageBlock,
-      MediaBlock,
-      NumberTout,
-      ReusableContent,
-      TestimonialBlock,
-      TextBlock,
-    ],
+    blocks: [], // CallToActionBlock, ImageBlock, MediaBlock, NumberTout, TextBlock
   },
 ]
 
 export const SliderBlock: Block = getContentBlockConfig({
   slug: 'slider-block',
   interfaceName: 'ISlider',
-  fields,
+  fields: [],
 })

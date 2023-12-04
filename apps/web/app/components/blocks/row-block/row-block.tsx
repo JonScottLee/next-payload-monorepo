@@ -22,20 +22,19 @@ const childBlocks = {
   'testimonial-block': TestimonialBlock,
 }
 
-export const RowBlock: FC<IRowBlock> = ({ blockHeader, blocks, wrap }) => {
-  const header = useBlockHeader(blockHeader)
+export const RowBlock: FC<IRowBlock> = ({
+  blockHeader,
+  // blocks,
+}) => {
+  return 'Row Block'
 
-  const classes = classNames('flex', {
-    'flex-wrap': wrap,
-  })
+  // return (
+  //   <Block>
+  //     <Block.Header {...blockHeader} />
 
-  return (
-    <Block>
-      <Block.Header {...blockHeader} />
-
-      <Block.Body className={classes}>
-        <RenderBlocks blocks={blocks} componentMap={childBlocks} classNames="flex-1" />
-      </Block.Body>
-    </Block>
-  )
+  //     <Block.Body className='flex'>
+  //       <RenderBlocks blocks={blocks} componentMap={childBlocks} classNames="flex-1" />
+  //     </Block.Body>
+  //   </Block>
+  // )
 }

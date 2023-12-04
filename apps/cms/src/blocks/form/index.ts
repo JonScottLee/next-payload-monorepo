@@ -33,5 +33,5 @@ export const FormBlock = getContentBlockConfig({
   graphQL: {
     singularName: 'FormBlock',
   },
-  fields,
+  fields: [],
 })

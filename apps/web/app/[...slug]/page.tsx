@@ -7,7 +7,7 @@ import { RenderBlocks } from '../components/blocks/block-helpers/render-blocks'
 import { getPageData } from '@utils/get-page-data'
 import { allComponents } from '../components/component-map'
 
-export { generateMetadata } from './generate-meta-data'
+// export { generateMetadata } from './generate-meta-data'
 
 export default async function Page({
   params,

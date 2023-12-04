@@ -3,7 +3,6 @@ import { TextBlock } from '../text-block'
 import { CallToActionBlock } from '../call-to-action'
 import { NumberTout } from '../number-tout'
 import { MediaBlock } from '../media-block'
-import { TestimonialBlock } from '../testimonial-block'
 import { getContentBlockConfig } from '../content-block'
 
 const fields: Field[] = [
@@ -16,12 +15,12 @@ const fields: Field[] = [
     name: 'blocks',
     label: 'Blocks',
     type: 'blocks',
-    blocks: [TextBlock, CallToActionBlock, NumberTout, MediaBlock, TestimonialBlock],
+    blocks: [], // TextBlock, CallToActionBlock, NumberTout, MediaBlock
   },
 ]
 
 export const RowBlock: Block = getContentBlockConfig({
   slug: 'row-block',
   interfaceName: 'IRowBlock',
-  fields,
+  fields: [],
 })

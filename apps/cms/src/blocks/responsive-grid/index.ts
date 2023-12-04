@@ -3,7 +3,6 @@ import { TextBlock } from '../text-block'
 import { CallToActionBlock } from '../call-to-action'
 import { NumberTout } from '../number-tout'
 import { MediaBlock } from '../media-block'
-import { TestimonialBlock } from '../testimonial-block'
 import { ReusableContent } from '../reusable-content'
 import { getContentBlockConfig } from '../content-block'
 
@@ -15,19 +14,12 @@ const fields: Field[] = [
     },
     label: 'Blocks',
     type: 'blocks',
-    blocks: [
-      TextBlock,
-      CallToActionBlock,
-      NumberTout,
-      MediaBlock,
-      TestimonialBlock,
-      ReusableContent,
-    ],
+    blocks: [], // TextBlock, CallToActionBlock, NumberTout, MediaBlock
   },
 ]
 
 export const ResponsiveGridBlock: Block = getContentBlockConfig({
   slug: 'responsive-grid-block',
   interfaceName: 'IResponsiveGrid',
-  fields,
+  fields: [],
 })

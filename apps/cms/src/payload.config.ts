@@ -1,83 +1,25 @@
+import { webpackBundler } from '@payloadcms/bundler-webpack'
+import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { slateEditor } from '@payloadcms/richtext-slate'
 import { buildConfig } from 'payload/config'
-import { MainMenu, Footer, Address, ThemeVariables } from './globals'
+import path from 'path'
+import { Users } from './collections/users'
 import { Media } from './collections/media'
 import { Pages } from './collections/pages'
-import { seed } from './seed'
-import { type Page } from './payload-types'
-import { type PluginConfig as FormBuilderPluginConfig } from '@payloadcms/plugin-form-builder/dist/types'
-import { type PluginConfig as SEOPluginConfig } from '@payloadcms/plugin-seo/dist/types'
-import { Users } from './collections/users'
-import FormBuilder from '@payloadcms/plugin-form-builder'
-import path from 'path'
-import seo from '@payloadcms/plugin-seo'
-import { ReusableContent } from './collections/reusable-content'
-
-interface SeoPageObject extends Omit<Page, 'title'> {
-  title: {
-    value: string
-  }
-}
-
-const formBuilderPluginOptions: FormBuilderPluginConfig = {
-  fields: {
-    payment: false,
-  },
-}
-
-const SEOPluginOptions: SEOPluginConfig = {
-  collections: ['pages'],
-  uploadsCollection: 'media',
-  generateTitle: ({ doc }) => {
-    const seoDoc = doc as SeoPageObject
-
-    return `DublinEndo.com — ${seoDoc.title.value}`
-  },
-  tabbedUI: true,
-}
+import { Address, Footer, MainMenu, ThemeVariables } from './globals'
 
 export default buildConfig({
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL as string,
-  i18n: {
-    lng: 'en',
-  },
+  collections: [Pages, Users, Media],
+  globals: [Footer, MainMenu, ThemeVariables, Address],
   admin: {
-    user: Users.slug,
-    css: path.resolve(__dirname, './custom.scss'),
-    webpack: (config) => {
-      return {
-        ...config,
-        resolve: {
-          ...config.resolve,
-          alias: {
-            ...config?.resolve?.alias,
-            react: path.join(__dirname, '../node_modules/react'),
-            'react-dom': path.join(__dirname, '../node_modules/react-dom'),
-            'react-i18next': path.join(__dirname, '../node_modules/react-i18next'),
-            payload: path.join(__dirname, '../node_modules/payload'),
-            '@faceless-ui/modal': path.join(__dirname, '../node_modules/@faceless-ui/modal'),
-          },
-        },
-      }
-    },
+    bundler: webpackBundler(),
   },
-  collections: [Pages, Media, Users, ReusableContent],
-  localization: {
-    locales: ['en', 'es', 'fr'],
-    defaultLocale: 'en',
-    fallback: true,
-  },
-  plugins: [seo(SEOPluginOptions), FormBuilder(formBuilderPluginOptions)],
+  cors: ['http://localhost:3000'], //
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
-  graphQL: {
-    schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
-  },
-  onInit: async (payload) => {
-    // If the `env` var `PAYLOAD_SEED` is set, seed the db
-    if (process.env.PAYLOAD_SEED != null) {
-      await seed(payload)
-    }
-  },
-  globals: [Footer, MainMenu, ThemeVariables, Address],
+  editor: slateEditor({}),
+  db: mongooseAdapter({
+    url: process.env.MONGODB_URL as string,
+  }),
 })

@@ -1,7 +1,5 @@
-import { AllBlocks } from '@/app/components/blocks/types'
-
-export const normalizeBlocks = (blocks: AllBlocks[]): AllBlocks[] => {
-  let normalizedBlocks: AllBlocks[] = []
+export const normalizeBlocks = (blocks: any[]): any[] => {
+  let normalizedBlocks = []
 
   try {
     //@ts-ignore

@@ -31,7 +31,7 @@ interface GetContentBlockConfig {
 export const getContentBlockConfig = ({
   slug,
   interfaceName,
-  fields,
+  fields = [],
 }: GetContentBlockConfig): Block =>
   contentBlock({
     slug,
